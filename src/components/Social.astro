@@ -1,0 +1,42 @@
+---
+import SVGIcon from "./SVGIcon.astro";
+
+const socialData = [
+  {
+    iconName: 'instagram',
+    url: 'https://instagram.com/joelricorada'
+  },
+  {
+    iconName: 'bandcamp',
+    url: 'https://joelricorada.bandcamp.com/'
+  },
+  {
+    iconName: 'youtube',
+    url: 'https://www.youtube.com/channel/UClPzJnuXL3HBqT7HWUUM1KQ'
+  },
+  {
+    iconName: 'spotify',
+    url: 'https://open.spotify.com/intl-es/artist/5eBZuse0Ntu8UgrPleYZY8?' +
+    'si=g2qzrCylTFStHjGhGv47hg'
+  }
+];
+
+const className = 'footer-icon';
+---
+
+<ul>
+  {socialData.map(({ iconName, url }) => (
+    <li>
+      <a href={url}>
+        <SVGIcon name={iconName} className={className} />
+      </a>
+    </li>
+  ))}
+</ul>
+
+<style>
+  ul {
+    display: flex;
+    gap: 1em;
+  }
+</style>

@@ -1,0 +1,37 @@
+@import url(
+  'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap'
+);
+
+:root {
+  --color-dark: #333;
+  --color-light: #f8f8f8;
+}
+
+html {
+  font-size: calc(12px + 0.5vw);
+  font-family: 'EB Garamond', serif;
+  background: var(--color-light);
+  color: var(--color-dark);
+}
+
+body {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 500;
+}
+
+header,
+footer {
+  padding: 1.25rem;
+  background: var(--color-light);
+}
+
+/* Can't use scoped styles into <Fragment /> element */
+.footer-icon svg {
+  height: 2em;
+  width: 2em;
+  fill: var(--color-dark);
+}
