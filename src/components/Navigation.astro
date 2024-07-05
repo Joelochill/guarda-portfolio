@@ -1,7 +1,27 @@
 ---
-  import DropdownButton from './DropdownButton.astro';
+import DropdownButton from './DropdownButton.astro';
 ---
 
 <nav>
+  <ul>
+    <li><a href="/about">About</a></li>
+    <li><a href="/music">Music</a></li>
+    <li><a href="/shows">Shows</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
   <DropdownButton />
 </nav>
+
+<style>
+  ul {
+    display: none;
+  }
+
+  @media only screen and (min-width: 625px) {
+    ul {
+      display: flex;
+      gap: 1em;
+    }
+
+  }
+</style>
