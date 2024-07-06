@@ -4,6 +4,7 @@
 
 :root {
   --color-dark: #333;
+  --color-dark-hover: #000;
   --color-light: #f8f8f8;
 }
 
@@ -24,7 +25,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 header,
-footer {
+footer,
+main {
   padding: 1.25em 1.5em;
   background: var(--color-light);
 }
@@ -36,9 +38,14 @@ footer {
   fill: var(--color-dark);
 }
 
+.footer-icon svg:hover {
+  fill: var(--color-dark-hover)
+}
+
 @media only screen and (min-width: 625px) {
   header,
-  footer {
+  footer,
+  main {
     padding: 1.25em 3.75em;
   }
 }

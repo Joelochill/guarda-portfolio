@@ -1,10 +1,20 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
+import img from '../assets/images/90-index.jpg';
 ---
 
 <Layout title="Guarda">
   <main>
-    <h1>index</h1>
+    <Image
+      src={img} 
+      alt="Some kind of natural monk"
+      widths={[320, 540, 720, img.width]}
+      sizes={
+        '(max-width: 360px) 320px, (max-width: 720px) 540px,' + 
+        `(max-width: 1600px) 540px, ${img.width}px`
+      }
+    /> 
   </main>
 </Layout>
 
@@ -12,5 +22,13 @@ import Layout from "../layouts/Layout.astro";
   main {
     display: grid;
     place-items: center;
+  }
+
+  main img {
+    width: max-content;
+    height: max-content;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
   }
 </style>

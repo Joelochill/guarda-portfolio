@@ -5,8 +5,8 @@ import DropdownButton from './DropdownButton.astro';
 <nav>
   <ul>
     <li><a href="/about">About</a></li>
-    <li><a href="/music">Music</a></li>
-    <li><a href="/shows">Shows</a></li>
+    <li><a href="/discography">Discography</a></li>
+    <li><a href="/live">Live</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
   <DropdownButton />
@@ -23,5 +23,8 @@ import DropdownButton from './DropdownButton.astro';
       gap: 1em;
     }
 
+    a:hover {
+      color: var(--color-dark-hover);
+    }
   }
 </style>
