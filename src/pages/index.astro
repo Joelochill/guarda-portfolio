@@ -1,10 +1,11 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "../layouts/Layout.astro";
+
+import BaseLayout from "../layouts/BaseLayout.astro";
 import img from '../assets/images/90-index.jpg';
 ---
 
-<Layout title="Guarda">
+<BaseLayout title="Guarda">
   <main>
     <Image
       src={img} 
@@ -16,7 +17,7 @@ import img from '../assets/images/90-index.jpg';
       }
     /> 
   </main>
-</Layout>
+</BaseLayout>
 
 <style>
   main {

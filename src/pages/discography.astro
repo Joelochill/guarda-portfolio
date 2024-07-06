@@ -1,5 +1,5 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import Album from '../components/Album.astro';
 
 import tresPestañeos from '../assets/images/Tres-Pestañeos-Cover.jpg';
@@ -10,7 +10,7 @@ import paraNoAbandonarUnCuerpo from '../assets/images/Para-No-Abandonar-Un-Cuerp
 import segundo from '../assets/images/Segundo-Cover.png';
 ---
 
-<Layout title="Discography - Guarda">
+<BaseLayout title="Discography - Guarda">
   <main>
     <Album img={tresPestañeos} alt="Tres Pestañeos Cover" title="Tres Pestañeos" />
     <Album img={panteón} alt="Panteón Cover" title="Panteón" />
@@ -23,7 +23,7 @@ import segundo from '../assets/images/Segundo-Cover.png';
     />
     <Album img={segundo} alt="Segundo Cover" title="Segundo" />
   </main>
-</Layout>
+</BaseLayout>
 
 <style>
   main {
