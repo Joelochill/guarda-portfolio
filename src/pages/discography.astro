@@ -1,16 +1,35 @@
 ---
-import Layout from "../layouts/Layout.astro";
+import Layout from '../layouts/Layout.astro';
+import Album from '../components/Album.astro';
+
+import tresPestañeos from '../assets/images/Tres-Pestañeos-Cover.jpg';
+import panteón from '../assets/images/Panteón-Cover.jpg';
+import bellaBestia from '../assets/images/Bella-Bestia-Cover.png';
+import aurora from '../assets/images/Aurora-Cover.png';
+import paraNoAbandonarUnCuerpo from '../assets/images/Para-No-Abandonar-Un-Cuerpo-Cover.png';
+import segundo from '../assets/images/Segundo-Cover.png';
 ---
 
-<Layout title="About - Guarda">
+<Layout title="Discography - Guarda">
   <main>
-    <h1>music</h1>
+    <Album img={tresPestañeos} alt="Tres Pestañeos Cover" title="Tres Pestañeos" />
+    <Album img={panteón} alt="Panteón Cover" title="Panteón" />
+    <Album img={bellaBestia} alt="Bella Bestia Cover" title="Bella Bestia" />
+    <Album img={aurora} alt="Aurora Cover" title="Aurora" />
+    <Album 
+      img={paraNoAbandonarUnCuerpo} 
+      alt="Para No Abandonar Un Cuerpo Cover" 
+      title="Para No Abandonar Un Cuerpo" 
+    />
+    <Album img={segundo} alt="Segundo Cover" title="Segundo" />
   </main>
 </Layout>
 
 <style>
   main {
     display: grid;
-    place-items: center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3em;
+    align-content: start;
   }
 </style>

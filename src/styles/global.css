@@ -27,7 +27,7 @@ h1, h2, h3, h4, h5, h6 {
 header,
 footer,
 main {
-  padding: 1.25em 1.5em;
+  padding: 1.25rem 1.5rem;
   background: var(--color-light);
 }
 
@@ -46,6 +46,6 @@ main {
   header,
   footer,
   main {
-    padding: 1.25em 3.75em;
+    padding: 1.25rem 3.75rem;
   }
 }
