@@ -2,6 +2,8 @@
 import '../styles/reset.css';
 import '../styles/global.css';
 
+import { ViewTransitions } from 'astro:transitions';
+
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
@@ -17,6 +19,7 @@ const { title } = Astro.props
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <meta name="generator" content={Astro.generator} />
   <title>{title}</title>
+  <ViewTransitions />
 </head>
 <body>
   <Header/>
