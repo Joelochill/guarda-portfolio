@@ -2,26 +2,34 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Album from '../components/Album.astro';
 
-import tresPestañeos from '../assets/images/Tres-Pestañeos-Cover.jpg';
-import panteón from '../assets/images/Panteón-Cover.jpg';
-import bellaBestia from '../assets/images/Bella-Bestia-Cover.png';
-import aurora from '../assets/images/Aurora-Cover.png';
-import paraNoAbandonarUnCuerpo from '../assets/images/Para-No-Abandonar-Un-Cuerpo-Cover.png';
-import segundo from '../assets/images/Segundo-Cover.png';
+import { sanityClient } from 'sanity:client';
+import  imageUrlBuilder from '@sanity/image-url';
+
+const builder = imageUrlBuilder(sanityClient);
+
+function urlFor(source) {
+  return builder.image(source);
+}
+
+const albums = await sanityClient.fetch(
+  `*[_type == "album"] | order(appearanceOrder desc) { 
+    title, cover, imageAlt, bandcampLink 
+  }`);
+
+console.log(albums);
 ---
 
 <BaseLayout title="Discography - Guarda">
   <main>
-    <Album img={tresPestañeos} alt="Tres Pestañeos Cover" title="Tres Pestañeos" />
-    <Album img={panteón} alt="Panteón Cover" title="Panteón" />
-    <Album img={bellaBestia} alt="Bella Bestia Cover" title="Bella Bestia" />
-    <Album img={aurora} alt="Aurora Cover" title="Aurora" />
-    <Album 
-      img={paraNoAbandonarUnCuerpo} 
-      alt="Para No Abandonar Un Cuerpo Cover" 
-      title="Para No Abandonar Un Cuerpo" 
-    />
-    <Album img={segundo} alt="Segundo Cover" title="Segundo" />
+    {albums.map((album) => (
+      <Album 
+        img={urlFor(album.cover).url()} 
+        alt={`${album.imageAlt}`} 
+        title={album.title}
+        link={album.bandcampLink}
+      />
+    ))}
+    
   </main>
 </BaseLayout>
 
