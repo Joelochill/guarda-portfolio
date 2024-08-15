@@ -2,7 +2,7 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout title="About - Guarda">
+<BaseLayout title="Live - Guarda">
   <main>
     <h2>2024</h2>
     <p>
@@ -21,8 +21,19 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 </BaseLayout>
 
 <style>
-  main {
-    display: grid;
-    place-items: center;
+  main h2 {
+    margin: 1.25em 0;
+  }
+
+  p {
+    margin: 0.25em 0;
+  }
+
+  main a {
+    color: var(--color-blue);
+  }
+
+  main a:hover {
+    text-decoration: underline;
   }
 </style>

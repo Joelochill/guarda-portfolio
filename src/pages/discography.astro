@@ -12,7 +12,7 @@ function urlFor(source) {
 }
 
 const albums = await sanityClient.fetch(
-  `*[_type == "album"] | order(appearanceOrder desc) { 
+  `*[_type == "album"] | order(releaseDate desc) { 
     title, cover, imageAlt, bandcampLink 
   }`);
 
