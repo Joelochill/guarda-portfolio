@@ -6,7 +6,7 @@ import img from '../assets/images/90-index.jpg';
 ---
 
 <BaseLayout title="Guarda">
-  <main>
+  <div class="wrapper">
     <Image
       src={img} 
       alt="Some kind of natural monk"
@@ -16,16 +16,16 @@ import img from '../assets/images/90-index.jpg';
         `(max-width: 1600px) 540px, ${img.width}px`
       }
     /> 
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
-  main {
+  .wrapper {
     display: grid;
     place-items: center;
   }
 
-  main img {
+  .wrapper img {
     width: max-content;
     height: max-content;
     max-width: 100%;

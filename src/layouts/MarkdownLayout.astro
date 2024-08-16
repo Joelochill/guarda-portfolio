@@ -5,13 +5,13 @@ const { frontmatter } = Astro.props;
 ---
 
 <BaseLayout title={frontmatter.title} description={frontmatter.description}>
-  <main>
+  <div class="wrapper">
     <slot />
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
-  main {
+  .wrapper {
     padding-top: 0;
     font-size: 0.8rem;
   }

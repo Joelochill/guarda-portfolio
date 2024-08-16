@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Album from '../components/Album.astro';
+import Project from '../components/Project.astro';
 
 import { sanityClient } from 'sanity:client';
 import  imageUrlBuilder from '@sanity/image-url';
@@ -11,33 +11,31 @@ function urlFor(source) {
   return builder.image(source);
 }
 
-const albums = await sanityClient.fetch(
-  `*[_type == "album"] | order(releaseDate desc) { 
+const projects = await sanityClient.fetch(
+  `*[_type == "project"] | order(releaseDate desc) { 
     title, cover, imageAlt, bandcampLink 
   }`);
 
-console.log(albums);
 ---
 
 <BaseLayout title="Discography - Guarda">
-  <main>
-    {albums.map((album) => (
-      <Album 
-        img={urlFor(album.cover).url()} 
-        alt={`${album.imageAlt}`} 
-        title={album.title}
-        link={album.bandcampLink}
+  <div class="wrapper">
+    {projects.map((project) => (
+      <Project
+        img={urlFor(project.cover).url()} 
+        alt={`${project.imageAlt}`} 
+        title={project.title}
+        link={project.bandcampLink}
       />
     ))}
-    
-  </main>
+  </div>
 </BaseLayout>
 
 <style>
-  main {
+  .wrapper {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 3em;
+    gap: 2.5em;
     align-content: start;
   }
 </style>

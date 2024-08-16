@@ -52,7 +52,7 @@ title: Live - Guarda
 **9 de octubre |** *Zaragoza, España.* [Sala Arrebato. Mejor Sordo](https://planetacierzo.es/Evento/221009Fliessgewaser)
 
 <style>
-  main h2 {
+  .wrapper h2 {
     margin: 1.25em 0;
   }
 
@@ -60,11 +60,11 @@ title: Live - Guarda
     margin: 0.25em 0;
   }
 
-  main a {
+  .wrapper a {
     color: var(--color-blue);
   }
 
-  main a:hover {
+  .wrapper a:hover {
     text-decoration: underline;
   }
 </style>
