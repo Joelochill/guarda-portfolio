@@ -1,23 +1,24 @@
 ---
+import NavigationLink from './NavigationLink.astro'
 import { fade } from 'astro:transitions'
 ---
 
 <nav transition:name="nav" transition:animate={fade({ duration: '0.5s' })}>
   <ul>
-    <li><a href="/about">About</a></li>
-    <li><a href="/discography">Discography</a></li>
-    <li><a href="/live">Live</a></li>
-    <li><a href="/contact">Contact</a></li>
+    <li><NavigationLink href="/about">About<NavigationLink/></li>
+    <li><NavigationLink href="/discography">Discography</NavigationLink></li>
+    <li><NavigationLink href="/live">Live</NavigationLink></li>
+    <li><NavigationLink href="/contact">Contact</NavigationLink></li>
   </ul>
 </nav>
 
 <style>
   nav {
     position: absolute;
-    top: 100%;
+    top: 0;
     left: 0;
     right: 0;
-    height: calc(100dvh - 100%);
+    height: 100%;
     padding: 1rem 1.5rem;
     display: none;
     background: var(--color-light);
@@ -37,24 +38,9 @@ import { fade } from 'astro:transitions'
   }
 
   @media only screen and (min-width: 625px) {
-    nav {
-      position: static;
-      height: auto;
-      padding: 0;
-      display: block;
-    }
-
-    ::view-transition-group(nav) {
-      transition: none;
-    }
-
-    ul {
-      gap: 1em;
-      flex-direction: row;
-    }
-
-    a:hover {
-      color: var(--color-dark-hover);
+    nav,
+    .expanded {
+      display: none;
     }
   }
 </style>
