@@ -16,19 +16,17 @@ const socialData = [
   },
   {
     iconName: 'spotify',
-    url: 'https://open.spotify.com/intl-es/artist/5eBZuse0Ntu8UgrPleYZY8?' +
-    'si=g2qzrCylTFStHjGhGv47hg'
+    url: `https://open.spotify.com/intl-es/artist/5eBZuse0Ntu8UgrPleYZY8?si
+      =g2qzrCylTFStHjGhGv47hg`
   }
 ];
-
-const className = 'footer-icon';
 ---
 
 <ul>
   {socialData.map(({ iconName, url }) => (
     <li>
       <a href={url}>
-        <SVGIcon name={iconName} className={className} />
+        <SVGIcon name={iconName} />
       </a>
     </li>
   ))}

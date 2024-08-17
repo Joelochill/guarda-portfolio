@@ -1,5 +1,4 @@
 ---
-import DropdownButton from './DropdownButton.astro';
 ---
 
 <nav>
@@ -9,18 +8,44 @@ import DropdownButton from './DropdownButton.astro';
     <li><a href="/live">Live</a></li>
     <li><a href="/contact">Contact</a></li>
   </ul>
-  <DropdownButton />
 </nav>
 
 <style>
-  ul {
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: calc(100dvh - 100%);
+    padding: 1rem 1.5rem;
     display: none;
+    background: var(--color-light);
+  }
+
+  .expanded {
+    display: block;
+  }
+
+  ul {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+    align-items: start;
   }
 
   @media only screen and (min-width: 625px) {
+    nav {
+      position: static;
+      height: auto;
+      padding: 0;
+      display: block;
+    }
+
     ul {
-      display: flex;
       gap: 1em;
+      flex-direction: row;
     }
 
     a:hover {

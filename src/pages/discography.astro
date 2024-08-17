@@ -34,8 +34,14 @@ const projects = await sanityClient.fetch(
 <style>
   .wrapper {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2.5em;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 3em;
     align-content: start;
+  }
+  
+  @media screen and (min-width: 825px) {
+    .wrapper {
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
   }
 </style>

@@ -50,14 +50,24 @@ main {
   min-height: 100%;
 }
 
-/* Can't use scoped styles into <Fragment /> element */
-.footer-icon svg {
+/* Can't use scoped styles into <Fragment /> element (svgs are inside) */
+header svg {
+  height: 2em;
+  width: 2em;
+  stroke: var(--color-dark);
+}
+
+header svg:hover {
+  stroke: var(--color-dark-hover)
+}
+
+footer svg {
   height: 2em;
   width: 2em;
   fill: var(--color-dark);
 }
 
-.footer-icon svg:hover {
+footer svg:hover {
   fill: var(--color-dark-hover)
 }
 
