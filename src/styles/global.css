@@ -62,8 +62,8 @@ header svg:hover {
 }
 
 footer svg {
-  height: 2em;
-  width: 2em;
+  height: 1.75em;
+  width: 1.75em;
   fill: var(--color-dark);
 }
 
@@ -79,6 +79,7 @@ footer svg:hover {
   }
 }
 
+
 ::view-transition-group(main),
 ::view-transition-group(footer) {
   animation-duration: var(--transition-duration-main);
@@ -88,28 +89,6 @@ footer svg:hover {
 ::view-transition-new(footer) {
   animation-delay: var(--transition-duration-main);
 }
-
-
-/*
-::-webkit-scrollbar {
-  width: 0.25rem;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);  
-}
-  
-::-webkit-scrollbar-thumb {
-  border-radius: 50px;
-  background: var(--color-dark); 
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: var(--color-dark-hover);
-  transform: scaleX(2);
-}
-*/
 
 * {
   scroll-behavior: smooth;
