@@ -4,7 +4,7 @@ import { Image } from "astro:assets";
 const { img, alt, title, link } = Astro.props;
 ---
 <div>
-  <a href={link}>
+  <a class="whatever" href={link}>
     <Image
       src={img}
       alt={alt}
@@ -25,12 +25,6 @@ const { img, alt, title, link } = Astro.props;
     flex-direction: column;
     gap: 0.5em;
   }
-
-  /*
-  a:first-of-type {
-    box-shadow: 0.2em 0.2em 0.5em #33333333;
-  }
-  */
 
   p a:hover {
     color: var(--color-dark-hover);

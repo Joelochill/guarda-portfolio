@@ -1,5 +1,5 @@
-import { defineConfig } from 'astro/config';
 import sanity from '@sanity/astro';
+import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
@@ -15,5 +15,5 @@ export default defineConfig({
   ],
   image: {
     domains: ['astro.build', 'cdn.sanity.io'],
-  }
+  },
 });
