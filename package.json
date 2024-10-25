@@ -9,7 +9,10 @@
     "preview": "astro preview",
     "astro": "astro",
     "lint": "npx eslint",
-    "lint:fix": "npm run lint -- --fix"
+    "lint:fix": "npm run lint -- --fix",
+    "prettier": "npx prettier --check .",
+    "prettier:fix": "npm run prettier -- --write",
+    "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
     "@sanity/astro": "^3.1.4",

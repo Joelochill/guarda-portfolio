@@ -14,7 +14,7 @@ function urlFor(source) {
 const projects = await sanityClient.fetch(
   `*[_type == "project"] | order(releaseDate desc) { 
     title, cover, imageAlt, bandcampLink 
-  }`
+  }`,
 );
 ---
 

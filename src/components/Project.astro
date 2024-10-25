@@ -1,8 +1,9 @@
 ---
-import { Image } from "astro:assets";
+import { Image } from 'astro:assets';
 
 const { img, alt, title, link } = Astro.props;
 ---
+
 <div>
   <a class="whatever" href={link}>
     <Image
@@ -10,10 +11,8 @@ const { img, alt, title, link } = Astro.props;
       alt={alt}
       widths={[320, 540, 720]}
       inferSize
-      sizes={
-        '(max-width: 360px) 320px, (max-width: 720px) 540px,' +
-        `(max-width: 1600px) 720px`
-      }
+      sizes={'(max-width: 360px) 320px, (max-width: 720px) 540px,' +
+        `(max-width: 1600px) 720px`}
     />
   </a>
   <p><a href={link}>{title}</a></p>

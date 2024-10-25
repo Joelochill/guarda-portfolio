@@ -1,6 +1,7 @@
 ---
-import SVGIcon from './SVGIcon.astro'
+import SVGIcon from './SVGIcon.astro';
 ---
+
 <button>
   <SVGIcon name="dropdown" />
 </button>
@@ -21,7 +22,7 @@ import SVGIcon from './SVGIcon.astro'
 <script>
   document.addEventListener('astro:page-load', () => {
     document.querySelector('button').addEventListener('click', () => {
-      document.querySelector('main nav').classList.toggle('expanded')
-    })
-  })
+      document.querySelector('main nav').classList.toggle('expanded');
+    });
+  });
 </script>
