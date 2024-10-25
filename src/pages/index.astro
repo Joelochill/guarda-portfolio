@@ -1,21 +1,19 @@
 ---
-import { Image } from 'astro:assets'
+import { Image } from 'astro:assets';
 
-import BaseLayout from '../layouts/BaseLayout.astro'
-import img from '../assets/images/90-index.jpg'
+import img from '../assets/images/90-index.jpg';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout title="Guarda">
   <div class="wrapper">
     <Image
-      src={img} 
+      src={img}
       alt="Some kind of natural monk"
       widths={[320, 540, 720, img.width]}
-      sizes={
-        '(max-width: 360px) 320px, (max-width: 720px) 540px,' + 
-        `(max-width: 1600px) 540px, ${img.width}px`
-      }
-    /> 
+      sizes={'(max-width: 360px) 320px, (max-width: 720px) 540px,' +
+        `(max-width: 1600px) 540px, ${img.width}px`}
+    />
   </div>
 </BaseLayout>
 
