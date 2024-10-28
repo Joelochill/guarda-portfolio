@@ -1,0 +1,19 @@
+---
+const { date, city, country, title, link } = Astro.props;
+---
+
+<p>
+  <strong>{date} @ </strong>
+  <em>{city}, {country}. </em>
+  <a href={link}>{title}</a>
+</p>
+
+<style>
+  a {
+    color: var(--color-blue);
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+</style>
