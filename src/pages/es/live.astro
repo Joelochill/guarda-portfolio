@@ -1,0 +1,36 @@
+---
+import { sanityClient } from 'sanity:client';
+import EventList from '../../components/EventList.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const events = await sanityClient.fetch(
+  `*[_type == "event"] | order(date desc) { date, city, country, title, link }`
+);
+
+const uniqueYears = new Set(
+  events.map((event) => new Date(event.date).getFullYear())
+);
+
+const formattedContent = [...uniqueYears].map((year) => ({
+  year,
+  events: events.filter((event) => new Date(event.date).getFullYear() === year),
+}));
+---
+
+<BaseLayout title="Live - Guarda">
+  <div class="wrapper">
+    {
+      formattedContent.map(({ year, events }) => (
+        <EventList year={year} events={events} />
+      ))
+    }
+  </div>
+</BaseLayout>
+
+<style>
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25em;
+  }
+</style>

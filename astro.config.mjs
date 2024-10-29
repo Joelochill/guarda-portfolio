@@ -3,9 +3,6 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  devToolbar: {
-    enabled: false,
-  },
   integrations: [
     sanity({
       projectId: 'pgwm690m',
@@ -15,5 +12,9 @@ export default defineConfig({
   ],
   image: {
     domains: ['astro.build', 'cdn.sanity.io'],
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['es', 'en'],
   },
 });

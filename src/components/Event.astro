@@ -5,7 +5,7 @@ const { date, city, country, title, link } = Astro.props;
 <p>
   <strong>{date} @ </strong>
   <em>{city}, {country}. </em>
-  <a href={link}>{title}</a>
+  {link ? <a href={link}>{title}</a> : <span>{title}</span>}
 </p>
 
 <style>
