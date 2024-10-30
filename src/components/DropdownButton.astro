@@ -22,7 +22,15 @@ import SVGIcon from './SVGIcon.astro';
 <script>
   document.addEventListener('astro:page-load', () => {
     document.querySelector('button').addEventListener('click', () => {
-      document.querySelector('main nav').classList.toggle('expanded');
+      const nav = document.querySelector('nav:not(.desktop)') as HTMLElement;
+      const headerHeight = window.getComputedStyle(
+        document.querySelector('header')
+      ).height;
+
+      const headerHeightVal = Number(headerHeight.replace(/[^\d.]/g, ''));
+
+      nav.style.paddingTop = `${headerHeightVal + 10}px`;
+      nav.classList.toggle('expanded');
     });
   });
 </script>

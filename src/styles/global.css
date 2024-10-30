@@ -41,7 +41,7 @@ h6 {
 header,
 footer,
 main {
-  padding: 1rem 1.5rem;
+  padding: 0.75rem 1.5rem;
   background: var(--color-light);
 }
 
@@ -62,13 +62,13 @@ header svg:hover {
   stroke: var(--color-dark-hover);
 }
 
-footer svg {
+.social svg {
   height: 1.75em;
   width: 1.75em;
   fill: var(--color-dark);
 }
 
-footer svg:hover {
+.social svg:hover {
   fill: var(--color-dark-hover);
 }
 

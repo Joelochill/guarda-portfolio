@@ -1,6 +1,7 @@
 ---
-import NavigationLink from './NavigationLink.astro';
 import { fade } from 'astro:transitions';
+import NavigationLink from './NavigationLink.astro';
+import Social from './Social.astro';
 ---
 
 <nav transition:name="nav" transition:animate={fade({ duration: '0.5s' })}>
@@ -10,31 +11,38 @@ import { fade } from 'astro:transitions';
     <li><NavigationLink href="/live">Live</NavigationLink></li>
     <li><NavigationLink href="/contact">Contact</NavigationLink></li>
   </ul>
+  <Social />
 </nav>
 
 <style>
   nav {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
-    height: 100%;
-    padding: 1rem 1.5rem;
+    min-height: 100dvh;
+    padding: 0 1.5rem 10rem;
     display: none;
     background: var(--color-light);
   }
 
   .expanded {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
   }
 
   ul {
     width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     gap: 1.5em;
     align-items: start;
+  }
+
+  .social {
+    align-self: center;
   }
 
   @media only screen and (min-width: 625px) {
