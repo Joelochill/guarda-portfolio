@@ -4,11 +4,34 @@ import '../styles/reset.css';
 
 import { ViewTransitions } from 'astro:transitions';
 
+import { getImage } from 'astro:assets';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Navigation from '../components/Navigation.astro';
 
-const { title, description, isIndex } = Astro.props;
+import imageUrlBuilder from '@sanity/image-url';
+import { sanityClient } from 'sanity:client';
+
+const builder = imageUrlBuilder(sanityClient);
+
+function urlFor(source) {
+  return builder.image(source);
+}
+
+const backgrounds = await sanityClient.fetch('*[_type == "homeImage"]');
+const backgroundImageUrl = urlFor(backgrounds[1].image).url();
+const optimizedBackground = await getImage({
+  src: backgroundImageUrl,
+  format: 'webp',
+  width: 1000,
+  height: 1000,
+});
+
+const cssBackground = `url(${optimizedBackground.src})`;
+
+console.log(optimizedBackground);
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,10 +47,7 @@ const { title, description, isIndex } = Astro.props;
   </head>
   <body>
     <div class="page-wrapper">
-      <Header
-        transition:persist
-        bgLight
-      />
+      <Header transition:persist />
       <main transition:name="main" transition:animate="fade">
         <Navigation />
         <slot />
@@ -37,7 +57,12 @@ const { title, description, isIndex } = Astro.props;
   </body>
 </html>
 
-<style>
+<style define:vars={{ cssBackground }}>
+  .page-wrapper {
+    background-image: var(--cssBackground);
+    background-fit: cover;
+    background-position: center;
+  }
   main {
     position: relative;
   }

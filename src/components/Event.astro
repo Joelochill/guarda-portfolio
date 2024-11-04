@@ -3,7 +3,14 @@ const { date, city, country, title, link } = Astro.props;
 ---
 
 <p>
-  <strong>{date} @ </strong>
+  <strong
+    >{
+      new Date(date).toLocaleDateString('en-US', {
+        month: 'long',
+        day: 'numeric',
+      })
+    } |
+  </strong>
   <em>{city}, {country}. </em>
   {link ? <a href={link}>{title}</a> : <span>{title}</span>}
 </p>

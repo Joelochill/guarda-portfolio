@@ -8,6 +8,14 @@
   --transition-duration-main: 0.5s;
 }
 
+.bg-light {
+  background-color: var(--color-light);
+}
+
+.bg-transparent {
+  background-color: transparent;
+}
+
 html {
   font-size: calc(12px + 0.5vw);
   font-family: 'EB Garamond', serif;
@@ -38,11 +46,14 @@ h6 {
   font-weight: 500;
 }
 
+button {
+  cursor: pointer;
+}
+
 header,
 footer,
 main {
   padding: 0.75rem 1.5rem;
-  background: var(--color-light);
 }
 
 .wrapper {

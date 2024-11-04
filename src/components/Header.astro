@@ -1,13 +1,17 @@
 ---
 import DesktopNavigation from './DesktopNavigation.astro';
 import DropdownButton from './DropdownButton.astro';
+import LanguageSelector from './LanguageSelector.astro';
 import Logo from './Logo.astro';
+
+const { bgLight } = Astro.props;
 ---
 
-<header>
+<header class={bgLight ? 'bg-light' : 'bg-transparent'}>
   <Logo />
-  <DropdownButton />
   <DesktopNavigation />
+  <LanguageSelector />
+  <DropdownButton />
 </header>
 
 <style>
@@ -19,6 +23,7 @@ import Logo from './Logo.astro';
     top: 0;
     z-index: 1000;
     user-select: none;
+    gap: 2em;
   }
 
   @media only screen and (min-width: 625px) {

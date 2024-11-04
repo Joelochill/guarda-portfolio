@@ -2,13 +2,12 @@
 import SVGIcon from './SVGIcon.astro';
 ---
 
-<button>
+<button class="dropdown-btn">
   <SVGIcon name="dropdown" />
 </button>
 
 <style>
   button {
-    cursor: pointer;
     height: 100%;
   }
 
@@ -19,10 +18,10 @@ import SVGIcon from './SVGIcon.astro';
   }
 </style>
 
-<script>
+<script is:inline>
   document.addEventListener('astro:page-load', () => {
-    document.querySelector('button').addEventListener('click', () => {
-      const nav = document.querySelector('nav:not(.desktop)') as HTMLElement;
+    document.querySelector('.dropdown-btn').addEventListener('click', () => {
+      const nav = document.querySelector('nav:not(.desktop)');
       const headerHeight = window.getComputedStyle(
         document.querySelector('header')
       ).height;

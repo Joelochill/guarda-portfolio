@@ -1,0 +1,34 @@
+---
+import { getRelativeLocaleUrl } from 'astro/virtual-modules/i18n.js';
+
+const currentLang = Astro.currentLocale;
+console.log(currentLang);
+---
+
+<div>
+  <button class="english-btn selected">en</button>
+  <button class="spanish-btn">es</button>
+</div>
+
+<style>
+  div {
+    display: flex;
+    gap: 0.5em;
+  }
+
+  .selected {
+    text-decoration: underline;
+  }
+
+  button {
+    color: var(--color-dark);
+  }
+</style>
+
+<script is:inline>
+  document.addEventListener('astro:page-load', () => {
+    document.querySelector('.spanish-btn').addEventListener('click', () => {
+      console.log(Astro.currentLocale);
+    });
+  });
+</script>
