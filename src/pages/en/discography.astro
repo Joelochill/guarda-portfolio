@@ -1,6 +1,6 @@
 ---
-import Project from '../components/Project.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Project from '../../components/Project.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 import imageUrlBuilder from '@sanity/image-url';
 import { sanityClient } from 'sanity:client';
@@ -18,7 +18,7 @@ const projects = await sanityClient.fetch(
 );
 ---
 
-<BaseLayout title="Discography - Guarda" lang="es">
+<BaseLayout title="Discography - Guarda" lang="en">
   <div class="wrapper">
     {
       projects.map((project) => (

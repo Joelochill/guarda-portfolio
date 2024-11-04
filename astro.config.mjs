@@ -14,7 +14,7 @@ export default defineConfig({
     domains: ['astro.build', 'cdn.sanity.io'],
   },
   i18n: {
-    defaultLocale: 'en',
+    defaultLocale: 'es',
     locales: ['es', 'en'],
   },
 });

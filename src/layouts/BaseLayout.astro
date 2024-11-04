@@ -8,11 +8,11 @@ import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import Navigation from '../components/Navigation.astro';
 
-const { title, description, isIndex } = Astro.props;
+const { title, description, lang, isIndex } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content={description} />
@@ -24,10 +24,7 @@ const { title, description, isIndex } = Astro.props;
   </head>
   <body>
     <div class="page-wrapper">
-      <Header
-        transition:persist
-        bgLight
-      />
+      <Header transition:persist bgLight />
       <main transition:name="main" transition:animate="fade">
         <Navigation />
         <slot />
