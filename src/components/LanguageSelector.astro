@@ -1,17 +1,19 @@
 ---
-import { getRelativeLocaleUrl } from 'astro/virtual-modules/i18n.js';
-
-const currentLang = Astro.currentLocale;
-console.log(currentLang);
+const currentPage = Astro.url.pathname;
+const currentLocale = Astro.currentLocale;
 ---
 
-<div>
-  <button class="english-btn selected">en</button>
-  <button class="spanish-btn">es</button>
-</div>
+<nav>
+  <a
+    href={currentLocale === 'es' ? currentPage : currentPage.replace('/en', '')}
+    class="selected"
+    >es
+  </a>
+  <a href={currentLocale === 'en' ? currentPage : `/en${currentPage}`}>en</a>
+</nav>
 
 <style>
-  div {
+  nav {
     display: flex;
     gap: 0.5em;
   }
@@ -20,15 +22,11 @@ console.log(currentLang);
     text-decoration: underline;
   }
 
-  button {
+  a {
     color: var(--color-dark);
   }
 </style>
 
 <script is:inline>
-  document.addEventListener('astro:page-load', () => {
-    document.querySelector('.spanish-btn').addEventListener('click', () => {
-      console.log(Astro.currentLocale);
-    });
-  });
+  document.addEventListener('astro:page-load', () => {});
 </script>
