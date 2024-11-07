@@ -21,15 +21,17 @@ import SVGIcon from './SVGIcon.astro';
 <script is:inline>
   document.addEventListener('astro:page-load', () => {
     document.querySelector('.dropdown-btn').addEventListener('click', () => {
-      const nav = document.querySelector('nav:not(.desktop)');
+      const dropdown = document.querySelector('.dropdown');
       const headerHeight = window.getComputedStyle(
         document.querySelector('header')
       ).height;
 
+      console.log(dropdown);
+
       const headerHeightVal = Number(headerHeight.replace(/[^\d.]/g, ''));
 
-      nav.style.paddingTop = `${headerHeightVal + 10}px`;
-      nav.classList.toggle('expanded');
+      dropdown.style.paddingTop = `${headerHeightVal + 10}px`;
+      dropdown.classList.toggle('expanded');
     });
   });
 </script>

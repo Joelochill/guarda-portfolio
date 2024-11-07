@@ -16,6 +16,10 @@
   background-color: transparent;
 }
 
+.display-none {
+  display: none;
+}
+
 html {
   font-size: calc(12px + 0.5vw);
   font-family: 'EB Garamond', serif;
