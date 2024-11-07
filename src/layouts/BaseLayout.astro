@@ -6,7 +6,7 @@ import { ViewTransitions } from 'astro:transitions';
 
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
-import Navigation from '../components/Navigation.astro';
+import Dropdown from '../components/Dropdown.astro';
 
 const { title, description, lang, isIndex } = Astro.props;
 ---
@@ -25,8 +25,8 @@ const { title, description, lang, isIndex } = Astro.props;
   <body>
     <div class="page-wrapper">
       <Header transition:persist bgLight />
+      <Dropdown />
       <main transition:name="main" transition:animate="fade">
-        <Navigation />
         <slot />
       </main>
       <Footer transition:name="footer" transition:animate="fade" />

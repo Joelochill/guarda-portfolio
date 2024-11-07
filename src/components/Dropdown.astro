@@ -1,0 +1,46 @@
+---
+import LanguageSelector from './LanguageSelector.astro';
+import Navigation from './Navigation.astro';
+import Social from './Social.astro';
+---
+
+<div class="dropdown hidden">
+  <Navigation />
+  <div>
+    <LanguageSelector />
+    <Social />
+  </div>
+</div>
+
+<style>
+  .dropdown {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 100dvh;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-light);
+    display: none;
+    z-index: 999;
+  }
+
+  div:not(.dropdown) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .expanded {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media only screen and (min-width: 625px) {
+    nav,
+    .expanded {
+      display: none;
+    }
+  }
+</style>

@@ -6,10 +6,13 @@ const currentLocale = Astro.currentLocale;
 <nav>
   <a
     href={currentLocale === 'es' ? currentPage : currentPage.replace('/en', '')}
-    class="selected"
+    class:list={['lang-link', currentLocale === 'es' ? 'selected' : '']}
     >es
   </a>
-  <a href={currentLocale === 'en' ? currentPage : `/en${currentPage}`}>en</a>
+  <a
+    href={currentLocale === 'en' ? currentPage : `/en${currentPage}`}
+    class:list={['lang-link', currentLocale === 'en' ? 'selected' : '']}>en</a
+  >
 </nav>
 
 <style>
@@ -27,6 +30,4 @@ const currentLocale = Astro.currentLocale;
   }
 </style>
 
-<script is:inline>
-  document.addEventListener('astro:page-load', () => {});
-</script>
+<script is:inline></script>
