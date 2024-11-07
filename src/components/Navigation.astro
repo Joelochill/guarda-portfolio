@@ -1,12 +1,11 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
-import { fade } from 'astro:transitions';
 import NavigationLink from './NavigationLink.astro';
 
 const currentLocale = Astro.currentLocale;
 ---
 
-<nav transition:name="nav" transition:animate={fade({ duration: '0.5s' })}>
+<nav>
   <ul>
     <li>
       <NavigationLink href={getRelativeLocaleUrl(currentLocale, 'about')}

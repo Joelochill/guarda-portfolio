@@ -8,14 +8,6 @@
   --transition-duration-main: 0.5s;
 }
 
-.bg-light {
-  background-color: var(--color-light);
-}
-
-.bg-transparent {
-  background-color: transparent;
-}
-
 .display-none {
   display: none;
 }

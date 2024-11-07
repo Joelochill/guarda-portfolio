@@ -26,8 +26,6 @@ import SVGIcon from './SVGIcon.astro';
         document.querySelector('header')
       ).height;
 
-      console.log(dropdown);
-
       const headerHeightVal = Number(headerHeight.replace(/[^\d.]/g, ''));
 
       dropdown.style.paddingTop = `${headerHeightVal + 10}px`;
