@@ -1,9 +1,9 @@
 ---
-import SVGIcon from './SVGIcon.astro';
+import { Icon } from 'astro-icon/components';
 ---
 
 <button class="dropdown-btn">
-  <SVGIcon name="dropdown" />
+  <Icon name="dropdown" />
 </button>
 
 <style>
@@ -21,6 +21,7 @@ import SVGIcon from './SVGIcon.astro';
 <script is:inline>
   document.addEventListener('astro:page-load', () => {
     const dropdown = document.querySelector('.dropdown');
+    const dropdownBtn = document.querySelector('.dropdown-btn');
     const main = document.querySelector('main');
 
     // Set fixed dropdown height on body resize
@@ -34,7 +35,7 @@ import SVGIcon from './SVGIcon.astro';
     resizeObserver.observe(document.body);
 
     // Show the dropdown
-    document.querySelector('.dropdown-btn').addEventListener('click', () => {
+    dropdownBtn.addEventListener('click', () => {
       if (dropdown.classList.contains('expanded')) {
         dropdown.addEventListener(
           'animationend',
@@ -60,8 +61,23 @@ import SVGIcon from './SVGIcon.astro';
         { once: true }
       );
       main.classList.replace('fade-in', 'fade-out') ||
-      main.classList.add('fade-out');
+        main.classList.add('fade-out');
       document.body.style.overflowY = 'hidden';
+    });
+
+    dropdownBtn.addEventListener('click', () => {
+      if (!dropdownBtn.classList.contains('rotated-180')) {
+        dropdownBtn.classList.remove('rotated-180-reverse');
+        requestAnimationFrame(() => {
+          dropdownBtn.classList.add('rotated-180');
+        });
+        return;
+      }
+
+      dropdownBtn.classList.remove('rotated-180');
+      requestAnimationFrame(() => {
+        dropdownBtn.classList.add('rotated-180-reverse');
+      });
     });
   });
 </script>

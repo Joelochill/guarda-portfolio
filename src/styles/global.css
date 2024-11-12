@@ -91,7 +91,7 @@ header svg:hover {
   }
 }
 
-/* Animations, view transitions `*/
+/* Animations, view transitions */
 
 @keyframes fadeIn {
   0% {
@@ -113,6 +113,16 @@ header svg:hover {
   }
 }
 
+@keyframes rotateX180 {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  100% {
+    transform: rotateX(-180deg);
+  }
+}
+
 .fade-in {
   animation: fadeIn var(--transition-duration-main) ease;
   opacity: 100;
@@ -121,6 +131,16 @@ header svg:hover {
 .fade-out {
   animation: fadeOut var(--transition-duration-main) ease;
   opacity: 0;
+}
+
+.rotated-180 {
+  animation: rotateX180 calc(var(--transition-duration-main) * 2) ease;
+  transform: rotateX(-180deg);
+}
+
+.rotated-180-reverse {
+  animation: rotateX180 1s ease reverse;
+  transform: rotateX(0deg);
 }
 
 ::view-transition-group(main),

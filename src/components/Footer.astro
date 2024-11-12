@@ -8,8 +8,13 @@ import Social from './Social.astro';
 
 <style>
   footer {
-    width: 100%;
-    display: flex;
-    justify-content: end;
+    display: none;
+  }
+  
+  @media only screen and (min-width: 625px) {
+    footer {
+      display: flex;
+      justify-content: end;
+    }
   }
 </style>

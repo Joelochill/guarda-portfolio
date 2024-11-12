@@ -1,5 +1,5 @@
 ---
-import SVGIcon from './SVGIcon.astro';
+import { Icon } from 'astro-icon/components';
 
 const socialData = [
   {
@@ -27,7 +27,7 @@ const socialData = [
     socialData.map(({ iconName, url }) => (
       <li>
         <a href={url}>
-          <SVGIcon name={iconName} />
+          <Icon name={iconName} />
         </a>
       </li>
     ))
