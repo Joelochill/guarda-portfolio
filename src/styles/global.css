@@ -123,6 +123,16 @@ header svg:hover {
   }
 }
 
+@keyframes rotateX180Reverse {
+  0% {
+    transform: rotateX(-180deg);
+  }
+
+  100% {
+    transform: rotateX(0deg);
+  }
+}
+
 .fade-in {
   animation: fadeIn var(--transition-duration-main) ease;
   opacity: 100;
@@ -139,7 +149,7 @@ header svg:hover {
 }
 
 .rotated-180-reverse {
-  animation: rotateX180 1s ease reverse;
+  animation: rotateX180Reverse calc(var(--transition-duration-main) * 2) ease;
   transform: rotateX(0deg);
 }
 

@@ -67,17 +67,11 @@ import { Icon } from 'astro-icon/components';
 
     dropdownBtn.addEventListener('click', () => {
       if (!dropdownBtn.classList.contains('rotated-180')) {
-        dropdownBtn.classList.remove('rotated-180-reverse');
-        requestAnimationFrame(() => {
-          dropdownBtn.classList.add('rotated-180');
-        });
+        dropdownBtn.classList.replace('rotated-180-reverse', 'rotated-180') || dropdownBtn.classList.add('rotated-180');
         return;
       }
 
-      dropdownBtn.classList.remove('rotated-180');
-      requestAnimationFrame(() => {
-        dropdownBtn.classList.add('rotated-180-reverse');
-      });
+      dropdownBtn.classList.replace('rotated-180', 'rotated-180-reverse');
     });
   });
 </script>
