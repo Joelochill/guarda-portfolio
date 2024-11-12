@@ -1,14 +1,12 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
+import Dropdown from '../components/Dropdown.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
 import '../styles/global.css';
 import '../styles/reset.css';
 
-import { ViewTransitions } from 'astro:transitions';
-
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import Dropdown from '../components/Dropdown.astro';
-
-const { title, description, lang, isIndex } = Astro.props;
+const { title, description, lang } = Astro.props;
 ---
 
 <!doctype html>
@@ -24,13 +22,13 @@ const { title, description, lang, isIndex } = Astro.props;
   </head>
   <body>
     <div class="page-wrapper">
-      <Header transition:persist bgLight />
-      <Dropdown />
+      <Header />
       <main transition:name="main" transition:animate="fade">
         <slot />
       </main>
       <Footer transition:name="footer" transition:animate="fade" />
     </div>
+    <Dropdown />
   </body>
 </html>
 

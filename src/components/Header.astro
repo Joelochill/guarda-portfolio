@@ -7,10 +7,10 @@ import Navigation from './Navigation.astro';
 
 <header>
   <Logo />
-  <div class="mobile-hidden">
+  <div class="hidden">
     <Navigation />
   </div>
-  <div class="mobile-hidden">
+  <div class="hidden">
     <LanguageSelector />
   </div>
   <DropdownButton />
@@ -29,7 +29,7 @@ import Navigation from './Navigation.astro';
     background-color: var(--color-light);
   }
 
-  .mobile-hidden {
+  .hidden {
     display: none;
   }
 
@@ -38,7 +38,7 @@ import Navigation from './Navigation.astro';
       position: relative;
     }
 
-    .mobile-hidden {
+    .hidden {
       display: flex;
     }
   }

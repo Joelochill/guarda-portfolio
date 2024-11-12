@@ -9,12 +9,13 @@ const isActive = href === currentPath;
   <slot />
 </a>
 
-<style>
+<style>     
   a {
     color: var(--color-dark);
   }
 
-  .active {
+  .active,
+  .active:hover {
     color: var(--color-blue);
   }
 
