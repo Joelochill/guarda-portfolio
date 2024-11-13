@@ -3,7 +3,7 @@
   --color-dark-hover: #000;
   --color-light: #f8f8f8;
   --color-blue: #5a83a7;
-  --transition-duration-main: 0.5s;
+  --transition-duration-main: 0.3s;
 }
 
 .display-none {
@@ -16,7 +16,7 @@
 
 html {
   font-size: calc(12px + 0.5vw);
-  font-family: 'EB Garamond Variable', 'Times New Roman', 'Times', serif;
+  font-family: 'EB Garamond Variable','Sorts Mill Goudy', 'Times New Roman', Times, serif;
   background: var(--color-light);
   color: var(--color-dark);
 }
