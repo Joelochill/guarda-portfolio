@@ -1,25 +1,18 @@
 ---
+import Image from 'astro/components/Image.astro';
 import Layout from '../layouts/Layout.astro';
-
-import imageUrlBuilder from '@sanity/image-url';
-import { sanityClient } from 'sanity:client';
-
-const builder = imageUrlBuilder(sanityClient);
-
-function urlFor(source) {
-  return builder.image(source);
-}
+import { homeImage } from '../sanityQueries';
 ---
 
 <Layout title="Guarda" lang="es" isIndex>
   <div class="wrapper">
-    <!-- <Image
-      src={img}
-      alt="Some kind of natural monk"
-      widths={[320, 540, 720, img.width]}
-      sizes={'(max-width: 360px) 320px, (max-width: 720px) 540px,' +
-        `(max-width: 1600px) 540px, ${img.width}px`}
-    /> -->
+    <Image
+      src={homeImage.url}
+      alt={homeImage.alt}
+      widths={[320, 540, 720]}
+      inferSize
+      sizes={`(max-width: 360px) 320px, (max-width: 720px) 540px, (max-width: 1600px) 540px`}
+    />
   </div>
 </Layout>
 

@@ -34,3 +34,14 @@ export const liveContent = [...uniqueYears].map((year) => ({
   year,
   events: events.filter((event) => new Date(event.date).getFullYear() === year),
 }));
+
+// home image's queries
+
+const { image, imageAlt: alt } = await sanityClient.fetch(
+  `*[_type == "homeImage"] | order(publishedAt desc) [0] { image, imageAlt }`,
+);
+
+export const homeImage = { 
+  url: urlFor(image).url(),
+  alt, 
+};
