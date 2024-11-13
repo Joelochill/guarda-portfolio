@@ -1,6 +1,5 @@
 ---
-import { Image } from 'astro:assets';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from '../layouts/Layout.astro';
 
 import imageUrlBuilder from '@sanity/image-url';
 import { sanityClient } from 'sanity:client';
@@ -12,7 +11,7 @@ function urlFor(source) {
 }
 ---
 
-<BaseLayout title="Guarda" lang="es" isIndex>
+<Layout title="Guarda" lang="es" isIndex>
   <div class="wrapper">
     <!-- <Image
       src={img}
@@ -22,7 +21,7 @@ function urlFor(source) {
         `(max-width: 1600px) 540px, ${img.width}px`}
     /> -->
   </div>
-</BaseLayout>
+</Layout>
 
 <style>
   .wrapper {

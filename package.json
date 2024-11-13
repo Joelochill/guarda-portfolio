@@ -16,6 +16,7 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
+    "@fontsource-variable/eb-garamond": "^5.1.1",
     "@sanity/astro": "^3.1.4",
     "@sanity/client": "^6.21.2",
     "@sanity/image-url": "^1.0.2",

@@ -1,10 +1,10 @@
 ---
 import Project from '../components/Project.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from '../layouts/Layout.astro';
 import { projects } from '../sanityQueries.js';
 ---
 
-<BaseLayout title="Discography - Guarda" lang="es">
+<Layout title="Discography - Guarda" lang="es">
   <div class="wrapper">
     {
       projects.map((project) => (
@@ -17,7 +17,7 @@ import { projects } from '../sanityQueries.js';
       ))
     }
   </div>
-</BaseLayout>
+</Layout>
 
 <style>
   .wrapper {

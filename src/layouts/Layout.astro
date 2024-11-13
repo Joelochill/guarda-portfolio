@@ -1,4 +1,6 @@
 ---
+import '@fontsource-variable/eb-garamond';
+import ebGaramondWoff2 from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
 import { ViewTransitions } from 'astro:transitions';
 import Dropdown from '../components/Dropdown.astro';
 import Footer from '../components/Footer.astro';
@@ -16,9 +18,16 @@ const { title, description, lang } = Astro.props;
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link
+      rel="preload"
+      as="font"
+      type="font/woff2"
+      href={ebGaramondWoff2}
+      crossorigin="anonymous"
+    />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions fallback="swap"/>
+    <ViewTransitions fallback="swap" />
   </head>
   <body>
     <div class="page-wrapper">

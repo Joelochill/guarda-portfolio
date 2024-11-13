@@ -1,10 +1,10 @@
 ---
 import EventList from '../components/EventList.astro';
-import BaseLayout from '../layouts/BaseLayout.astro';
+import Layout from '../layouts/Layout.astro';
 import { liveContent } from '../sanityQueries';
 ---
 
-<BaseLayout title="Live - Guarda" lang="es">
+<Layout title="Live - Guarda" lang="es">
   <div class="wrapper">
     {
       liveContent.map(({ year, events }) => (
@@ -12,7 +12,7 @@ import { liveContent } from '../sanityQueries';
       ))
     }
   </div>
-</BaseLayout>
+</Layout>
 
 <style>
   .wrapper {

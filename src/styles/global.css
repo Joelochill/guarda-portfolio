@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap');
-
 :root {
   --color-dark: #333;
   --color-dark-hover: #000;
@@ -18,7 +16,7 @@
 
 html {
   font-size: calc(12px + 0.5vw);
-  font-family: 'EB Garamond', serif;
+  font-family: 'EB Garamond Variable', 'Times New Roman', 'Times', serif;
   background: var(--color-light);
   color: var(--color-dark);
 }
