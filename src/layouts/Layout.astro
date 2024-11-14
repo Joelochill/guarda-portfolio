@@ -9,7 +9,7 @@ import Header from '../components/Header.astro';
 import '../styles/global.css';
 import '../styles/reset.css';
 
-const { title, description, lang } = Astro.props;
+const { title, description, lang, viewportRestricted } = Astro.props;
 ---
 
 <!doctype html>
@@ -31,7 +31,12 @@ const { title, description, lang } = Astro.props;
     <ViewTransitions fallback="swap" />
   </head>
   <body>
-    <div class="page-wrapper">
+    <div
+      class:list={[
+        'page-wrapper',
+        viewportRestricted ? 'viewport-restricted' : '',
+      ]}
+    >
       <Header />
       <main transition:name="main" transition:animate="fade">
         <slot />
@@ -43,7 +48,29 @@ const { title, description, lang } = Astro.props;
 </html>
 
 <style>
-  main {
-    position: relative;
+  html {
+    font-size: calc(12px + 0.5vw);
+    font-family: 'EB Garamond Variable', 'Sorts Mill Goudy', 'Times New Roman',
+      Times, serif;
+    background: var(--color-light);
+    color: var(--color-dark);
+  }
+
+  body {
+    width: 100dvw;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  .page-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    max-width: 1400px;
+  }
+
+  .viewport-restricted {
+    height: 100dvh;
   }
 </style>

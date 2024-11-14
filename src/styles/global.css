@@ -14,27 +14,6 @@
   opacity: 0;
 }
 
-html {
-  font-size: calc(12px + 0.5vw);
-  font-family: 'EB Garamond Variable','Sorts Mill Goudy', 'Times New Roman', Times, serif;
-  background: var(--color-light);
-  color: var(--color-dark);
-}
-
-body {
-  width: 100dvw;
-  display: flex;
-  justify-content: center;
-  overflow-x: hidden;
-}
-
-.page-wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  width: 100%;
-  max-width: 1400px;
-}
-
 h1,
 h2,
 h3,
@@ -52,6 +31,14 @@ header,
 footer,
 main {
   padding: 0.75rem 1.5rem;
+}
+
+@media only screen and (min-width: 625px) {
+  header,
+  footer,
+  main {
+    padding: 0.75rem 3.75rem;
+  }
 }
 
 .wrapper {
@@ -79,14 +66,6 @@ header svg:hover {
 
 .social svg:hover {
   fill: var(--color-dark-hover);
-}
-
-@media only screen and (min-width: 625px) {
-  header,
-  footer,
-  main {
-    padding: 0.75rem 3.75rem;
-  }
 }
 
 /* Animations, view transitions */
