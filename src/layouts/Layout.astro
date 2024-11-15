@@ -37,10 +37,8 @@ const { title, description, lang, viewportRestricted } = Astro.props;
         viewportRestricted ? 'viewport-restricted' : '',
       ]}
     >
-      <Header />
-      <main transition:name="main" transition:animate="fade">
-        <slot />
-      </main>
+      <Header /> 
+      <slot />
       <Footer transition:name="footer" transition:animate="fade" />
     </div>
     <Dropdown />

@@ -5,7 +5,7 @@ import { projects } from '../../sanityQueries.js';
 ---
 
 <Layout title="Discography - Guarda" lang="en">
-  <div class="wrapper">
+  <main transition:name="main" transition:animate="fade">
     {
       projects.map((project) => (
         <Project
@@ -16,19 +16,18 @@ import { projects } from '../../sanityQueries.js';
         />
       ))
     }
-  </div>
+  </main>
 </Layout>
 
 <style>
-  .wrapper {
-    display: grid;
+  main {
     grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 3em;
     align-content: start;
   }
 
   @media screen and (min-width: 825px) {
-    .wrapper {
+    main {
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     }
   }

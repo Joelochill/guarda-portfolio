@@ -5,19 +5,18 @@ import { liveContent } from '../sanityQueries';
 ---
 
 <Layout title="Live - Guarda" lang="es">
-  <div class="wrapper">
+  <main transition:name="main" transition:animate="fade">
     {
       liveContent.map(({ year, events }) => (
         <EventList year={year} events={events} />
       ))
     }
-  </div>
+  </main>
 </Layout>
 
 <style>
-  .wrapper {
-    display: flex;
-    flex-direction: column;
+  main {
+    grid-auto-flow: column;
     gap: 1.25em;
   }
 </style>

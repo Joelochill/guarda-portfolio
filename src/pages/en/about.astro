@@ -3,7 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 ---
 
 <Layout title="About - Guarda" lang="en">
-  <div class="wrapper">
+  <main transition:name="main" transition:animate="fade">
     <p>[ENG] Joel Rico Rada es un artista sonoro vasco afincado en Zaragoza.</p>
     <p>
       Joel es GUARDA, escenario de lo raro, lo secreto y lo callado. Un oscuro
@@ -26,13 +26,12 @@ import Layout from '../../layouts/Layout.astro';
       locura y la muerte.
     </p>
     <p>Joel es la mitad de las bandas Mejor Sordo y ACITDX.</p>
-  </div>
+  </main>
 </Layout>
 
 <style>
-  .wrapper {
+  main {
     font-size: 0.8rem;
-    display: grid;
     gap: 1.5em;
     align-content: start;
     max-inline-size: 100ch;
