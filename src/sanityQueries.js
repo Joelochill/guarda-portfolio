@@ -42,6 +42,6 @@ const { image, imageAlt: alt } = await sanityClient.fetch(
 );
 
 export const homeImage = { 
-  url: urlFor(image).url(),
+  url: urlFor(image).width(1400).url(),
   alt, 
 };

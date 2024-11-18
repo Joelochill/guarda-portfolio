@@ -40,7 +40,6 @@ import { Icon } from 'astro-icon/components';
         dropdown.addEventListener(
           'animationend',
           (event) => {
-            console.log(event);
             dropdown.classList.toggle('expanded');
             main.classList.replace('fade-out', 'fade-in');
           },
