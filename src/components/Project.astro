@@ -4,27 +4,25 @@ import { Image } from 'astro:assets';
 const { img, alt, title, link } = Astro.props;
 ---
 
-<div>
-  <a href={link}>
-    <Image
-      src={img}
-      alt={alt}
-      widths={[480, 720, 1400]}
-      inferSize
-      sizes={'(max-width: 496px) 480px, (max-width: 720px) 720px, 1400px'}
-    />
-  </a>
-  <p><a href={link}>{title}</a></p>
-</div>
+<a href={link}>
+  <Image
+    src={img}
+    alt={alt}
+    widths={[480, 720, 1400]}
+    inferSize
+    sizes={'(max-width: 496px) 480px, (max-width: 720px) 720px, 1400px'}
+  />
+  <p>{title}</p>
+</a>
 
 <style>
-  div {
+  a {
     display: flex;
     flex-direction: column;
     gap: 0.5em;
   }
 
-  p a:hover {
+  a:hover p {
     color: var(--color-dark-hover);
   }
 </style>

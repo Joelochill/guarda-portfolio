@@ -7,12 +7,12 @@ import { projects } from '../sanityQueries.js';
 <Layout title="Discography - Guarda" lang="es">
   <main transition:name="main" transition:animate="fade">
     {
-      projects.map((project) => (
+      projects.map(({ coverUrl, title, bandcampLink }) => (
         <Project
-          img={project.coverUrl}
-          alt={`${project.imageAlt}`}
-          title={project.title}
-          link={project.bandcampLink}
+          img={coverUrl}
+          alt={`Portada de ${title}`}
+          title={title}
+          link={bandcampLink}
         />
       ))
     }

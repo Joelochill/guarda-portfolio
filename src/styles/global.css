@@ -47,16 +47,6 @@ main {
   min-height: 100%;
 }
 
-/* Center images alt attributes */
-
-img:not([src])::after {
-  content: attr(alt);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 /* Can't use scoped styles into <Fragment /> element (svgs are inside) */
 header svg {
   height: 2em;
