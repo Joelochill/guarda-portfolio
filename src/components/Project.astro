@@ -9,10 +9,9 @@ const { img, alt, title, link } = Astro.props;
     <Image
       src={img}
       alt={alt}
-      widths={[320, 540, 720]}
+      widths={[480, 720, 1400]}
       inferSize
-      sizes={'(max-width: 360px) 320px, (max-width: 720px) 540px,' +
-        `(max-width: 1600px) 720px`}
+      sizes={'(max-width: 496px) 480px, (max-width: 720px) 720px, 1400px'}
     />
   </a>
   <p><a href={link}>{title}</a></p>

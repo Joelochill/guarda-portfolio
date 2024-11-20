@@ -16,7 +16,7 @@ const rawProjects = await sanityClient.fetch(
 );
 
 export const projects = rawProjects.map(({ cover, ...rest }) => ({
-  coverUrl: urlFor(cover).url(),
+  coverUrl: urlFor(cover).width(1400).url(),
   ...rest,
 }));
 
