@@ -1,13 +1,13 @@
 ---
 import EventList from '../components/EventList.astro';
 import Layout from '../layouts/Layout.astro';
-import { liveContent } from '../sanityQueries';
+import { liveContentES } from '../sanityQueries';
 ---
 
 <Layout title="Live - Guarda" lang="es">
   <main transition:name="main" transition:animate="fade">
     {
-      liveContent.map(({ year, events }) => (
+      liveContentES.map(({ year, events }) => (
         <EventList year={year} events={events} />
       ))
     }

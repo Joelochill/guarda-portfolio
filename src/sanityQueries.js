@@ -22,17 +22,42 @@ export const projects = rawProjects.map(({ cover, ...rest }) => ({
 
 // Live's queries & formatting
 
-const events = await sanityClient.fetch(
-  `*[_type == "event"] | order(date desc) { date, city, country, title, link }`,
+const eventsES = await sanityClient.fetch(
+  `*[_type == "event"] | order(date desc) { 
+    date,
+    "city": city[_key == "es"][0].value, 
+    "country": country[_key == "es"][0].value,
+    title, 
+    link 
+  }`,
+);
+
+const eventsEN = await sanityClient.fetch(
+  `*[_type == "event"] | order(date desc) { 
+    date, 
+    "city": city[_key == "en"][0].value,
+    "country": country[_key == "en"][0].value,
+    title, 
+    link 
+  }`,
 );
 
 const uniqueYears = new Set(
-  events.map((event) => new Date(event.date).getFullYear()),
+  eventsES.map((event) => new Date(event.date).getFullYear()),
 );
 
-export const liveContent = [...uniqueYears].map((year) => ({
+export const liveContentES = [...uniqueYears].map((year) => ({
   year,
-  events: events.filter((event) => new Date(event.date).getFullYear() === year),
+  events: eventsES.filter(
+    (event) => new Date(event.date).getFullYear() === year,
+  ),
+}));
+
+export const liveContentEN = [...uniqueYears].map((year) => ({
+  year,
+  events: eventsEN.filter(
+    (event) => new Date(event.date).getFullYear() === year,
+  ),
 }));
 
 // home image's queries
@@ -41,7 +66,7 @@ const { image, imageAlt: alt } = await sanityClient.fetch(
   `*[_type == "homeImage"] | order(publishedAt desc) [0] { image, imageAlt }`,
 );
 
-export const homeImage = { 
+export const homeImage = {
   url: urlFor(image).width(1400).url(),
-  alt, 
+  alt,
 };
