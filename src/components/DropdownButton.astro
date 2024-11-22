@@ -11,6 +11,16 @@ import { Icon } from 'astro-icon/components';
     height: 100%;
   }
 
+  svg {
+    height: 2em;
+    width: 2em;
+    stroke: var(--color-text);
+  }
+
+  svg:hover {
+    stroke: var(--color-text-hover);
+  }
+
   @media only screen and (min-width: 625px) {
     button {
       display: none;
@@ -66,7 +76,8 @@ import { Icon } from 'astro-icon/components';
 
     dropdownBtn.addEventListener('click', () => {
       if (!dropdownBtn.classList.contains('rotated-180')) {
-        dropdownBtn.classList.replace('rotated-180-reverse', 'rotated-180') || dropdownBtn.classList.add('rotated-180');
+        dropdownBtn.classList.replace('rotated-180-reverse', 'rotated-180') ||
+          dropdownBtn.classList.add('rotated-180');
         return;
       }
 

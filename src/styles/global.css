@@ -1,7 +1,8 @@
 :root {
   --color-dark: #333;
-  --color-dark-hover: #000;
+  --color-darkest: #000;
   --color-light: #f8f8f8;
+  --color-lightest: #fff;
   --color-blue: #5a83a7;
   --transition-duration-main: 0.3s;
 }
@@ -45,27 +46,6 @@ main {
   display: grid;
   width: 100%;
   min-height: 100%;
-}
-
-/* Can't use scoped styles into <Fragment /> element (svgs are inside) */
-header svg {
-  height: 2em;
-  width: 2em;
-  stroke: var(--color-dark);
-}
-
-header svg:hover {
-  stroke: var(--color-dark-hover);
-}
-
-.social svg {
-  height: 1.75em;
-  width: 1.75em;
-  fill: var(--color-dark);
-}
-
-.social svg:hover {
-  fill: var(--color-dark-hover);
 }
 
 /* Animations, view transitions */
@@ -147,5 +127,5 @@ header svg:hover {
 * {
   scroll-behavior: smooth;
   scrollbar-width: thin;
-  scrollbar-color: var(--color-dark) transparent;
+  scrollbar-color: var(--color-text) transparent;
 }

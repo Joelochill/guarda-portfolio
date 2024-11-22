@@ -37,7 +37,7 @@ const { title, description, lang, viewportRestricted } = Astro.props;
         viewportRestricted ? 'viewport-restricted' : '',
       ]}
     >
-      <Header /> 
+      <Header />
       <slot />
       <Footer transition:name="footer" transition:animate="fade" />
     </div>
@@ -47,11 +47,23 @@ const { title, description, lang, viewportRestricted } = Astro.props;
 
 <style>
   html {
+    --color-background: var(--color-light);
+    --color-text: var(--color-dark);
+    --color-text-hover: var(--color-darkest);
+    --color-accent: var(--color-blue);
     font-size: calc(12px + 0.4vw);
     font-family: 'EB Garamond Variable', 'Sorts Mill Goudy', 'Times New Roman',
       Times, serif;
-    background: var(--color-light);
-    color: var(--color-dark);
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      --color-background: var(--color-dark);
+      --color-text: var(--color-light);
+      --color-text-hover: var(--color-lightest);
+    }
   }
 
   body {
