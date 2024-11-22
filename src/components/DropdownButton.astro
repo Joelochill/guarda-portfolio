@@ -3,7 +3,7 @@ import { Icon } from 'astro-icon/components';
 ---
 
 <button class="dropdown-btn">
-  <Icon name="dropdown" />
+  <Icon name="chevron" />
 </button>
 
 <style>
@@ -11,14 +11,10 @@ import { Icon } from 'astro-icon/components';
     height: 100%;
   }
 
-  svg {
-    height: 2em;
-    width: 2em;
-    stroke: var(--color-text);
-  }
-
-  svg:hover {
-    stroke: var(--color-text-hover);
+  [data-icon] {
+    height: 2.5em;
+    width: 2.5em;
+    color: var(--color-text);
   }
 
   @media only screen and (min-width: 625px) {
