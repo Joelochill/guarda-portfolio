@@ -1,38 +1,23 @@
 ---
-import '@fontsource-variable/eb-garamond';
-import ebGaramondWoff2 from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
-import '@fontsource/sorts-mill-goudy';
-import { ViewTransitions } from 'astro:transitions';
 import Dropdown from '../components/Dropdown.astro';
 import Footer from '../components/Footer.astro';
+import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import '../styles/global.css';
 import '../styles/reset.css';
+import ViewTransitions from 'astro/components/ViewTransitions.astro';
 
 const { title, description, lang, viewportRestricted } = Astro.props;
 ---
 
 <!doctype html>
 <html lang={lang}>
-  <head>
-    <meta charset="UTF-8" />
+  <Head>
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width" />
-    <link
-      rel="preload"
-      as="font"
-      type="font/woff2"
-      href={ebGaramondWoff2}
-      crossorigin="anonymous"
-    />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <ViewTransitions fallback="swap" />
-  </head>
+  </Head>
   <body>
     <div
       class:list={[
@@ -49,26 +34,6 @@ const { title, description, lang, viewportRestricted } = Astro.props;
 </html>
 
 <style>
-  html {
-    --color-background: var(--color-light);
-    --color-text: var(--color-dark);
-    --color-text-hover: var(--color-darkest);
-    --color-accent: var(--color-blue);
-    font-size: calc(12px + 0.4vw);
-    font-family: 'EB Garamond Variable', 'Sorts Mill Goudy', 'Times New Roman',
-      Times, serif;
-    background: var(--color-background);
-    color: var(--color-text);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    html {
-      --color-background: var(--color-dark);
-      --color-text: var(--color-light);
-      --color-text-hover: var(--color-lightest);
-    }
-  }
-
   body {
     width: 100dvw;
     display: flex;

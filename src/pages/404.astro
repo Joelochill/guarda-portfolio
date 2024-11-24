@@ -1,0 +1,47 @@
+---
+import Head from '../components/Head.astro';
+import '../styles/global.css';
+import '../styles/reset.css';
+---
+
+<!doctype html>
+<html lang="en">
+  <Head>
+    <meta
+      name="description"
+      content="Page not found. Please check the URL or return to the homepage."
+    />
+    <meta name="generator" content={Astro.generator} />
+    <title>404 Not Found | Guarda</title>
+  </Head>
+  <body>
+    <h1>404 Not Found</h1>
+    <div class="links">
+      <a href="/">Volver a Inicio</a>
+      <a href="/en/">Return to Home</a>
+    </div>
+  </body>
+</html>
+
+<style>
+  body {
+    display: grid;
+    place-items: center;
+    align-content: center;
+    gap: 1em;
+  }
+
+  h1 {
+    font-size: 2.75rem;
+  }
+
+  div {
+    display: flex;
+    gap: 1em;
+    color: var(--color-accent);
+  }
+
+  a:hover {
+    color: var(--color-accent-hover);
+  }
+</style>

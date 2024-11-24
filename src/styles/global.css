@@ -4,8 +4,32 @@
   --color-light: #f8f8f8;
   --color-lightest: #fff;
   --color-blue: #5a83a7;
+  --color-blue-darker: #4d7494;
+  --color-blue-lighter: #6d97bc;
   --transition-duration-main: 0.3s;
 }
+
+html {
+    --color-background: var(--color-light);
+    --color-text: var(--color-dark);
+    --color-text-hover: var(--color-darkest);
+    --color-accent: var(--color-blue);
+    --color-accent-hover: var(--color-blue-darker);
+    font-size: calc(12px + 0.4vw);
+    font-family: 'EB Garamond Variable', 'Sorts Mill Goudy', 'Times New Roman',
+      Times, serif;
+    background: var(--color-background);
+    color: var(--color-text);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    html {
+      --color-background: var(--color-dark);
+      --color-text: var(--color-light);
+      --color-text-hover: var(--color-lightest);
+      --color-accent-hover: var(--color-blue-lighter);
+    }
+  }
 
 .display-none {
   display: none;
