@@ -13,7 +13,10 @@
     max-width: 100dvw;
   }
 
-  button {
+  button,
+  input,
+  textarea,
+  select {
     font: inherit;
     border: unset;
     background: unset;
