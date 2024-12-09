@@ -1,15 +1,30 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ContactForm from '../components/ContactForm.astro';
 ---
 
 <Layout title="Contact - Guarda" lang="es">
   <main transition:name="main" transition:animate="fade">
-    <h1>Contacto</h1>
+    <ContactForm />
+    <p>
+      O envía un email a <a href="mailto:info@joelricorada.com">
+        info@joelricorada.com</a
+      >
+    </p>
   </main>
 </Layout>
 
 <style>
   main {
-    place-items: center;
+    display: grid;
+    align-content: space-between;
+  }
+
+  a {
+    color: var(--color-accent);
+  }
+
+  a:hover {
+    text-decoration: underline;
   }
 </style>

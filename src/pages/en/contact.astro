@@ -1,41 +1,11 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import ContactForm from '../../components/ContactForm.astro';
 ---
 
 <Layout title="Contact - Guarda" lang="en">
   <main transition:name="main" transition:animate="fade">
-    <form id="contact-form" novalidate>
-      <div class="form-control">
-        <input
-          type="text"
-          name="user_name"
-          id="user_name"
-          placeholder="Name*"
-        />
-        <span class="error"></span>
-      </div>
-
-      <div class="form-control">
-        <input type="email" name="user_email" id="email" placeholder="Email*" />
-        <span class="error"></span>
-      </div>
-
-      <div class="form-control">
-        <input type="text" name="subject" id="subject" placeholder="Subject*" />
-        <span class="error"></span>
-      </div>
-
-      <div class="form-control">
-        <textarea rows="8" name="message" id="message" placeholder="Message*"
-        ></textarea>
-        <span class="error"></span>
-      </div>
-
-      <div class="form-control">
-        <button type="submit">Send</button>
-        <span id="submission-result"></span>
-      </div>
-    </form>
+    <ContactForm />
     <p>
       Or send an email to <a href="mailto:info@joelricorada.com">
         info@joelricorada.com</a
@@ -50,87 +20,11 @@ import Layout from '../../layouts/Layout.astro';
     align-content: space-between;
   }
 
-  form {
-    max-inline-size: 100ch;
-    display: grid;
-    gap: 1em;
-    grid-template-areas:
-      'name'
-      'email'
-      'subject'
-      'message'
-      'submit';
-    color: var(--color-text);
-  }
-
-  .form-control {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .form-control:has(input[name='user_name']) {
-    grid-area: name;
-  }
-
-  .form-control:has(input[name='user_email']) {
-    grid-area: email;
-  }
-
-  .form-control:has(input[name='subject']) {
-    grid-area: subject;
-  }
-
-  .form-control:has(textarea[name='message']) {
-    grid-area: message;
-  }
-
-  .form-control:has(button[type='submit']) {
-    grid-area: submit;
-    padding: 0.3em 0.1rem;
-    flex-direction: row;
-    justify-content: space-between;
-  }
-
-  input,
-  textarea {
-    border-bottom: 1px solid var(--color-text);
-    padding: 0.3em 0.1rem;
-  }
-
-  button:hover {
-    color: var(--color-text-hover);
-  }
-
-  input,
-  textarea,
-  input::placeholder,
-  textarea::placeholder,
-  button {
-    color: inherit;
-  }
-
-  .error {
-    height: 1rem;
-    font-size: 0.8rem;
-    padding: 0.2em 0.1rem;
-    color: var(--color-error);
-  }
-
   a {
     color: var(--color-accent);
   }
 
   a:hover {
     text-decoration: underline;
-  }
-
-  @media only screen and (min-width: 625px) {
-    form {
-      grid-template-areas:
-        'name email'
-        'subject subject'
-        'message message'
-        'submit submit';
-    }
   }
 </style>
