@@ -1,0 +1,27 @@
+{
+  "defaultLang": "es",
+  "es": {
+    "form": {
+      "ui": {
+        "user_name": "Nombre",
+        "user_email": "Email",
+        "subject": "Asunto",
+        "message": "Mensaje",
+        "submit": "Enviar"
+      },
+      "errors": {}
+    }
+  },
+  "en": {
+    "form": {
+      "ui": {
+        "user_name": "Name",
+        "user_email": "Email",
+        "subject": "Subject",
+        "message": "Message",
+        "submit": "Send"
+      },
+      "errors": {}
+    }
+  }
+}

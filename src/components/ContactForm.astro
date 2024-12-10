@@ -1,8 +1,10 @@
 ---
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+/* 
+  This was useful: https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts
+*/
+import { useTranslations } from '../i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const t = useTranslations(Astro.currentLocale);
 ---
 
 <form id="contact-form" novalidate>
@@ -11,35 +13,45 @@ const t = useTranslations(lang);
       type="text"
       name="user_name"
       id="user_name"
-      placeholder={t('form.user_name') + '*'}
+      placeholder={t('form.ui.user_name') + '*'}
     />
     <span class="error"></span>
   </div>
 
   <div class="form-control">
-    <input type="email" name="user_email" id="email" placeholder={t('form.user_email') + '*'} />
+    <input
+      type="email"
+      name="user_email"
+      id="email"
+      placeholder={t('form.ui.user_email') + '*'}
+    />
     <span class="error"></span>
   </div>
 
   <div class="form-control">
-    <input type="text" name="subject" id="subject" placeholder={t('form.subject') + '*'} />
+    <input
+      type="text"
+      name="subject"
+      id="subject"
+      placeholder={t('form.ui.subject') + '*'}
+    />
     <span class="error"></span>
   </div>
 
   <div class="form-control">
-    <textarea rows="8" name="message" id="message" placeholder={t('form.message') + '*'}
-    ></textarea>
+    <textarea
+      rows="8"
+      name="message"
+      id="message"
+      placeholder={t('form.ui.message') + '*'}></textarea>
     <span class="error"></span>
   </div>
 
   <div class="form-control">
-    <button type="submit">{t('form.submit')}</button>
+    <button type="submit">{t('form.ui.submit')}</button>
     <span id="submission-result"></span>
   </div>
 </form>
-
-<script>
-</script>
 
 <style>
   form {
