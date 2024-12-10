@@ -43,7 +43,9 @@ document.addEventListener('astro:page-load', () => {
       console.log('ATTEMPT');
 
       const formData = new FormData(this);
-      console.log(formData);
+      const sanitizedData = sanitize(formData);
+
+      console.log(sanitizedData);
     });
 
   function validate(input, validatorFn) {
@@ -56,6 +58,22 @@ document.addEventListener('astro:page-load', () => {
       hideError(input);
       return true;
     }
+  }
+
+  // Pretty hardcoded aswell but do i want to code a framework??
+  function sanitize(formData) {
+    return {
+      user_name: validator.escape(validator.trim(formData.get('user_name'))),
+      user_email: validator.normalizeEmail(
+        validator.trim(formData.get('user_email')),
+      ),
+      subject: validator.escape(validator.trim(formData.get('subject'))),
+      message: validator.escape(
+        validator.stripLow(validator.trim(formData.get('message')), {
+          keep_new_lines: true,
+        }),
+      ),
+    };
   }
 
   function showError(input, message) {
