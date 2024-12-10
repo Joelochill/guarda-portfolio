@@ -6,7 +6,8 @@ export function useTranslations(lang) {
       keys.split('.').reduce((acc, k) => acc?.[k], translations[lang]) ??
       keys
         .split('.')
-        .reduce((acc, k) => acc?.[k], translations[translations.defaultLang])
+        .reduce((acc, k) => acc?.[k], translations[translations.defaultLang]) ??
+      keys
     );
   };
 }
