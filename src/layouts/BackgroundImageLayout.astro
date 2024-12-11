@@ -19,7 +19,7 @@ function urlFor(source) {
 }
 
 const backgrounds = await sanityClient.fetch('*[_type == "homeImage"]');
-const backgroundImageUrl = urlFor(backgrounds[1].image).url();
+const backgroundImageUrl = urlFor(backgrounds[0].image).url();
 const optimizedBackground = await getImage({
   src: backgroundImageUrl,
   format: 'webp',
@@ -60,7 +60,6 @@ const { title, description } = Astro.props;
 <style define:vars={{ cssBackground }}>
   .page-wrapper {
     background-image: var(--cssBackground);
-    background-fit: cover;
     background-position: center;
   }
   main {

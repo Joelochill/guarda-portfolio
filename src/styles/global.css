@@ -1,5 +1,5 @@
 :root {
-  --color-dark: #333;
+  --color-dark: #151515;
   --color-darkest: #000;
   --color-light: #f8f8f8;
   --color-lightest: #fff;
@@ -24,14 +24,16 @@ html {
     color: var(--color-text);
   }
 
-  /* @media (prefers-color-scheme: dark) {
-    html {
-      --color-background: var(--color-dark);
-      --color-text: var(--color-light);
-      --color-text-hover: var(--color-lightest);
-      --color-accent-hover: var(--color-blue-lighter);
-    }
-  } */
+  /* Joel doesn't want it
+    @media (prefers-color-scheme: dark) {
+      html {
+        --color-background: var(--color-dark);
+        --color-text: var(--color-light);
+        --color-text-hover: var(--color-lightest);
+        --color-accent-hover: var(--color-blue-lighter);
+      }
+    } 
+  */
 
 .display-none {
   display: none;

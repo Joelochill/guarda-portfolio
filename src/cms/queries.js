@@ -1,4 +1,5 @@
 import imageUrlBuilder from '@sanity/image-url';
+import { getImage } from 'astro:assets';
 import { sanityClient } from 'sanity:client';
 
 const builder = imageUrlBuilder(sanityClient);
@@ -62,11 +63,12 @@ export const liveContentEN = [...uniqueYears].map((year) => ({
 
 // home image's queries
 
-const { image, imageAlt: alt } = await sanityClient.fetch(
-  `*[_type == "homeImage"] | order(publishedAt desc) [0] { image, imageAlt }`,
+const homeImages = await sanityClient.fetch(
+  '*[_type == "homeImage"] | order(publishedAt desc) { image }',
 );
 
-export const homeImage = {
-  url: urlFor(image).width(1400).url(),
-  alt,
-};
+export const background = await getImage({
+  src: urlFor(homeImages[0].image).url(),
+  format: 'webp',
+  inferSize: true,
+});

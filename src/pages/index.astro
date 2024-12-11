@@ -1,33 +1,14 @@
 ---
 import Image from 'astro/components/Image.astro';
 import Layout from '../layouts/Layout.astro';
-import { homeImage } from '../cms/queries';
+import { background } from '../cms/queries';
 ---
 
-<Layout title="Guarda" lang="es" viewportRestricted>
+<Layout title="Guarda" lang="es" backgroundImage={background}>
   <main transition:name="main" transition:animate="fade">
-    <Image
-      src={homeImage.url}
-      alt={homeImage.alt}
-      widths={[320, 720, 1400]}
-      inferSize
-      sizes={'(max-width: 360px) 320px, (max-width: 720px) 720px, 1400px'}
-    />
   </main>
 </Layout>
 
 <style>
-  main {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    justify-content: center;
-    align-items: center;
-  }
-
-  main img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
+  
 </style>
