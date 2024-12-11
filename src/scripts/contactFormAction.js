@@ -1,9 +1,19 @@
 import validator from 'validator';
+import emailjs from '@emailjs/browser';
 import { useTranslations } from '../i18n/utils';
 
 document.addEventListener('astro:page-load', () => {
-  const form = document.querySelector('#contact-form');
-  const lang = form.dataset.lang;
+  emailjs.init({
+    publicKey: 'HuUy2Z2qcMtM2wXlw',
+    blockHeadless: true,
+    limitRate: {
+      id: 'contact_form',
+      throttle: 30000,
+    },
+  });
+
+  const contactForm = document.querySelector('#contact-form');
+  const lang = contactForm.dataset.lang;
   const t = useTranslations(lang);
 
   const nameInput = document.querySelector('input[name="user_name"]');
@@ -26,27 +36,36 @@ document.addEventListener('astro:page-load', () => {
     validate(this, checkMessageValidity);
   });
 
-  document
-    .getElementById('contact-form')
-    .addEventListener('submit', function (event) {
-      event.preventDefault();
+  const submissionResult = document.querySelector('#submission-result');
 
-      if (
-        !validate(nameInput, checkNameValidity) |
-        !validate(emailInput, checkEmailValidity) |
-        !validate(subjectInput, checkSubjectValidity) |
-        !validate(messageInput, checkMessageValidity)
-      ) {
-        return;
-      }
+  contactForm.addEventListener('submit', function (event) {
+    event.preventDefault();
 
-      console.log('ATTEMPT');
+    if (
+      !validate(nameInput, checkNameValidity) |
+      !validate(emailInput, checkEmailValidity) |
+      !validate(subjectInput, checkSubjectValidity) |
+      !validate(messageInput, checkMessageValidity)
+    ) {
+      return;
+    }
 
-      const formData = new FormData(this);
-      const sanitizedData = sanitize(formData);
+    console.log('ATTEMPT');
 
-      console.log(sanitizedData);
-    });
+    const formData = new FormData(this);
+    const sanitizedData = sanitize(formData);
+
+    emailjs.send('contact_service', 'contact_form', sanitizedData).then(
+      (response) => {
+        console.log('SUCCESS!', response.status, response.text);
+        submissionResult.textContent = t('form.submissionResults.success');
+        this.reset();
+      },
+      (error) => {
+        console.log('FAILED...', error);
+      },
+    );
+  });
 
   function validate(input, validatorFn) {
     const errorMessage = validatorFn(validator.trim(input.value));

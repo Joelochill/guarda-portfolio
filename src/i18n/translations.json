@@ -27,6 +27,9 @@
           "required": "El campo mensaje es obligatorio",
           "outOfRange": "El campo mensaje debe contener al menos 10 caracteres"
         }
+      },
+      "submissionResults": {
+        "success": "Has enviado correctamente un email a info@joelricorada.com. Espera mi respuesta!"
       }
     }
   },
@@ -57,6 +60,9 @@
           "required": "Message field is required",
           "outOfRange": "Message field must contain at least 10 characters"
         }
+      },
+      "submissionResults": {
+        "success": "You've succesfully sent an email to info@joelricorada.com. Look forward for my response!"
       }
     }
   }

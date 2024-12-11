@@ -97,8 +97,10 @@ const t = useTranslations(lang);
   .form-control:has(button[type='submit']) {
     grid-area: submit;
     padding: 0.3em 0.1rem;
-    flex-direction: row;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: space-between;
+    gap: 1em;
   }
 
   input,
@@ -138,6 +140,14 @@ const t = useTranslations(lang);
         'message message'
         'submit submit';
       grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media only screen and (min-width: 699px) {
+    .form-control:has(button[type='submit']) {
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 1em;
     }
   }
 </style>
