@@ -68,7 +68,7 @@ const homeImages = await sanityClient.fetch(
 );
 
 export const background = await getImage({
-  src: urlFor(homeImages[0].image).url(),
+  src: urlFor(homeImages[0].image).width(2000).url(),
   format: 'webp',
   inferSize: true,
 });

@@ -29,6 +29,9 @@ import { Icon } from 'astro-icon/components';
     const dropdown = document.querySelector('.dropdown');
     const dropdownBtn = document.querySelector('.dropdown-btn');
     const main = document.querySelector('main');
+    const header = document.querySelector('header');
+    // Control variable to control header styles for index page
+    const isIndex = document.body.classList.contains('background-image');
 
     // Set fixed dropdown height on body resize
     const resizeObserver = new ResizeObserver(() => {
@@ -45,12 +48,15 @@ import { Icon } from 'astro-icon/components';
       if (dropdown.classList.contains('expanded')) {
         dropdown.addEventListener(
           'animationend',
-          (event) => {
+          () => {
             dropdown.classList.toggle('expanded');
             main.classList.replace('fade-out', 'fade-in');
           },
           { once: true }
         );
+        if (isIndex) {
+          header.classList.add('transparent');
+        }
         dropdown.classList.replace('fade-in', 'fade-out');
         document.body.style.overflowY = 'auto';
         return;
@@ -62,6 +68,10 @@ import { Icon } from 'astro-icon/components';
           dropdown.classList.toggle('expanded');
           dropdown.classList.replace('fade-out', 'fade-in') ||
             dropdown.classList.add('fade-in');
+
+          if (isIndex) {
+            header.classList.remove('transparent');
+          }
         },
         { once: true }
       );

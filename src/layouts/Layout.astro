@@ -24,7 +24,7 @@ const background = (backgroundImage) ? `url(${backgroundImage.src})` : 'none';
     <div
       class:list={['page-wrapper']}
     >
-      <Header />
+      <Header transparent={Boolean(backgroundImage)} />
       <slot />
       <Footer transition:name="footer" transition:animate="fade" />
     </div>
