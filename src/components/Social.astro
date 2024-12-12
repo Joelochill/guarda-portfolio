@@ -26,7 +26,7 @@ const socialData = [
   {
     socialData.map(({ iconName, url }) => (
       <li>
-        <a href={url}>
+        <a href={url} aria-label={`Visit GUARDA's ${iconName}`}>
           <Icon name={iconName} />
         </a>
       </li>

@@ -19,6 +19,7 @@ const currentLocale = Astro.currentLocale;
   nav {
     display: flex;
     gap: 0.5em;
+    font-size: 1.25rem;
   }
 
   .selected {
@@ -27,5 +28,11 @@ const currentLocale = Astro.currentLocale;
 
   a {
     color: var(--color-text);
+  }
+
+  @media only screen and (min-width: 625px) {  
+    nav {
+      font-size: 1rem;
+    }
   }
 </style>
