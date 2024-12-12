@@ -1,14 +1,15 @@
 ---
-import Image from 'astro/components/Image.astro';
-import Layout from '../layouts/Layout.astro';
 import { background } from '../cms/queries';
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Guarda" lang="es" backgroundImage={background}>
-  <main transition:name="main" transition:animate="fade">
-  </main>
+<Layout
+  title="GUARDA"
+  lang="es"
+  description="Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria."
+  backgroundImage={background}
+>
+  <main transition:name="main" transition:animate="fade"></main>
 </Layout>
 
-<style>
-  
-</style>
+<style></style>

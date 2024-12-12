@@ -4,7 +4,11 @@ import Layout from '../layouts/Layout.astro';
 import { liveContentES } from '../cms/queries';
 ---
 
-<Layout title="Live - Guarda" lang="es">
+<Layout
+  title="Live | GUARDA"
+  lang="es"
+  description="Consulta la lista de conciertos de GUARDA, el proyecto de Joel Rico Rada. Descubre próximas fechas y revive sus actuaciones pasadas."
+>
   <main transition:name="main" transition:animate="fade">
     {
       liveContentES.map(({ year, events }) => (

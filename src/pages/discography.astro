@@ -4,7 +4,11 @@ import Project from '../components/Project.astro';
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Discography - Guarda" lang="es">
+<Layout
+  title="Discography | GUARDA"
+  lang="es"
+  description="Explora la discografía de GUARDA, el proyecto sonoro de Joel Rico Rada, y escucha sus álbumes de música experimental y ambiental."
+>
   <main transition:name="main" transition:animate="fade">
     {
       projects.map(({ coverUrl, title, bandcampLink }) => (
