@@ -1,7 +1,7 @@
 ---
+import { projects } from '../cms/queries';
 import Project from '../components/Project.astro';
 import Layout from '../layouts/Layout.astro';
-import { projects } from '../cms/queries';
 ---
 
 <Layout title="Discography - Guarda" lang="es">
@@ -21,14 +21,18 @@ import { projects } from '../cms/queries';
 
 <style>
   main {
-    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
-    gap: 2.5em;
+    --grid-element-size: clamp(150px, 15em, 420px);
+    grid-template-columns: repeat(
+      auto-fill,
+      minmax(var(--grid-element-size), 1fr)
+    );
+    gap: clamp(1px, 2.5em, 50px);
     align-content: start;
   }
 
   @media screen and (min-width: 825px) {
     main {
-      grid-template-columns: repeat(auto-fill, minmax(18em, 1fr));
+      --grid-element-size: clamp(200px, 18em, 380px);
     }
   }
 </style>
