@@ -11,12 +11,13 @@ import Layout from '../../layouts/Layout.astro';
 >
   <main transition:name="main" transition:animate="fade">
     {
-      projects.map(({ coverUrl, title, bandcampLink }) => (
+      projects.map(({ coverUrl, title, bandcampLink }, index) => (
         <Project
           img={coverUrl}
           alt={`${title} Cover`}
           title={title}
           link={bandcampLink}
+          loading={index < 3 ? 'eager' : 'lazy'}
         />
       ))
     }

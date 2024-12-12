@@ -1,16 +1,17 @@
 ---
 import { Image } from 'astro:assets';
 
-const { img, alt, title, link } = Astro.props;
+const { img, alt, title, link, loading } = Astro.props;
 ---
 
 <a href={link}>
   <Image
     src={img}
     alt={alt}
-    widths={[480, 720, 1400]}
+    widths={[480, 720]}
     inferSize
-    sizes={'(max-width: 496px) 480px, (max-width: 720px) 720px, 1400px'}
+    sizes={'(max-width: 496px) 480px, 720px'}
+    loading={loading}
   />
   <p>{title}</p>
 </a>
