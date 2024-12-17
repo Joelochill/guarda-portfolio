@@ -28,7 +28,7 @@ const eventsES = await sanityClient.fetch(
     date,
     "city": city[_key == "es"][0].value, 
     "country": country[_key == "es"][0].value,
-    title, 
+    "title": title[_key == "es"][0].value,
     link 
   }`,
 );
@@ -38,7 +38,7 @@ const eventsEN = await sanityClient.fetch(
     date, 
     "city": city[_key == "en"][0].value,
     "country": country[_key == "en"][0].value,
-    title, 
+    "title": title[_key == "en"][0].value,
     link 
   }`,
 );
