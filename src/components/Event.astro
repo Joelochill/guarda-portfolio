@@ -12,8 +12,7 @@ const currentLocale = Astro.currentLocale;
       })
     } |
   </strong>
-  <em>{city}, {country}</em>
-  <span> @ </span>
+  <em>{city}, {country} | </em>
   {link ? <a href={link}>{title}</a> : <span>{title}</span>}
 </p>
 
