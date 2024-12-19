@@ -4,7 +4,7 @@ import { useTranslations } from '../i18n/utils';
 
 document.addEventListener('astro:page-load', () => {
   emailjs.init({
-    publicKey: 'HuUy2Z2qcMtM2wXlw',
+    publicKey: import.meta.env.PUBLIC_EMAILJS_KEY,
     blockHeadless: true,
     limitRate: {
       id: 'contact_form',

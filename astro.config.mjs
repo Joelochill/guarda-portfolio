@@ -16,10 +16,11 @@ export default defineConfig({
   trailingSlash: 'never',
   env: {
     schema: {
+      /* Can't be loaded via astro:env in script files, is loaded via import.meta.env (see /scripts/contactFormAction.js)
       PUBLIC_EMAILJS_KEY: envField.string({
         context: 'client',
         access: 'public',
-      }),
+      }), */
       PUBLIC_GOOGLE_ANALYTICS_ID: envField.string({
         context: 'client',
         access: 'public',
