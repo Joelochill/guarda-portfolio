@@ -3,28 +3,30 @@
   --color-darkest: #000;
   --color-light: #f8f8f8;
   --color-lightest: #fff;
-  --color-blue: #5a83a7;
-  --color-blue-darker: #4d7494;
-  --color-blue-lighter: #6d97bc;
-  --color-red: #d9534f;
+  --color-blue: #3b6d92;
+  --color-blue-darker: #3a6280;
+  --color-blue-lighter: #5a82a1;
+  --color-red: #c0403b;
+  --color-green: #4a9c4a;
   --transition-duration-main: 0.3s;
 }
 
 html {
-    --color-background: var(--color-light);
-    --color-text: var(--color-dark);
-    --color-text-hover: var(--color-darkest);
-    --color-accent: var(--color-blue);
-    --color-accent-hover: var(--color-blue-darker);
-    --color-error: var(--color-red);
-    font-size: calc(12px + 0.4vw);
-    font-family: 'EB Garamond Variable', 'Sorts Mill Goudy', 'Times New Roman',
-      Times, serif;
-    background: var(--color-background);
-    color: var(--color-text);
-  }
+  --color-background: var(--color-light);
+  --color-text: var(--color-dark);
+  --color-text-hover: var(--color-darkest);
+  --color-accent: var(--color-blue);
+  --color-accent-hover: var(--color-blue-darker);
+  --color-error: var(--color-red);
+  --color-success: var(--color-green);
+  font-size: calc(12px + 0.4vw);
+  font-family: 'EB Garamond Variable', 'Sorts Mill Goudy', 'Times New Roman',
+    Times, serif;
+  background: var(--color-background);
+  color: var(--color-text);
+}
 
-  /* Joel doesn't want it
+/* Joel doesn't want it
     @media (prefers-color-scheme: dark) {
       html {
         --color-background: var(--color-dark);
