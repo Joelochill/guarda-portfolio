@@ -29,7 +29,10 @@
         }
       },
       "submissionResults": {
-        "success": "Has enviado correctamente un email a info@joelricorada.com. Espera mi respuesta!"
+        "success": "Has enviado correctamente un email a info@joelricorada.com. Espera mi respuesta!",
+        "failures": {
+          "offline": "No estás conectado a internet. Por favor, comprueba tu conexión e inténtalo de nuevo."
+        }
       }
     }
   },
@@ -62,7 +65,10 @@
         }
       },
       "submissionResults": {
-        "success": "You've succesfully sent an email to info@joelricorada.com. Look forward for my response!"
+        "success": "You've succesfully sent an email to info@joelricorada.com. Look forward for my response!",
+        "failures": {
+          "offline": "You are not connected to the internet. Please, check your connection and try again."
+        }
       }
     }
   }

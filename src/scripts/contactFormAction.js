@@ -1,5 +1,5 @@
-import validator from 'validator';
 import emailjs from '@emailjs/browser';
+import validator from 'validator';
 import { useTranslations } from '../i18n/utils';
 
 document.addEventListener('astro:page-load', () => {
@@ -38,7 +38,7 @@ document.addEventListener('astro:page-load', () => {
 
   const submissionResult = document.querySelector('#submission-result');
 
-  contactForm.addEventListener('submit', function (event) {
+  contactForm.addEventListener('submit', async function (event) {
     event.preventDefault();
 
     if (
@@ -55,9 +55,33 @@ document.addEventListener('astro:page-load', () => {
     const formData = new FormData(this);
     const sanitizedData = sanitize(formData);
 
+    // Check the availability making a fetch request to your own website
+    let internetAvailable;
+
+    try {
+      const response = await fetch(window.location.origin, {
+        method: 'HEAD',
+      });
+      internetAvailable = response.ok;
+    } catch {
+      internetAvailable = false;
+    }
+
+    console.log(internetAvailable);
+
+    if (!navigator.onLine || !internetAvailable) {
+      submissionResult.style.color = 'var(--color-error)';
+      submissionResult.textContent = t(
+        'form.submissionResults.failures.offline',
+      );
+      console.log('OFFLINE');
+      return;
+    }
+
     emailjs.send('contact_service', 'contact_form', sanitizedData).then(
       (response) => {
         console.log('SUCCESS!', response.status, response.text);
+        submissionResult.style.color = 'var(--color-success)';
         submissionResult.textContent = t('form.submissionResults.success');
         this.reset();
       },
