@@ -16,6 +16,7 @@
     "format": "npm run prettier:fix && npm run lint:fix"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.2.1",
     "@emailjs/browser": "^4.4.1",
     "@fontsource-variable/eb-garamond": "^5.1.1",
     "@fontsource/sorts-mill-goudy": "^5.1.0",
