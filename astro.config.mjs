@@ -3,6 +3,7 @@ import sanity from '@sanity/astro';
 import icon from 'astro-icon';
 import { defineConfig, envField } from 'astro/config';
 import { loadEnv } from 'vite';
+import partytown from '@astrojs/partytown';
 
 const { SITE_URL, SANITY_PROJECT_ID, SANITY_DATASET_NAME } = loadEnv(
   process.env,
@@ -34,6 +35,11 @@ export default defineConfig({
       useCdn: false,
     }),
     icon(),
+    partytown({
+      config: {
+        forward: ['dataLayer.push'],
+      },
+    }),
     sitemap(),
   ],
   image: {
