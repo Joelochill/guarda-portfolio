@@ -2,25 +2,9 @@
 import '@fontsource-variable/eb-garamond';
 import ebGaramondWoff2 from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
 import '@fontsource/sorts-mill-goudy';
-
-const analyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
 ---
 
 <head>
-  <!-- Google tag (gtag.js) -->
-  <script
-    type="text/partytown"
-    async
-    src={`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`}></script>
-  <script type="text/partytown" define:vars={{analyticsId}}>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag('js', new Date());
-
-    gtag('config', analyticsId);
-  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />
   <link rel="sitemap" href="/sitemap-index.xml" />
