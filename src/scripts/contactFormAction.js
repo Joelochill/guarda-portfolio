@@ -71,9 +71,7 @@ document.addEventListener('astro:page-load', () => {
 
     if (!navigator.onLine || !internetAvailable) {
       submissionResult.style.color = 'var(--color-error)';
-      submissionResult.textContent = t(
-        'form.submissionResults.failures.offline',
-      );
+      submissionResult.textContent = t('form.submissionResults.offline');
       console.log('OFFLINE');
       return;
     }
@@ -83,7 +81,7 @@ document.addEventListener('astro:page-load', () => {
         console.log('SUCCESS!', response.status, response.text);
         submissionResult.style.color = 'var(--color-success)';
         submissionResult.textContent = t('form.submissionResults.success');
-        this.reset();
+        /* this.reset(); */
       },
       (error) => {
         console.log('FAILED...', error);
