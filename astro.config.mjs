@@ -15,6 +15,7 @@ const { SITE_URL, SANITY_PROJECT_ID, SANITY_DATASET_NAME } = loadEnv(
 // https://astro.build/config
 export default defineConfig({
   site: `${SITE_URL}`,
+  output: 'static',
   integrations: [
     icon(),
     partytown({
