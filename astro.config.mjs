@@ -1,9 +1,10 @@
+import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
+import jopSoftwarecookieconsent from '@jop-software/astro-cookieconsent';
 import sanity from '@sanity/astro';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
-import partytown from '@astrojs/partytown';
 
 // See https://docs.astro.build/en/guides/environment-variables/
 const { SITE_URL, SANITY_PROJECT_ID, SANITY_DATASET_NAME } = loadEnv(
@@ -17,16 +18,17 @@ export default defineConfig({
   site: `${SITE_URL}`,
   trailingSlash: 'never',
   integrations: [
-    sanity({
-      projectId: `${SANITY_PROJECT_ID}`,
-      dataset: `${SANITY_DATASET_NAME}`,
-      useCdn: false,
-    }),
     icon(),
+    jopSoftwarecookieconsent(),
     partytown({
       config: {
         forward: ['dataLayer.push'],
       },
+    }),
+    sanity({
+      projectId: `${SANITY_PROJECT_ID}`,
+      dataset: `${SANITY_DATASET_NAME}`,
+      useCdn: false,
     }),
     sitemap(),
   ],
