@@ -21,17 +21,13 @@
     "@emailjs/browser": "^4.4.1",
     "@fontsource-variable/eb-garamond": "^5.1.1",
     "@fontsource/sorts-mill-goudy": "^5.1.0",
-    "@jop-software/astro-cookieconsent": "^3.0.1",
     "@sanity/astro": "^3.1.4",
     "@sanity/client": "^6.21.2",
     "@sanity/image-url": "^1.0.2",
     "astro": "^5.1.1",
     "astro-icon": "^1.1.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
     "sanity": "^3.53.0",
-    "validator": "^13.12.0",
-    "vanilla-cookieconsent": "^3.0.1"
+    "validator": "^13.12.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.13.0",
