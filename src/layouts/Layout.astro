@@ -1,5 +1,5 @@
 ---
-import ViewTransitions from 'astro/components/ViewTransitions.astro';
+import { ClientRouter } from 'astro:transitions';
 import Dropdown from '../components/Dropdown.astro';
 import Footer from '../components/Footer.astro';
 import Head from '../components/Head.astro';
@@ -18,7 +18,7 @@ const background = (backgroundImage) ? `url(${backgroundImage.src})` : 'none';
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions fallback="swap" />
+    <ClientRouter fallback="swap" />
   </Head>
   <body class:list={[backgroundImage ? 'background-image' : '']}>
     <div
