@@ -1,6 +1,13 @@
 ---
-import { background } from '../../cms/queries';
+import { backgroundUrl } from '../../cms/queries';
 import Layout from '../../layouts/Layout.astro';
+import { getImage } from 'astro:assets';
+
+const background = await getImage({
+  src: backgroundUrl,
+  format: 'webp',
+  inferSize: true,
+});
 ---
 
 <Layout

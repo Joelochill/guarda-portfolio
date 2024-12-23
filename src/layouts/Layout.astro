@@ -9,7 +9,7 @@ import '../styles/reset.css';
 
 const { title, description, lang, backgroundImage } = Astro.props;
 
-const background = (backgroundImage) ? `url(${backgroundImage.src})` : 'none';
+const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---
 
 <!doctype html>
@@ -21,9 +21,7 @@ const background = (backgroundImage) ? `url(${backgroundImage.src})` : 'none';
     <ClientRouter fallback="swap" />
   </Head>
   <body class:list={[backgroundImage ? 'background-image' : '']}>
-    <div
-      class:list={['page-wrapper']}
-    >
+    <div class="page-wrapper">
       <Header transparent={Boolean(backgroundImage)} />
       <slot />
       <Footer transition:name="footer" transition:animate="fade" />
