@@ -19,6 +19,7 @@
   select {
     font: inherit;
     border: unset;
+    border-radius: unset;
     background: unset;
   }
 

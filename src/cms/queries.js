@@ -60,7 +60,7 @@ export const liveContentEN = [...uniqueYears].map((year) => ({
   ),
 }));
 
-// home image's queries
+// background home image's queries
 
 const homeImages = await sanityClient.fetch(
   '*[_type == "homeImage"] | order(publishedAt desc) { image }',
