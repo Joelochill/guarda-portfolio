@@ -67,4 +67,3 @@ const homeImages = await sanityClient.fetch(
 );
 
 export const backgroundUrl = urlFor(homeImages[0].image).width(2000).url();
-

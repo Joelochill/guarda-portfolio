@@ -36,7 +36,7 @@ import { Icon } from 'astro-icon/components';
     // Set fixed dropdown height on body resize
     const resizeObserver = new ResizeObserver(() => {
       const headerHeight = parseFloat(
-        window.getComputedStyle(document.querySelector('header')).height
+        window.getComputedStyle(document.querySelector('header')).height,
       );
       dropdown.style.top = `${headerHeight}px`;
     });
@@ -52,7 +52,7 @@ import { Icon } from 'astro-icon/components';
             dropdown.classList.toggle('expanded');
             main.classList.replace('fade-out', 'fade-in');
           },
-          { once: true }
+          { once: true },
         );
         if (isIndex) {
           header.classList.add('transparent');
@@ -73,7 +73,7 @@ import { Icon } from 'astro-icon/components';
             header.classList.remove('transparent');
           }
         },
-        { once: true }
+        { once: true },
       );
       main.classList.replace('fade-in', 'fade-out') ||
         main.classList.add('fade-out');

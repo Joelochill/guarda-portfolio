@@ -19,7 +19,7 @@ export default defineConfig({
   vite: {
     ssr: {
       noExternal: ['normalize.css'],
-    }
+    },
   },
   integrations: [
     icon(),
