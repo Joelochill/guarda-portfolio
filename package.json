@@ -26,6 +26,7 @@
     "@sanity/image-url": "^1.0.2",
     "astro": "^5.1.1",
     "astro-icon": "^1.1.2",
+    "normalize.css": "^8.0.1",
     "sanity": "^3.53.0",
     "validator": "^13.12.0"
   },
