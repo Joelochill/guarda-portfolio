@@ -5,6 +5,7 @@
   Validation remains kind of harcoded ATM!!!!
   Did this i18n system to avoid duplication & ended up hardcoding the min & max validation values in the translations.json. IF CHANGED, CARE!!!
 */
+
 import { useTranslations } from '../i18n/utils';
 
 const lang = Astro.currentLocale;
@@ -110,16 +111,16 @@ const t = useTranslations(lang);
     padding: 0.3em 0.1rem;
   }
 
-  button:hover {
-    color: var(--color-text-hover);
-  }
-
   input,
   textarea,
   input::placeholder,
   textarea::placeholder,
   button {
     color: inherit;
+  }
+
+  button:hover {
+    color: var(--color-text-hover);
   }
 
   .invalid {

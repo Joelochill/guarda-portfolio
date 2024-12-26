@@ -19,6 +19,7 @@ html {
   --color-accent-hover: var(--color-blue-darker);
   --color-error: var(--color-red);
   --color-success: var(--color-green);
+
   font-size: calc(12px + 0.4vw);
   font-family: 'EB Garamond Variable', 'Sorts Mill Goudy', 'Times New Roman',
     Times, serif;
@@ -64,7 +65,7 @@ main {
   padding: 0.75rem 1.5rem;
 }
 
-@media only screen and (min-width: 625px) {
+@media only screen and (width >= 625px) {
   header,
   footer,
   main {
@@ -80,7 +81,7 @@ main {
 
 /* Animations, view transitions */
 
-@keyframes fadeIn {
+@keyframes fade-in {
   0% {
     opacity: 0;
   }
@@ -90,7 +91,7 @@ main {
   }
 }
 
-@keyframes fadeOut {
+@keyframes fade-out {
   0% {
     opacity: 100;
   }
@@ -100,7 +101,7 @@ main {
   }
 }
 
-@keyframes rotateX180 {
+@keyframes rotate-x-180 {
   0% {
     transform: rotateX(0deg);
   }
@@ -110,7 +111,7 @@ main {
   }
 }
 
-@keyframes rotateX180Reverse {
+@keyframes rotate-x-180-reverse {
   0% {
     transform: rotateX(-180deg);
   }
@@ -121,22 +122,22 @@ main {
 }
 
 .fade-in {
-  animation: fadeIn var(--transition-duration-main) ease;
+  animation: fade-in var(--transition-duration-main) ease;
   opacity: 100;
 }
 
 .fade-out {
-  animation: fadeOut var(--transition-duration-main) ease;
+  animation: fade-out var(--transition-duration-main) ease;
   opacity: 0;
 }
 
 .rotated-180 {
-  animation: rotateX180 calc(var(--transition-duration-main) * 2) ease;
+  animation: rotate-x-180 calc(var(--transition-duration-main) * 2) ease;
   transform: rotateX(-180deg);
 }
 
 .rotated-180-reverse {
-  animation: rotateX180Reverse calc(var(--transition-duration-main) * 2) ease;
+  animation: rotate-x-180-reverse calc(var(--transition-duration-main) * 2) ease;
   transform: rotateX(0deg);
 }
 
