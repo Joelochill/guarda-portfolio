@@ -134,7 +134,7 @@ const t = useTranslations(lang);
     color: var(--color-error);
   }
 
-  @media only screen and (min-width: 625px) {
+  @media only screen and (width >= 625px) {
     form {
       grid-template-areas:
         'name email'
@@ -145,7 +145,7 @@ const t = useTranslations(lang);
     }
   }
 
-  @media only screen and (min-width: 699px) {
+  @media only screen and (width >= 699px) {
     .form-control:has(button[type='submit']) {
       flex-direction: row;
       justify-content: space-between;

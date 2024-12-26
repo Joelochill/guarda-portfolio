@@ -27,6 +27,7 @@ import Layout from '../../layouts/Layout.astro';
 <style>
   main {
     --grid-element-size: clamp(150px, 15em, 420px);
+
     grid-template-columns: repeat(
       auto-fill,
       minmax(var(--grid-element-size), 1fr)
@@ -35,7 +36,7 @@ import Layout from '../../layouts/Layout.astro';
     align-content: start;
   }
 
-  @media screen and (min-width: 825px) {
+  @media screen and (width >= 825px) {
     main {
       --grid-element-size: clamp(200px, 18em, 380px);
     }
