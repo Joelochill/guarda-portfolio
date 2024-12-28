@@ -15,7 +15,7 @@
     "prettier:fix": "npm run prettier -- --write",
     "stylelint": "npx stylelint \"src/**/*.{css,astro}\"",
     "stylelint:fix": "npm run stylelint -- --fix",
-    "format": "npm run prettier:fix && npm run lint:fix"
+    "format": "npm run prettier:fix && npm run lint:fix && npm run stylelint:fix"
   },
   "dependencies": {
     "@astrojs/partytown": "^2.1.2",

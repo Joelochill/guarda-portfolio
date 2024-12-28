@@ -8,6 +8,7 @@ export default {
       extends: ['stylelint-config-html/astro'],
     },
   ],
+  ignoreFiles: ['dist/**/*'],
   rules: {
     'plugin/no-unsupported-browser-features': [true, { severity: 'warning' }],
   },
