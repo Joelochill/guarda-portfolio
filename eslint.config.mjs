@@ -1,8 +1,8 @@
 import pluginJs from '@eslint/js';
 import eslintPluginAstro from 'eslint-plugin-astro';
+import compat from 'eslint-plugin-compat';
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import compat from 'eslint-plugin-compat';
 
 export default [
   { files: ['**/*.{js,mjs,cjs,ts, astro}'] },
@@ -15,8 +15,6 @@ export default [
     ignores: ['**/.astro/*', '**/dist/*', '**/env.d.ts'],
   },
   {
-    rules: {
-      
-    },
+    rules: {},
   },
 ];

@@ -1,4 +1,10 @@
 /* eslint-disable -- Only CommonJS file */
+const postCssPresetEnv = require('postcss-preset-env');
+
 module.exports = {
-  plugins: [require('autoprefixer'), require('postcss-preset-env')],
+  plugins: [
+    postCssPresetEnv({
+      debug: true,
+    }),
+  ],
 };
