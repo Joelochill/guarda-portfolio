@@ -1,3 +1,4 @@
 # Browsers we support
 
 defaults
+not OperaMini all
