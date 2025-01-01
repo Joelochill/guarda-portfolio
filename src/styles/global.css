@@ -157,6 +157,23 @@ main {
 
 * {
   scroll-behavior: smooth;
-  scrollbar-width: thin;
-  scrollbar-color: var(--color-text) transparent;
+}
+
+@supports (scrollbar-color: auto) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-text) transparent;
+  }
+}
+
+@supports selector(::-webkit-scrollbar) {
+  ::-webkit-scrollbar {
+    background: transparent;
+    width: 0.3em;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-text);
+    border-radius: 5px;
+  }
 }
