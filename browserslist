@@ -2,3 +2,7 @@
 
 defaults
 not OperaMini all
+not UCAndroid > 0
+not QQAndroid > 0
+not kaios 2.5
+not kaios 3.0-3.1
