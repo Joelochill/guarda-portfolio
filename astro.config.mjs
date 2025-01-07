@@ -17,6 +17,9 @@ const { SITE_URL, SANITY_PROJECT_ID, SANITY_DATASET_NAME } = loadEnv(
 export default defineConfig({
   site: `${SITE_URL}`,
   output: 'static',
+  prefetch: {
+    defaultStrategy: 'viewport',
+  },
   vite: {
     ssr: {
       noExternal: ['normalize.css'],
