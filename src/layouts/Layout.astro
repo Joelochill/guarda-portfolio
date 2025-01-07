@@ -9,11 +9,11 @@ import '../styles/global.css';
 import '../styles/reset.css';
 import { defaultSeo } from '../utils/defaultSeo';
 
-const { lang, seo, backgroundImage } = Astro.props;
+const { seo, backgroundImage } = Astro.props;
+const lang = Astro.currentLocale;
 
 const seoData = { ...defaultSeo, ...seo }; // seo overrides defaultSeo
 seoData.canonical = Astro.url.href; //dynamically set canonical
-console.log(seoData);
 
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---
