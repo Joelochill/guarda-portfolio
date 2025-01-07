@@ -1,14 +1,16 @@
 ---
+import { liveContentES } from '../cms/queries';
 import EventList from '../components/EventList.astro';
 import Layout from '../layouts/Layout.astro';
-import { liveContentES } from '../cms/queries';
+
+const seo = {
+  title: 'Live | GUARDA',
+  description:
+    'Consulta la lista de conciertos de GUARDA, el proyecto de Joel Rico Rada. Descubre próximas fechas y revive sus actuaciones pasadas.',
+};
 ---
 
-<Layout
-  title="Live | GUARDA"
-  lang="es"
-  description="Consulta la lista de conciertos de GUARDA, el proyecto de Joel Rico Rada. Descubre próximas fechas y revive sus actuaciones pasadas."
->
+<Layout lang="es" seo={seo}>
   <main transition:name="main" transition:animate="fade">
     {
       liveContentES.map(({ year, events }) => (

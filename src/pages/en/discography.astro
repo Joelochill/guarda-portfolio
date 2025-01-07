@@ -2,13 +2,15 @@
 import { projects } from '../../cms/queries';
 import Project from '../../components/Project.astro';
 import Layout from '../../layouts/Layout.astro';
+
+const seo = {
+  title: 'Discography | GUARDA',
+  description:
+    'Explore the discography of GUARDA, the sound project by Joel Rico Rada, and listen to his experimental and ambient albums.',
+};
 ---
 
-<Layout
-  title="Discography | GUARDA"
-  lang="en"
-  description="Explore the discography of GUARDA, the sound project by Joel Rico Rada, and listen to his experimental and ambient albums."
->
+<Layout lang="en" ' seo={seo}>
   <main transition:name="main" transition:animate="fade">
     {
       projects.map(({ coverUrl, title, bandcampLink }, index) => (

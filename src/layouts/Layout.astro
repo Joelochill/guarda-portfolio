@@ -1,13 +1,19 @@
 ---
+import { SEO } from 'astro-seo';
+import '../../node_modules/normalize.css/normalize.css';
 import Dropdown from '../components/Dropdown.astro';
 import Footer from '../components/Footer.astro';
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
-import '../../node_modules/normalize.css/normalize.css';
-import '../styles/reset.css';
 import '../styles/global.css';
+import '../styles/reset.css';
+import { defaultSeo } from '../utils/defaultSeo';
 
-const { title, description, lang, backgroundImage } = Astro.props;
+const { lang, seo, backgroundImage } = Astro.props;
+
+const seoData = { ...defaultSeo, ...seo }; // seo overrides defaultSeo
+seoData.canonical = Astro.url.href; //dynamically set canonical
+console.log(seoData);
 
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---
@@ -15,39 +21,44 @@ const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 <!doctype html>
 <html lang={lang}>
   <Head>
-    <meta name="description" content={description} />
-    <title>{title}</title>
+    <SEO
+      title={seoData.title}
+      description={seoData.description}
+      canonical={seoData.canonical}
+    />
+    <body class:list={[backgroundImage ? 'background-image' : '']}>
+      <div class="page-wrapper">
+        <Header transparent={Boolean(backgroundImage)} />
+        <slot />
+        <Footer transition:name="footer" transition:animate="fade" />
+      </div>
+      <Dropdown />
+    </body>
   </Head>
-  <body class:list={[backgroundImage ? 'background-image' : '']}>
-    <div class="page-wrapper">
-      <Header transparent={Boolean(backgroundImage)} />
-      <slot />
-      <Footer transition:name="footer" transition:animate="fade" />
-    </div>
-    <Dropdown />
-  </body>
+
+  <style define:vars={{ background }}>
+    body {
+      width: 100dvw;
+      display: flex;
+      justify-content: center;
+      overflow-x: hidden;
+    }
+
+    .page-wrapper {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      width: 100%;
+      max-width: 1400px;
+    }
+
+    .background-image {
+      background-image: var(--background);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-clip: border-box;
+    }
+  </style>
+
+
 </html>
-
-<style define:vars={{ background }}>
-  body {
-    width: 100dvw;
-    display: flex;
-    justify-content: center;
-    overflow-x: hidden;
-  }
-
-  .page-wrapper {
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    width: 100%;
-    max-width: 1400px;
-  }
-
-  .background-image {
-    background-image: var(--background);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    background-clip: border-box;
-  }
-</style>

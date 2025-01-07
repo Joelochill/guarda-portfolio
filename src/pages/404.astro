@@ -12,13 +12,14 @@ import '../styles/reset.css';
       name="description"
       content="Page not found. Please check the URL or return to the homepage."
     />
+    <meta name="robots" content="noindex, follow" />
   </Head>
   <body>
     <h1>404 Not Found</h1>
-    <div class="links">
+    <nav>
       <a href="/">Volver a Inicio</a>
       <a href="/en/">Return to Home</a>
-    </div>
+    </nav>
   </body>
 </html>
 
@@ -34,13 +35,13 @@ import '../styles/reset.css';
     font-size: 2.75rem;
   }
 
-  div {
+  nav {
     display: flex;
     gap: 1em;
     color: var(--color-accent);
   }
 
   a:hover {
-    color: var(--color-accent-hover);
+    text-decoration: underline;
   }
 </style>

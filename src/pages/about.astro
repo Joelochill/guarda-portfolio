@@ -1,12 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+const seo = {
+  title: 'About | GUARDA',
+  description:
+    'Descubre el proyecto GUARDA de Joel Rico Rada, explorando el terror espiritual con field recordings, síntesis modular y spoken word.',
+};
 ---
 
-<Layout
-  title="About | GUARDA"
-  lang="es"
-  description="Descubre el proyecto GUARDA de Joel Rico Rada, explorando el terror espiritual con field recordings, síntesis modular y spoken word."
->
+<Layout lang="es" seo={seo}>
   <main transition:name="main" transition:animate="fade">
     <p>Joel Rico Rada es un artista sonoro vasco afincado en Zaragoza.</p>
     <p>

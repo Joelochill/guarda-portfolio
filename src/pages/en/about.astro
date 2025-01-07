@@ -1,12 +1,14 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const seo = {
+  title: 'About | GUARDA',
+  description:
+    'Discover GUARDA by Joel Rico Rada, exploring spiritual terror through field recordings, modular synthesis, and spoken word.',
+};
 ---
 
-<Layout
-  title="About | GUARDA"
-  lang="en"
-  description="Discover GUARDA by Joel Rico Rada, exploring spiritual terror through field recordings, modular synthesis, and spoken word."
->
+<Layout lang="en" seo={seo}>
   <main transition:name="main" transition:animate="fade">
     <p>Joel Rico Rada is a Basque sound artist based in Zaragoza.</p>
     <p>

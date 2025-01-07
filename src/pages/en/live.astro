@@ -1,14 +1,16 @@
 ---
+import { liveContentEN } from '../../cms/queries';
 import EventList from '../../components/EventList.astro';
 import Layout from '../../layouts/Layout.astro';
-import { liveContentEN } from '../../cms/queries';
+
+const seo = {
+  title: 'Live | GUARDA',
+  description:
+    'Check out the concert list of GUARDA, the project by Joel Rico Rada. Discover upcoming dates and relive past performances.',
+};
 ---
 
-<Layout
-  title="Live | GUARDA"
-  lang="en"
-  description="Check out the concert list of GUARDA, the project by Joel Rico Rada. Discover upcoming dates and relive past performances."
->
+<Layout lang="en" seo={seo}>
   <main transition:name="main" transition:animate="fade">
     {
       liveContentEN.map(({ year, events }) => (

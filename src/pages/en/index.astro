@@ -3,6 +3,11 @@ import { backgroundUrl } from '../../cms/queries';
 import Layout from '../../layouts/Layout.astro';
 import { getImage } from 'astro:assets';
 
+const seo = {
+  description:
+    'Official page of GUARDA, the music project by Joel Rico Rada. Explore his music, concerts, and journey.',
+};
+
 const background = await getImage({
   src: backgroundUrl,
   format: 'webp',
@@ -10,11 +15,6 @@ const background = await getImage({
 });
 ---
 
-<Layout
-  title="GUARDA"
-  lang="en"
-  description="Official page of GUARDA, the music project by Joel Rico Rada. Explore his music, concerts, and journey."
-  backgroundImage={background}
->
+<Layout lang="en" seo={seo} backgroundImage={background}>
   <main transition:name="main" transition:animate="fade"></main>
 </Layout>

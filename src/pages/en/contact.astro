@@ -1,13 +1,15 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import ContactForm from '../../components/ContactForm.astro';
+import Layout from '../../layouts/Layout.astro';
+
+const seo = {
+  title: 'Contact | GUARDA',
+  description:
+    'Get in touch with Joel Rico Rada, the creator of GUARDA. Send your questions, press inquiries, or collaboration requests.',
+};
 ---
 
-<Layout
-  title="Contact | GUARDA"
-  lang="en"
-  description="Get in touch with Joel Rico Rada, the creator of GUARDA. Send your questions, press inquiries, or collaboration requests."
->
+<Layout lang="en" seo={seo}>
   <main transition:name="main" transition:animate="fade">
     <ContactForm />
     <p>
