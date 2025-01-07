@@ -2,6 +2,7 @@ import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import sanity from '@sanity/astro';
 import icon from 'astro-icon';
+import robotsTxt from 'astro-robots-txt';
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
 
@@ -34,6 +35,9 @@ export default defineConfig({
       useCdn: false,
     }),
     sitemap(),
+    robotsTxt({
+      host: true,
+    }),
   ],
   image: {
     domains: ['astro.build', 'cdn.sanity.io'],
