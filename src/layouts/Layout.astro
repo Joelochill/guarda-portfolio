@@ -13,7 +13,7 @@ const { seo, backgroundImage } = Astro.props;
 const lang = Astro.currentLocale;
 
 const seoData = { ...defaultSeo, ...seo }; // seo overrides defaultSeo
-seoData.canonical = Astro.url.href; //dynamically set canonical
+seoData.canonical = Astro.url.href; // dynamically set canonical
 
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---
@@ -25,40 +25,39 @@ const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
       title={seoData.title}
       description={seoData.description}
       canonical={seoData.canonical}
+      charset={seoData.charset}
     />
-    <body class:list={[backgroundImage ? 'background-image' : '']}>
-      <div class="page-wrapper">
-        <Header transparent={Boolean(backgroundImage)} />
-        <slot />
-        <Footer transition:name="footer" transition:animate="fade" />
-      </div>
-      <Dropdown />
-    </body>
   </Head>
-
-  <style define:vars={{ background }}>
-    body {
-      width: 100dvw;
-      display: flex;
-      justify-content: center;
-      overflow-x: hidden;
-    }
-
-    .page-wrapper {
-      display: grid;
-      grid-template-rows: auto 1fr auto;
-      width: 100%;
-      max-width: 1400px;
-    }
-
-    .background-image {
-      background-image: var(--background);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      background-clip: border-box;
-    }
-  </style>
-
-
+  <body class:list={[backgroundImage ? 'background-image' : '']}>
+    <div class="page-wrapper">
+      <Header transparent={Boolean(backgroundImage)} />
+      <slot />
+      <Footer transition:name="footer" transition:animate="fade" />
+    </div>
+    <Dropdown />
+  </body>
 </html>
+
+<style define:vars={{ background }}>
+  body {
+    width: 100dvw;
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+  }
+
+  .page-wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    width: 100%;
+    max-width: 1400px;
+  }
+
+  .background-image {
+    background-image: var(--background);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-clip: border-box;
+  }
+</style>
