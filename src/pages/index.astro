@@ -3,6 +3,12 @@ import { getImage } from 'astro:assets';
 import { backgroundUrl } from '../cms/queries';
 import Layout from '../layouts/Layout.astro';
 
+const seo = {
+  title: 'Home',
+  description:
+    'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.',
+};
+
 const background = await getImage({
   src: backgroundUrl,
   format: 'webp',
@@ -10,6 +16,6 @@ const background = await getImage({
 });
 ---
 
-<Layout backgroundImage={background}>
+<Layout seo={seo} backgroundImage={background}>
   <main transition:name="main" transition:animate="fade"></main>
 </Layout>

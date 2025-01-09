@@ -5,8 +5,6 @@ import Dropdown from '../components/Dropdown.astro';
 import Footer from '../components/Footer.astro';
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
-import '../styles/global.css';
-import '../styles/reset.css';
 import { defaultSeo } from '../utils/defaultSeo';
 
 const { seo, backgroundImage } = Astro.props;
@@ -27,6 +25,8 @@ const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
       description={seoData.description}
       canonical={seoData.canonical}
       charset={seoData.charset}
+      languageAlternates={seoData.languageAlternates}
+      extend={seoData.extend}
     />
   </Head>
   <body class:list={[backgroundImage ? 'background-image' : '']}>

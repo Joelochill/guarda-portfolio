@@ -1,18 +1,30 @@
 ---
+import { SEO } from 'astro-seo';
 import Head from '../components/Head.astro';
-import '../styles/global.css';
-import '../styles/reset.css';
+import { defaultSeo } from '../utils/defaultSeo';
+
+const seo = {
+  title: '404 Not Found',
+  description:
+    'Page not found. Please check the URL or return to the homepage.',
+  noindex: true,
+};
+
+const seoData = { ...defaultSeo, ...seo };
 ---
 
 <!doctype html>
 <html>
   <Head>
-    <title>404 Not Found | GUARDA</title>
-    <meta
-      name="description"
-      content="Page not found. Please check the URL or return to the homepage."
+    <SEO
+      title={seoData.title}
+      titleTemplate={seoData.titleTemplate}
+      description={seoData.description}
+      noindex={seoData.noindex}
+      charset={seoData.charset}
+      languageAlternates={seoData.languageAlternates}
+      extend={seoData.extend}
     />
-    <meta name="robots" content="noindex, follow" />
   </Head>
   <body>
     <h1>404 Not Found</h1>

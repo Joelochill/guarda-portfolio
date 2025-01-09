@@ -1,32 +1,16 @@
 ---
+// Fonts & styles need to be imported here so they are accessible in 404 page
 import '@fontsource-variable/eb-garamond';
-import ebGaramondWoff2 from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
 import '@fontsource/sorts-mill-goudy';
+import '../styles/global.css';
+import '../styles/reset.css';
 import GoogleAnalytics from './GoogleAnalytics.astro';
 import { ClientRouter } from 'astro:transitions';
-
-const baseUrl = Astro.site;
 ---
 
 <head>
   <GoogleAnalytics />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
-  <link rel="sitemap" href="/sitemap-index.xml" />
-  <link
-    rel="preload"
-    as="font"
-    type="font/woff2"
-    href={ebGaramondWoff2}
-    crossorigin="anonymous"
-  />
   <slot />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-  <link rel="manifest" href="/site.webmanifest" />
-  <link rel="alternate" hreflang="es" href={baseUrl} />
-  <link rel="alternate" hreflang="en" href={baseUrl + 'en/'} />
-  <link rel="alternate" hreflang="x-default" href={baseUrl} />
   <ClientRouter fallback="swap" />
 </head>
