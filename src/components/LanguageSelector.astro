@@ -1,6 +1,18 @@
 ---
 const currentPage = Astro.url.pathname;
 const currentLocale = Astro.currentLocale;
+
+/* console.log('Current page: ' + currentPage);
+
+console.log(
+  'Spanish page: ' +
+    (currentLocale === 'es' ? currentPage : currentPage.replace('/en', ''))
+);
+
+console.log(
+  'English page: ' +
+    (currentLocale === 'en' ? currentPage : `/en${currentPage}`)
+); */
 ---
 
 <nav>

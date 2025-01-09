@@ -1,13 +1,12 @@
 export const defaultSeo = {
-  
   title: 'GUARDA',
   description:
     'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.',
-  canonical: 'https://joelricorada.com',
+  canonical: import.meta.env.SITE_URL,
   charset: 'UTF-8',
   openGraph: {
     type: 'website',
-    url: 'https://joelricorada.com',
+    url: import.meta.env.SITE_URL,
     title: 'GUARDA',
     description:
       'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.',
