@@ -20,6 +20,7 @@ export default defineConfig({
   prefetch: {
     defaultStrategy: 'viewport',
   },
+  trailingSlash: 'always',
   vite: {
     ssr: {
       noExternal: ['normalize.css'],
