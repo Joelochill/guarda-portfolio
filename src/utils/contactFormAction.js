@@ -77,14 +77,17 @@ document.addEventListener('astro:page-load', () => {
     }
 
     emailjs.send('contact_service', 'contact_form', sanitizedData).then(
-      (response) => {
-        console.log('SUCCESS!', response.status, response.text);
+      () => {
         submissionResult.style.color = 'var(--color-success)';
         submissionResult.textContent = t('form.submissionResults.success');
-        /* this.reset(); */
+        this.reset();
       },
       (error) => {
-        console.log('FAILED...', error);
+        submissionResult.style.color = 'var(--color-error)';
+        submissionResult.textContent =
+          error.status === 429
+            ? t('form.submissionResults.spam')
+            : t('form.submissionResults.failure');
       },
     );
   });

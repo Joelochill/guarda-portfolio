@@ -30,6 +30,8 @@
       },
       "submissionResults": {
         "success": "Has enviado correctamente un email a info@joelricorada.com. Espera mi respuesta!",
+        "failure": "Estamos teniendo problemas enviando tu email. Por favor prueba con la dirección de abajo.",
+        "spam": "Has enviado un email recientemente. Por favor, prueba de nuevo más tarde.",
         "offline": "No estás conectado a internet. Por favor, comprueba tu conexión e inténtalo de nuevo."
       }
     }
@@ -64,6 +66,8 @@
       },
       "submissionResults": {
         "success": "You've succesfully sent an email to info@joelricorada.com. Look forward for my response!",
+        "failure": "We are experiencing issues sending your email. Please use the address below.",
+        "spam": "You've recently sent an email. Please, try again later.",
         "offline": "You are not connected to the internet. Please, check your connection and try again."
       }
     }
