@@ -10,21 +10,6 @@ export const defaultSeo = {
     { href: `${siteUrl}/en/`, hrefLang: 'en' },
     { href: siteUrl, hrefLang: 'x-default' },
   ],
-  openGraph: {
-    type: 'website',
-    url: siteUrl,
-    title: 'GUARDA',
-    description:
-      'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.',
-    images: [
-      {
-        url: 'https://joelricorada.com/og-image.jpg',
-        alt: 'GUARDA',
-        width: 1200,
-        height: 630,
-      },
-    ],
-  },
   extend: {
     link: [
       {
