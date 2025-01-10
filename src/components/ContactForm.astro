@@ -98,7 +98,6 @@ const t = useTranslations(lang);
 
   .form-control:has(button[type='submit']) {
     grid-area: submit;
-    padding: 0.3em 0.1rem;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
@@ -106,9 +105,15 @@ const t = useTranslations(lang);
   }
 
   input,
+  textarea,
+  button,
+  #submission-result {
+    padding: 0.3em 0.1rem;
+  }
+
+  input,
   textarea {
     border-bottom: 1px solid var(--color-text);
-    padding: 0.3em 0.1rem;
   }
 
   input,
@@ -148,6 +153,7 @@ const t = useTranslations(lang);
   @media only screen and (width >= 699px) {
     .form-control:has(button[type='submit']) {
       flex-direction: row;
+      align-items: center;
       justify-content: space-between;
       gap: 1em;
     }
