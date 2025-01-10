@@ -34,14 +34,33 @@ import { Icon } from 'astro-icon/components';
     const isIndex = document.body.classList.contains('background-image');
 
     // Set fixed dropdown height on body resize
-    const resizeObserver = new ResizeObserver(() => {
+    const dropdownResizer = new ResizeObserver(() => {
       const headerHeight = parseFloat(
-        window.getComputedStyle(document.querySelector('header')).height,
+        window.getComputedStyle(document.querySelector('header')).height
       );
       dropdown.style.top = `${headerHeight}px`;
     });
 
-    resizeObserver.observe(document.body);
+    dropdownResizer.observe(document.body);
+
+    // Hide menu & show content in case the resize exceeds width (would result
+    // in a white page otherwise, cause menu would disappear and main is hidden
+    // after the animation)
+
+    const contentRestorer = new ResizeObserver(() => {
+      if (
+        dropdown.classList.contains('expanded') &&
+        document.body.clientWidth >= 625
+      ) {
+        dropdown.classList.replace('fade-in', 'fade-out');
+        dropdown.classList.toggle('expanded');
+        main.classList.replace('fade-out', 'fade-in');
+        document.body.style.overflowY = 'auto';
+        dropdownBtn.classList.replace('rotated-180', 'rotated-180-reverse');
+      }
+    });
+
+    contentRestorer.observe(document.body);
 
     // Show the dropdown
     dropdownBtn.addEventListener('click', () => {
@@ -52,7 +71,7 @@ import { Icon } from 'astro-icon/components';
             dropdown.classList.toggle('expanded');
             main.classList.replace('fade-out', 'fade-in');
           },
-          { once: true },
+          { once: true }
         );
         if (isIndex) {
           header.classList.add('transparent');
@@ -73,12 +92,14 @@ import { Icon } from 'astro-icon/components';
             header.classList.remove('transparent');
           }
         },
-        { once: true },
+        { once: true }
       );
       main.classList.replace('fade-in', 'fade-out') ||
         main.classList.add('fade-out');
       document.body.style.overflowY = 'hidden';
     });
+
+    // Rotate the chevron
 
     dropdownBtn.addEventListener('click', () => {
       if (!dropdownBtn.classList.contains('rotated-180')) {
