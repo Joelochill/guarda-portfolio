@@ -1,7 +1,0 @@
-RewriteEngine on
-RewriteCond %{HTTP_HOST} ^domain-name.com$ [NC,OR]
-RewriteCond %{HTTP_HOST} ^www.domain-name.com$
-RewriteCond %{REQUEST_URI} !folder/
-RewriteRule (.*) /folder/$1 [L]
-
-ErrorDocument 404 /dist/404.html
