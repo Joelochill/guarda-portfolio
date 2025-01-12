@@ -40,7 +40,8 @@ jobs:
         server: ${{ secrets.FTP_HOST }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        port: 21
         local-dir: dist/
         server-dir: /public_html/
         log-level: verbose
-        timeout: 60000
+        timeout: 300000
