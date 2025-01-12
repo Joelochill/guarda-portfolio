@@ -1,0 +1,44 @@
+name: Deploy Astro Frontend to Hostinger
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    # Install Node.js
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+
+    # Install dependencies and build the site
+    - name: Install dependencies
+      run: npm ci
+
+    - name: Build Astro site
+      run: npm run build
+      env:
+        SITE_URL: ${{ secrets.SITE_URL }}
+        SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+        SANITY_DATASET_NAME: ${{ secrets.SANITY_DATASET_NAME }}
+        PUBLIC_EMAILJS_NAME: ${{ secrets.PUBLIC_EMAILJS_NAME }}
+        PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.PUBLIC_GOOGLE_ANALYTICS_ID }}
+
+    # Deploy the /dist folder to Hostinger via FTP
+    - name: Deploy to Hostinger
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      with:
+        server: ${{ secrets.FTP_HOST }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        local-dir: dist
+        server-dir: /public_html
