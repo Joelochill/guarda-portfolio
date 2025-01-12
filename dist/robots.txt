@@ -1,4 +1,0 @@
-User-agent: *
-Allow: /
-Sitemap: https://www.joelricorada.com/sitemap-index.xml
-Host: www.joelricorada.com
