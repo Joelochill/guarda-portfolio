@@ -27,11 +27,6 @@ export default defineConfig({
   },
   integrations: [
     icon(),
-    /* partytown({
-      config: {
-        forward: ['dataLayer.push'],
-      },
-    }), */
     sanity({
       projectId: `${SANITY_PROJECT_ID}`,
       dataset: `${SANITY_DATASET_NAME}`,
