@@ -1,4 +1,3 @@
-import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import sanity from '@sanity/astro';
 import icon from 'astro-icon';
@@ -28,11 +27,11 @@ export default defineConfig({
   },
   integrations: [
     icon(),
-    partytown({
+    /* partytown({
       config: {
         forward: ['dataLayer.push'],
       },
-    }),
+    }), */
     sanity({
       projectId: `${SANITY_PROJECT_ID}`,
       dataset: `${SANITY_DATASET_NAME}`,
