@@ -3,18 +3,14 @@ const analyticsId = import.meta.env.PUBLIC_GOOGLE_ANALYTICS_ID;
 ---
 
 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-7GDM0B7F4R"></script>
-<script>
+<script async src=`https://www.googletagmanager.com/gtag/js?id=${analyticsId}`
+></script>
+<script is:inline define:vars={{ analyticsId }}>
   window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
+  function gtag() {
+    dataLayer.push(arguments);
+  }
   gtag('js', new Date());
 
-  gtag('consent', 'default', {
-    ad_storage: 'denied',
-    ad_user_data: 'denied',
-    ad_personalization: 'denied',
-    analytics_storage: 'denied',
-  });
-
-  gtag('config', 'G-7GDM0B7F4R');
+  gtag('config', analyticsId);
 </script>
