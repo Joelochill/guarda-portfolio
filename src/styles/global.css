@@ -28,15 +28,15 @@ html {
 }
 
 /* Joel doesn't want it
-    @media (prefers-color-scheme: dark) {
-      html {
-        --color-background: var(--color-dark);
-        --color-text: var(--color-light);
-        --color-text-hover: var(--color-lightest);
-        --color-accent-hover: var(--color-blue-lighter);
-      }
-    } 
-  */
+  @media (prefers-color-scheme: dark) {
+    html {
+      --color-background: var(--color-dark);
+      --color-text: var(--color-light);
+      --color-text-hover: var(--color-lightest);
+      --color-accent-hover: var(--color-blue-lighter);
+    }
+  } 
+*/
 
 .display-none {
   display: none;
