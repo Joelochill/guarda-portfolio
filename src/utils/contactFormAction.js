@@ -77,12 +77,14 @@ document.addEventListener('astro:page-load', () => {
     }
 
     emailjs.send('contact_service', 'contact_form', sanitizedData).then(
-      () => {
+      (response) => {
+        console.log(response);
         submissionResult.style.color = 'var(--color-success)';
         submissionResult.textContent = t('form.submissionResults.success');
         this.reset();
       },
       (error) => {
+        console.log(error);
         submissionResult.style.color = 'var(--color-error)';
         submissionResult.textContent =
           error.status === 429
