@@ -2,6 +2,8 @@
 import ContactForm from '../components/ContactForm.astro';
 import Layout from '../layouts/Layout.astro';
 
+const contactEmail = import.meta.env.CONTACT_EMAIL;
+
 const seo = {
   title: 'Contact',
   description:
@@ -13,9 +15,7 @@ const seo = {
   <main transition:name="main" transition:animate="fade">
     <ContactForm />
     <p>
-      O envía un email a <a href="mailto:info@joelricorada.com">
-        info@joelricorada.com</a
-      >
+      O envía un email a <a href={`mailto:${contactEmail}`}> {contactEmail}</a>
     </p>
   </main>
 </Layout>

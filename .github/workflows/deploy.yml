@@ -10,38 +10,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Checkout the repository
-    - name: Checkout code
-      uses: actions/checkout@v4
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    # Install Node.js
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: 20
+      # Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-    # Install dependencies and build the site
-    - name: Install dependencies
-      run: npm ci
+      # Install dependencies and build the site
+      - name: Install dependencies
+        run: npm ci
 
-    - name: Build Astro site
-      run: npm run build
-      env:
-        SITE_URL: ${{ secrets.SITE_URL }}
-        SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-        SANITY_DATASET_NAME: ${{ secrets.SANITY_DATASET_NAME }}
-        PUBLIC_EMAILJS_NAME: ${{ secrets.PUBLIC_EMAILJS_NAME }}
-        PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.PUBLIC_GOOGLE_ANALYTICS_ID }}
+      - name: Build Astro site
+        run: npm run build
+        env:
+          SITE_URL: ${{ secrets.SITE_URL }}
+          CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
+          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
+          SANITY_DATASET_NAME: ${{ secrets.SANITY_DATASET_NAME }}
+          PUBLIC_EMAILJS_NAME: ${{ secrets.PUBLIC_EMAILJS_NAME }}
+          PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.PUBLIC_GOOGLE_ANALYTICS_ID }}
 
-    # Deploy the /dist folder to Hostinger via FTP
-    - name: Deploy to Hostinger
-      uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-      with:
-        server: ${{ secrets.FTP_HOST }}
-        username: ${{ secrets.FTP_USERNAME }}
-        password: ${{ secrets.FTP_PASSWORD }}
-        port: 21
-        local-dir: dist/
-        server-dir: /public_html/
-        log-level: verbose
-        timeout: 300000
+      # Deploy the /dist folder to Hostinger via FTP
+      - name: Deploy to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 21
+          local-dir: dist/
+          server-dir: /public_html/
