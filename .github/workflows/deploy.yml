@@ -31,7 +31,7 @@ jobs:
           CONTACT_EMAIL: ${{ secrets.CONTACT_EMAIL }}
           SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
           SANITY_DATASET_NAME: ${{ secrets.SANITY_DATASET_NAME }}
-          PUBLIC_EMAILJS_NAME: ${{ secrets.PUBLIC_EMAILJS_NAME }}
+          PUBLIC_EMAILJS_KEY: ${{ secrets.PUBLIC_EMAILJS_KEY }}
           PUBLIC_GOOGLE_ANALYTICS_ID: ${{ secrets.PUBLIC_GOOGLE_ANALYTICS_ID }}
 
       # Deploy the /dist folder to Hostinger via FTP

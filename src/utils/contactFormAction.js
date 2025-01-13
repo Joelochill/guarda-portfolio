@@ -39,7 +39,6 @@ document.addEventListener('astro:page-load', () => {
   });
 
   const submissionResult = document.querySelector('#submission-result');
-  submissionResult.textContent = emailJsKey;
 
   contactForm.addEventListener('submit', async function (event) {
     event.preventDefault();
