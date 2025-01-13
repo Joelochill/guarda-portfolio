@@ -2,9 +2,11 @@ import emailjs from '@emailjs/browser';
 import validator from 'validator';
 import { useTranslations } from '../i18n/utils';
 
+const emailJsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
+
 document.addEventListener('astro:page-load', () => {
   emailjs.init({
-    publicKey: import.meta.env.PUBLIC_EMAILJS_KEY,
+    publicKey: emailJsKey,
     blockHeadless: true,
     limitRate: {
       id: 'contact_form',
@@ -37,6 +39,7 @@ document.addEventListener('astro:page-load', () => {
   });
 
   const submissionResult = document.querySelector('#submission-result');
+  submissionResult.textContent = emailJsKey;
 
   contactForm.addEventListener('submit', async function (event) {
     event.preventDefault();
