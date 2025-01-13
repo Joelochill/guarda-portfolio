@@ -63,7 +63,7 @@ export const liveContentEN = [...uniqueYears].map((year) => ({
 // home background query
 
 const homeBackground = await sanityClient.fetch(
-  '*[_type == "backgroundImage" && title == "Home"][0] { image }',
+  '*[_type == "img" && title == "home-background"][0] { image }',
 );
 
 export const backgroundUrl = urlFor(homeBackground.image).width(2000).url();
