@@ -52,8 +52,6 @@ document.addEventListener('astro:page-load', () => {
       return;
     }
 
-    console.log('ATTEMPT');
-
     const formData = new FormData(this);
     const sanitizedData = sanitize(formData);
 
@@ -69,28 +67,21 @@ document.addEventListener('astro:page-load', () => {
       internetAvailable = false;
     }
 
-    console.log(internetAvailable);
-
     if (!navigator.onLine || !internetAvailable) {
       submissionResult.style.color = 'var(--color-error)';
       submissionResult.textContent = t('form.submissionResults.offline');
-      console.log('OFFLINE');
+
       return;
     }
 
     emailjs.send('contact_service', 'contact_form', sanitizedData).then(
-      (response) => {
-        console.log(response);
+      () => {
+
         submissionResult.style.color = 'var(--color-success)';
         submissionResult.textContent = t('form.submissionResults.success');
         this.reset();
       },
       (error) => {
-        console.error('Error sending email:', {
-          status: error.status,
-          text: error.text,
-          details: error,
-        });
         submissionResult.style.color = 'var(--color-error)';
         submissionResult.textContent =
           error.status === 429
