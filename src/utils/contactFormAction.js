@@ -84,7 +84,11 @@ document.addEventListener('astro:page-load', () => {
         this.reset();
       },
       (error) => {
-        console.log(error);
+        console.error('Error sending email:', {
+          status: error.status,
+          text: error.text,
+          details: error,
+        });
         submissionResult.style.color = 'var(--color-error)';
         submissionResult.textContent =
           error.status === 429
