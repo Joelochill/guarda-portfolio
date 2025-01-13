@@ -1,4 +1,4 @@
-import ebGaramondWoff2 from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
+/* import ebGaramondWoff2 from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url'; */
 
 const siteUrl = import.meta.env.SITE_URL;
 
@@ -34,13 +34,13 @@ export const defaultSeo = {
         href: '/site.webmanifest',
       },
       { rel: 'sitemap', href: '/sitemap-index.xml' },
-      {
+      /* {
         rel: 'preload',
         as: 'font',
         type: 'font/woff2',
         href: ebGaramondWoff2,
         crossorigin: 'anonymous',
-      },
+      }, */
     ],
     meta: [
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
