@@ -5,6 +5,9 @@ import { useTranslations } from '../i18n/utils';
 const emailJsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
 
 document.addEventListener('astro:page-load', () => {
+  const contactForm = document.querySelector('#contact-form');
+  if (!contactForm) return;
+
   emailjs.init({
     publicKey: emailJsKey,
     blockHeadless: true,
@@ -14,7 +17,6 @@ document.addEventListener('astro:page-load', () => {
     },
   });
 
-  const contactForm = document.querySelector('#contact-form');
   const lang = contactForm.dataset.lang;
   const t = useTranslations(lang);
 
@@ -76,7 +78,6 @@ document.addEventListener('astro:page-load', () => {
 
     emailjs.send('contact_service', 'contact_form', sanitizedData).then(
       () => {
-
         submissionResult.style.color = 'var(--color-success)';
         submissionResult.textContent = t('form.submissionResults.success');
         this.reset();
