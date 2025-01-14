@@ -1,5 +1,5 @@
 ---
-import { liveContentEN } from '../../cms/queries';
+import { liveContentEn } from '../../cms/queries';
 import EventList from '../../components/EventList.astro';
 import Layout from '../../layouts/Layout.astro';
 
@@ -13,7 +13,7 @@ const seo = {
 <Layout seo={seo}>
   <main transition:name="main" transition:animate="fade">
     {
-      liveContentEN.map(({ year, events }) => (
+      liveContentEn.map(({ year, events }) => (
         <EventList year={year} events={events} />
       ))
     }
