@@ -1,19 +1,26 @@
 ---
 import { getImage } from 'astro:assets';
-import { backgroundUrl } from '../cms/queries';
+import { backgroundUrl, ogImageUrl } from '../cms/queries';
 import Layout from '../layouts/Layout.astro';
+
+const ogImage = await getImage({
+  src: ogImageUrl,
+  format: 'jpg',
+  inferSize: true,
+});
 
 const seo = {
   title: 'Home',
   description:
     'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.',
-  /* openGraph: {
+  openGraph: {
     basic: {
       title: 'Home | GUARDA',
       type: 'website',
-      image: 
+      image: ogImageUrl,
+      url: Astro.url.href
     },
-  }, */
+  },
 };
 
 const background = await getImage({
