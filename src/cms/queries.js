@@ -81,7 +81,7 @@ export const aboutContentEn = await sanityClient.fetch(
 // openGraph Image
 
 const ogImage = await sanityClient.fetch(
-  '*[_type == "img" && title == "og-image"][0].image',
+  '*[_type == "img" && title == "og-seo"][0].image',
 );
 
 export const ogImageUrl = urlFor(ogImage).url();
