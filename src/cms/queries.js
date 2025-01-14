@@ -22,7 +22,7 @@ export const projects = rawProjects.map(({ cover, ...rest }) => ({
 
 // Live's queries & formatting
 
-const eventsES = await sanityClient.fetch(
+const eventsEs = await sanityClient.fetch(
   `*[_type == "event"] | order(date desc) { 
     date,
     "city": city[_key == "es"][0].value, 
@@ -32,7 +32,7 @@ const eventsES = await sanityClient.fetch(
   }`,
 );
 
-const eventsEN = await sanityClient.fetch(
+const eventsEn = await sanityClient.fetch(
   `*[_type == "event"] | order(date desc) { 
     date, 
     "city": city[_key == "en"][0].value,
@@ -43,19 +43,19 @@ const eventsEN = await sanityClient.fetch(
 );
 
 const uniqueYears = new Set(
-  eventsES.map((event) => new Date(event.date).getFullYear()),
+  eventsEs.map((event) => new Date(event.date).getFullYear()),
 );
 
-export const liveContentES = [...uniqueYears].map((year) => ({
+export const liveContentEs = [...uniqueYears].map((year) => ({
   year,
-  events: eventsES.filter(
+  events: eventsEs.filter(
     (event) => new Date(event.date).getFullYear() === year,
   ),
 }));
 
-export const liveContentEN = [...uniqueYears].map((year) => ({
+export const liveContentEn = [...uniqueYears].map((year) => ({
   year,
-  events: eventsEN.filter(
+  events: eventsEn.filter(
     (event) => new Date(event.date).getFullYear() === year,
   ),
 }));
@@ -63,7 +63,17 @@ export const liveContentEN = [...uniqueYears].map((year) => ({
 // home background query
 
 const homeBackground = await sanityClient.fetch(
-  '*[_type == "img" && title == "home-background"][0] { image }',
+  '*[_type == "img" && title == "home-background"][0].image',
 );
 
-export const backgroundUrl = urlFor(homeBackground.image).width(2000).url();
+export const backgroundUrl = urlFor(homeBackground).width(2000).url();
+
+// about contents
+
+export const aboutContentEs = await sanityClient.fetch(
+  '*[_type == "txt" && title == "about-ES"][0].content',
+);
+
+export const aboutContentEn = await sanityClient.fetch(
+  '*[_type == "txt" && title == "about-EN"][0].content',
+);

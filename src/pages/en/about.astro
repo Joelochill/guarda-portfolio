@@ -1,5 +1,7 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import { PortableText } from 'astro-portabletext';
+import { aboutContentEn } from '../../cms/queries';
 
 const seo = {
   title: 'About',
@@ -10,26 +12,7 @@ const seo = {
 
 <Layout seo={seo}>
   <main transition:name="main" transition:animate="fade">
-    <p>Joel Rico Rada is a Basque sound artist based in Zaragoza.</p>
-    <p>
-      Joel is GUARDA, a stage for the strange, the secret, and the silent. A
-      dark project with a clear personal imprint. Through his music, GUARDA aims
-      to generate unease and awaken a sense of uncertainty. He works with noise,
-      combining field recordings, modular synthesis, and spoken word.
-    </p>
-    <p>
-      Graduated in Fine Arts from the University of Zaragoza, he specialized in
-      video and documentary audio. He conceives the horror genre as a necessary
-      medium for the exposure and understanding of internal evils.
-    </p>
-    <p>
-      La Piedra de La Locura is GUARDA's debut album. A dark journey through the
-      loss of faith, the confrontation with anxiety, and the search for identity
-      and meaning. It addresses universal themes such as the need for balance or
-      the desire for transcendence. Guarda holds secrets; it is an introspective
-      and emotional work, a deep meditation on madness and death.
-    </p>
-    <p>Joel is half of the bands Mejor Sordo and ACITDX.</p>
+    <PortableText value={aboutContentEn} />
   </main>
 </Layout>
 
