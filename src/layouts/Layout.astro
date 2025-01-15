@@ -19,7 +19,7 @@ const seo = {
     ...defaultSeo.openGraph,
     basic: {
       ...defaultSeo.openGraph.basic,
-      title,
+      title: `${title} | ${defaultSeo.openGraph.basic.title}`, // Page | GUARDA
     },
     optional: {
       ...defaultSeo.openGraph.optional,
@@ -28,7 +28,7 @@ const seo = {
   },
   twitter: {
     ...defaultSeo.twitter,
-    title,
+    title: `${title} | ${defaultSeo.twitter.title}`, // Page | GUARDA
     description,
   },
 };
