@@ -18,6 +18,10 @@ export const defaultSeo = {
     },
     optional: {
       siteName: 'GUARDA',
+    },
+    image: {
+      secureUrl: ogImageUrl,
+      alt: 'Joel Rico Rada Photo',
     }
   },
   extend: {
