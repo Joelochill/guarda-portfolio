@@ -1,9 +1,13 @@
 import ebGaramondWoff2 from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
 import { ogImageUrl } from '../cms/queries';
 
+// Set as default only used properties
+
 const titleDefault = 'GUARDA';
-const descriptionDefault = 'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.';
+const descriptionDefault =
+  'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.';
 const siteUrl = import.meta.env.SITE_URL;
+const imageAlt = 'Joel Rico Rada Photo';
 
 export const defaultSeo = {
   title: titleDefault,
@@ -32,8 +36,15 @@ export const defaultSeo = {
     },
     image: {
       secureUrl: ogImageUrl,
-      alt: 'Joel Rico Rada Photo',
+      alt: imageAlt,
     },
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: titleDefault,
+    image: ogImageUrl,
+    alt: imageAlt,
+    description: descriptionDefault,
   },
   extend: {
     link: [

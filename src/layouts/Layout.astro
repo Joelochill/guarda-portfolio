@@ -10,20 +10,26 @@ import { defaultSeo } from '../utils/defaultSeo';
 const { title, description, backgroundImage } = Astro.props;
 const lang = Astro.currentLocale;
 
+// Might need a refactor to enhance flexibility - it is so rigid
 const seo = {
+  ...defaultSeo,
   title,
   description,
-  ...defaultSeo,
   openGraph: {
     ...defaultSeo.openGraph,
     basic: {
-      title,
       ...defaultSeo.openGraph.basic,
+      title,
     },
     optional: {
-      description,
       ...defaultSeo.openGraph.optional,
+      description,
     },
+  },
+  twitter: {
+    ...defaultSeo.twitter,
+    title,
+    description,
   },
 };
 
@@ -48,6 +54,7 @@ const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
       charset={seo.charset}
       languageAlternates={seo.languageAlternates}
       openGraph={seo.openGraph}
+      twitter={seo.twitter}
       extend={seo.extend}
     />
   </Head>
