@@ -10,8 +10,20 @@ import { defaultSeo } from '../utils/defaultSeo';
 const { seo, backgroundImage } = Astro.props;
 const lang = Astro.currentLocale;
 
-const seoData = { ...defaultSeo, ...seo }; // seo overrides defaultSeo
-seoData.canonical = Astro.url.href; // dynamically set canonical
+const seoData = {
+  ...defaultSeo,
+  ...seo,
+  openGraph: {
+    ...defaultSeo?.openGraph,
+    ...seo?.openGraph,
+    basic: {
+      ...defaultSeo?.openGraph?.basic,
+      ...seo?.openGraph?.basic,
+    },
+  },
+}; // deep merge
+// set both in one line
+seoData.openGraph.basic.url = seoData.canonical = Astro.url.href;
 
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---

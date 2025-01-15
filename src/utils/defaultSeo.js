@@ -1,4 +1,5 @@
 import ebGaramondWoff2 from '@fontsource-variable/eb-garamond/files/eb-garamond-latin-wght-normal.woff2?url';
+import { ogImageUrl } from '../cms/queries';
 
 const siteUrl = import.meta.env.SITE_URL;
 
@@ -10,6 +11,12 @@ export const defaultSeo = {
     { href: `${siteUrl}/en/`, hrefLang: 'en' },
     { href: siteUrl, hrefLang: 'x-default' },
   ],
+  openGraph: {
+    basic: {
+      type: 'website',
+      image: ogImageUrl,
+    },
+  },
   extend: {
     link: [
       {

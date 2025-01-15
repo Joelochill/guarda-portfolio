@@ -1,13 +1,7 @@
 ---
 import { getImage } from 'astro:assets';
-import { backgroundUrl, ogImageUrl } from '../cms/queries';
+import { backgroundUrl } from '../cms/queries';
 import Layout from '../layouts/Layout.astro';
-
-const ogImage = await getImage({
-  src: ogImageUrl,
-  format: 'jpg',
-  inferSize: true,
-});
 
 const seo = {
   title: 'Home',
@@ -16,9 +10,6 @@ const seo = {
   openGraph: {
     basic: {
       title: 'Home | GUARDA',
-      type: 'website',
-      image: ogImageUrl,
-      url: Astro.url.href,
     },
   },
 };
