@@ -7,19 +7,6 @@ const title = 'Home';
 const description =
   'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.';
 
-const seo = {
-  title,
-  description,
-  openGraph: {
-    basic: {
-      title,
-    },
-    optional: {
-      description,
-    },
-  },
-};
-
 const background = await getImage({
   src: backgroundUrl,
   format: 'webp',
@@ -27,6 +14,6 @@ const background = await getImage({
 });
 ---
 
-<Layout seo={seo} backgroundImage={background}>
+<Layout title={title} description={description} backgroundImage={background}>
   <main transition:name="main" transition:animate="fade"></main>
 </Layout>

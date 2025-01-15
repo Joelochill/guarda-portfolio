@@ -6,22 +6,9 @@ import Layout from '../../layouts/Layout.astro';
 const title = 'Live';
 const description =
   'Check out the concert list of GUARDA, the project by Joel Rico Rada. Discover upcoming dates and relive past performances.';
-
-const seo = {
-  title,
-  description,
-  openGraph: {
-    basic: {
-      title,
-    },
-    optional: {
-      description,
-    },
-  },
-};
 ---
 
-<Layout seo={seo}>
+<Layout title={title} description={description}>
   <main transition:name="main" transition:animate="fade">
     {
       liveContentEn.map(({ year, events }) => (

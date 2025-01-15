@@ -7,22 +7,9 @@ const contactEmail = import.meta.env.CONTACT_EMAIL;
 const title = 'Contact';
 const description =
   'Ponte en contacto con Joel Rico Rada, el creador de GUARDA. Envía tus preguntas, solicitudes de prensa o colaboraciones.';
-
-const seo = {
-  title,
-  description,
-  openGraph: {
-    basic: {
-      title,
-    },
-    optional: {
-      description,
-    },
-  },
-};
 ---
 
-<Layout seo={seo}>
+<Layout title={title} description={description}>
   <main transition:name="main" transition:animate="fade">
     <ContactForm />
     <p>

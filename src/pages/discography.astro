@@ -6,22 +6,9 @@ import Layout from '../layouts/Layout.astro';
 const title = 'Discography';
 const description =
   'Explora la discografía de GUARDA, el proyecto sonoro de Joel Rico Rada, y escucha sus álbumes de música experimental y ambiental.';
-
-const seo = {
-  title,
-  description,
-  openGraph: {
-    basic: {
-      title,
-    },
-    optional: {
-      description,
-    },
-  },
-};
 ---
 
-<Layout seo={seo}>
+<Layout title={title} description={description}>
   <main transition:name="main" transition:animate="fade">
     {
       projects.map(({ coverUrl, title, bandcampLink }, index) => (

@@ -6,22 +6,9 @@ import Layout from '../layouts/Layout.astro';
 const title = 'Live';
 const description =
   'Consulta la lista de conciertos de GUARDA, el proyecto de Joel Rico Rada. Descubre próximas fechas y revive sus actuaciones pasadas.';
-
-const seo = {
-  title,
-  description,
-  openGraph: {
-    basic: {
-      title,
-    },
-    optional: {
-      description,
-    },
-  },
-};
 ---
 
-<Layout seo={seo}>
+<Layout title={title} description={description}>
   <main transition:name="main" transition:animate="fade">
     {
       liveContentEs.map(({ year, events }) => (

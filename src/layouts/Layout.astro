@@ -7,34 +7,32 @@ import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import { defaultSeo } from '../utils/defaultSeo';
 
-const { seo, backgroundImage } = Astro.props;
+const { title, description, backgroundImage } = Astro.props;
 const lang = Astro.currentLocale;
 
-const seoData = {
+const seo = {
+  title,
+  description,
   ...defaultSeo,
-  ...seo,
   openGraph: {
-    ...defaultSeo?.openGraph,
-    ...seo?.openGraph,
+    ...defaultSeo.openGraph,
     basic: {
-      ...defaultSeo?.openGraph?.basic,
-      ...seo?.openGraph?.basic,
+      title,
+      ...defaultSeo.openGraph.basic,
     },
     optional: {
-      ...defaultSeo?.openGraph?.optional,
-      ...seo?.openGraph?.optional,
+      description,
+      ...defaultSeo.openGraph.optional,
     },
   },
-}; // deep merge
+};
 
 // set both in one line
-seoData.openGraph.basic.url = seoData.canonical = Astro.url.href;
+seo.openGraph.basic.url = seo.canonical = Astro.url.href;
 
 const pageInSpanish = Astro.currentLocale === 'es';
-seoData.openGraph.optional.locale = pageInSpanish ? 'es_ES' : 'en_US';
-seoData.openGraph.optional.localeAlternate = pageInSpanish
-  ? ['en_US']
-  : ['es_ES'];
+seo.openGraph.optional.locale = pageInSpanish ? 'es_ES' : 'en_US';
+seo.openGraph.optional.localeAlternate = pageInSpanish ? ['en_US'] : ['es_ES'];
 
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---
@@ -43,14 +41,14 @@ const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 <html lang={lang}>
   <Head>
     <SEO
-      title={seoData.title}
-      titleTemplate={seoData.titleTemplate}
-      description={seoData.description}
-      canonical={seoData.canonical}
-      charset={seoData.charset}
-      languageAlternates={seoData.languageAlternates}
-      openGraph={seoData.openGraph}
-      extend={seoData.extend}
+      title={seo.title}
+      titleTemplate={seo.titleTemplate}
+      description={seo.description}
+      canonical={seo.canonical}
+      charset={seo.charset}
+      languageAlternates={seo.languageAlternates}
+      openGraph={seo.openGraph}
+      extend={seo.extend}
     />
   </Head>
   <body class:list={[backgroundImage ? 'background-image' : '']}>

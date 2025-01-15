@@ -7,22 +7,9 @@ const contactEmail = import.meta.env.CONTACT_EMAIL;
 const title = 'Contact';
 const description =
   'Get in touch with Joel Rico Rada, the creator of GUARDA. Send your questions, press inquiries, or collaboration requests.';
-
-const seo = {
-  title,
-  description,
-  openGraph: {
-    basic: {
-      title,
-    },
-    optional: {
-      description,
-    },
-  },
-};
 ---
 
-<Layout seo={seo}>
+<Layout title={title} description={description}>
   <main transition:name="main" transition:animate="fade">
     <ContactForm />
     <p>
