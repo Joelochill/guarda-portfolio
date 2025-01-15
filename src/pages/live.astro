@@ -3,13 +3,19 @@ import { liveContentEs } from '../cms/queries';
 import EventList from '../components/EventList.astro';
 import Layout from '../layouts/Layout.astro';
 
+const title = 'Live';
+const description =
+  'Consulta la lista de conciertos de GUARDA, el proyecto de Joel Rico Rada. Descubre próximas fechas y revive sus actuaciones pasadas.';
+
 const seo = {
-  title: 'Live',
-  description:
-    'Consulta la lista de conciertos de GUARDA, el proyecto de Joel Rico Rada. Descubre próximas fechas y revive sus actuaciones pasadas.',
+  title,
+  description,
   openGraph: {
     basic: {
-      title: 'Live | GUARDA',
+      title,
+    },
+    optional: {
+      description,
     },
   },
 };

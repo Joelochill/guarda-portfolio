@@ -16,6 +16,9 @@ export const defaultSeo = {
       type: 'website',
       image: ogImageUrl,
     },
+    optional: {
+      siteName: 'GUARDA',
+    }
   },
   extend: {
     link: [

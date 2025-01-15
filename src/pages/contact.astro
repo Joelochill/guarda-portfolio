@@ -4,13 +4,19 @@ import Layout from '../layouts/Layout.astro';
 
 const contactEmail = import.meta.env.CONTACT_EMAIL;
 
+const title = 'Contact';
+const description =
+  'Ponte en contacto con Joel Rico Rada, el creador de GUARDA. Envía tus preguntas, solicitudes de prensa o colaboraciones.';
+
 const seo = {
-  title: 'Contact',
-  description:
-    'Ponte en contacto con Joel Rico Rada, el creador de GUARDA. Envía tus preguntas, solicitudes de prensa o colaboraciones.',
+  title,
+  description,
   openGraph: {
     basic: {
-      title: 'Contact | GUARDA',
+      title,
+    },
+    optional: {
+      description,
     },
   },
 };

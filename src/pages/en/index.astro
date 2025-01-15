@@ -3,13 +3,19 @@ import { getImage } from 'astro:assets';
 import { backgroundUrl } from '../../cms/queries';
 import Layout from '../../layouts/Layout.astro';
 
+const title = 'Home';
+const description =
+  'Official page of GUARDA, the music project by Joel Rico Rada. Explore his music, concerts, and journey.';
+
 const seo = {
-  title: 'Home',
-  description:
-    'Official page of GUARDA, the music project by Joel Rico Rada. Explore his music, concerts, and journey.',
+  title,
+  description,
   openGraph: {
     basic: {
-      title: 'Home | GUARDA',
+      title,
+    },
+    optional: {
+      description,
     },
   },
 };

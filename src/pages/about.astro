@@ -3,13 +3,19 @@ import { PortableText } from 'astro-portabletext';
 import { aboutContentEs } from '../cms/queries';
 import Layout from '../layouts/Layout.astro';
 
+const title = 'About';
+const description =
+  'Descubre el proyecto GUARDA de Joel Rico Rada, explorando el terror espiritual con field recordings, síntesis modular y spoken word.';
+
 const seo = {
-  title: 'About',
-  description:
-    'Descubre el proyecto GUARDA de Joel Rico Rada, explorando el terror espiritual con field recordings, síntesis modular y spoken word.',
+  title,
+  description,
   openGraph: {
     basic: {
-      title: 'About | GUARDA',
+      title,
+    },
+    optional: {
+      description,
     },
   },
 };

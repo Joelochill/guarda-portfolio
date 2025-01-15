@@ -1,15 +1,21 @@
 ---
-import Layout from '../../layouts/Layout.astro';
 import { PortableText } from 'astro-portabletext';
 import { aboutContentEn } from '../../cms/queries';
+import Layout from '../../layouts/Layout.astro';
+
+const title = 'About';
+const description =
+  'Discover GUARDA by Joel Rico Rada, exploring spiritual terror through field recordings, modular synthesis, and spoken word.';
 
 const seo = {
-  title: 'About',
-  description:
-    'Discover GUARDA by Joel Rico Rada, exploring spiritual terror through field recordings, modular synthesis, and spoken word.',
+  title,
+  description,
   openGraph: {
     basic: {
-      title: 'About | GUARDA',
+      title,
+    },
+    optional: {
+      description,
     },
   },
 };

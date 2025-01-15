@@ -4,13 +4,19 @@ import Layout from '../../layouts/Layout.astro';
 
 const contactEmail = import.meta.env.CONTACT_EMAIL;
 
+const title = 'Contact';
+const description =
+  'Get in touch with Joel Rico Rada, the creator of GUARDA. Send your questions, press inquiries, or collaboration requests.';
+
 const seo = {
-  title: 'Contact',
-  description:
-    'Get in touch with Joel Rico Rada, the creator of GUARDA. Send your questions, press inquiries, or collaboration requests.',
+  title,
+  description,
   openGraph: {
     basic: {
-      title: 'Contact | GUARDA',
+      title,
+    },
+    optional: {
+      description,
     },
   },
 };

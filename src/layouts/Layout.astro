@@ -20,10 +20,21 @@ const seoData = {
       ...defaultSeo?.openGraph?.basic,
       ...seo?.openGraph?.basic,
     },
+    optional: {
+      ...defaultSeo?.openGraph?.optional,
+      ...seo?.openGraph?.optional,
+    },
   },
 }; // deep merge
+
 // set both in one line
 seoData.openGraph.basic.url = seoData.canonical = Astro.url.href;
+
+const pageInSpanish = Astro.currentLocale === 'es';
+seoData.openGraph.optional.locale = pageInSpanish ? 'es_ES' : 'en_US';
+seoData.openGraph.optional.localeAlternate = pageInSpanish
+  ? ['en_US']
+  : ['es_ES'];
 
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---

@@ -3,13 +3,19 @@ import { projects } from '../../cms/queries';
 import Project from '../../components/Project.astro';
 import Layout from '../../layouts/Layout.astro';
 
+const title = 'Discography';
+const description =
+  'Explore the discography of GUARDA, the sound project by Joel Rico Rada, and listen to his experimental and ambient albums.';
+
 const seo = {
-  title: 'Discography',
-  description:
-    'Explore the discography of GUARDA, the sound project by Joel Rico Rada, and listen to his experimental and ambient albums.',
+  title,
+  description,
   openGraph: {
     basic: {
-      title: 'Discography | GUARDA',
+      title,
+    },
+    optional: {
+      description,
     },
   },
 };
