@@ -1,4 +1,5 @@
 import accounts from '../utils/accounts.json';
+import constraints from '../utils/validationConstraints.json';
 
 export const translations = {
   defaultLang: 'es',
@@ -14,20 +15,20 @@ export const translations = {
       errors: {
         name: {
           required: 'El campo nombre es obligatorio',
-          outOfRange: 'El campo nombre debe contener entre 1 y 50 caracteres',
+          outOfRange: `El campo nombre debe contener entre ${constraints.name.min} y ${constraints.name.max} caracteres`,
         },
         email: {
           required: 'El campo email es obligatorio',
-          outOfRange: 'El campo email debe contener entre 3 y 254 caracteres',
+          outOfRange: `El campo email debe contener entre ${constraints.email.min} y ${constraints.email.max} caracteres`,
           badFormat: 'El campo email debe tener un formato correcto',
         },
         subject: {
           required: 'El campo asunto es obligatorio',
-          outOfRange: 'El campo asunto debe contener entre 1 y 70 caracteres',
+          outOfRange: `El campo asunto debe contener entre ${constraints.subject.min} y ${constraints.subject.max} caracteres`,
         },
         message: {
           required: 'El campo mensaje es obligatorio',
-          outOfRange: 'El campo mensaje debe contener al menos 10 caracteres',
+          outOfRange: `El campo mensaje debe contener al menos ${constraints.message.min} caracteres`,
         },
       },
       submissionResults: {
@@ -52,20 +53,20 @@ export const translations = {
       errors: {
         name: {
           required: 'Name field is required',
-          outOfRange: 'Name field must contain between 1 and 50 characters',
+          outOfRange: `Name field must contain between ${constraints.name.min} and ${constraints.name.max} characters`,
         },
         email: {
           required: 'Email field is required',
-          outOfRange: 'Email field must contain between 3 and 254 characters',
+          outOfRange: `Email field must contain between ${constraints.email.min} and ${constraints.email.max} characters`,
           badFormat: 'Email field must have a correct format',
         },
         subject: {
           required: 'Subject field is required',
-          outOfRange: 'Subject field must contain between 1 and 70 characters',
+          outOfRange: `Subject field must contain between ${constraints.subject.min} y ${constraints.subject.max} characters`,
         },
         message: {
           required: 'Message field is required',
-          outOfRange: 'Message field must contain at least 10 characters',
+          outOfRange: `Message field must contain at least ${constraints.message.min} characters`,
         },
       },
       submissionResults: {

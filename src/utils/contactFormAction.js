@@ -1,7 +1,7 @@
 import emailjs from '@emailjs/browser';
 import validator from 'validator';
 import { useTranslations } from '../i18n/utils';
-
+import constraints from '../utils/validationConstraints.json';
 const emailJsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
 
 document.addEventListener('astro:page-load', () => {
@@ -39,6 +39,12 @@ document.addEventListener('astro:page-load', () => {
   messageInput.addEventListener('blur', function () {
     validate(this, checkMessageValidity);
   });
+
+  /* [
+    { input: nameInput, fn: checkNameValidity },
+    { input: emailInput, fn: checkEmailValidity },
+    { input } 
+  ] */
 
   const submissionResult = document.querySelector('#submission-result');
 
@@ -131,8 +137,7 @@ document.addEventListener('astro:page-load', () => {
   }
 
   function checkNameValidity(value) {
-    const min = 1;
-    const max = 50;
+    const { min, max} = constraints.name;
 
     if (validator.isEmpty(value)) return t('form.errors.name.required');
 
@@ -144,8 +149,7 @@ document.addEventListener('astro:page-load', () => {
   }
 
   function checkEmailValidity(value) {
-    const min = 3;
-    const max = 254;
+    const { min, max } = constraints.email;
 
     if (validator.isEmpty(value)) return t('form.errors.email.required');
 
@@ -159,8 +163,7 @@ document.addEventListener('astro:page-load', () => {
   }
 
   function checkSubjectValidity(value) {
-    const min = 1;
-    const max = 70;
+    const { min, max } = constraints.subject;
 
     if (validator.isEmpty(value)) return t('form.errors.subject.required');
 
@@ -172,7 +175,7 @@ document.addEventListener('astro:page-load', () => {
   }
 
   function checkMessageValidity(value) {
-    const min = 10;
+    const { min } = constraints.message;
 
     if (validator.isEmpty(value)) return t('form.errors.message.required');
 
