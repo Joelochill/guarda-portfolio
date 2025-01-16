@@ -1,4 +1,4 @@
-import translations from './translations.json';
+import { translations } from './translations.js';
 
 export function useTranslations(lang) {
   return function t(keys) {

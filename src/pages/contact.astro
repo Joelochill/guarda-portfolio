@@ -1,8 +1,7 @@
 ---
 import ContactForm from '../components/ContactForm.astro';
 import Layout from '../layouts/Layout.astro';
-
-const contactEmail = import.meta.env.CONTACT_EMAIL;
+import accounts from '../utils/accounts.json';
 
 const title = 'Contact';
 const description =
@@ -13,7 +12,9 @@ const description =
   <main transition:name="main" transition:animate="fade">
     <ContactForm />
     <p>
-      O envía un email a <a href={`mailto:${contactEmail}`}> {contactEmail}</a>
+      O envía un email a <a href={`mailto:${accounts.email}`}>
+        {accounts.email}</a
+      >
     </p>
   </main>
 </Layout>
