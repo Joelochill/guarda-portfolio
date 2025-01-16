@@ -62,7 +62,7 @@ export const translations = {
         },
         subject: {
           required: 'Subject field is required',
-          outOfRange: `Subject field must contain between ${constraints.subject.min} y ${constraints.subject.max} characters`,
+          outOfRange: `Subject field must contain between ${constraints.subject.min} and ${constraints.subject.max} characters`,
         },
         message: {
           required: 'Message field is required',

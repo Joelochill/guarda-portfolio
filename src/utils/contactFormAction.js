@@ -21,30 +21,20 @@ document.addEventListener('astro:page-load', () => {
   const t = useTranslations(lang);
 
   const nameInput = document.querySelector('input[name="user_name"]');
-  nameInput.addEventListener('blur', function () {
-    validate(this, checkNameValidity);
-  });
-
   const emailInput = document.querySelector('input[name="user_email"]');
-  emailInput.addEventListener('blur', function () {
-    validate(this, checkEmailValidity);
-  });
-
   const subjectInput = document.querySelector('input[name="subject"]');
-  subjectInput.addEventListener('blur', function () {
-    validate(this, checkSubjectValidity);
-  });
-
   const messageInput = document.querySelector('textarea[name="message"]');
-  messageInput.addEventListener('blur', function () {
-    validate(this, checkMessageValidity);
-  });
 
-  /* [
+  [
     { input: nameInput, fn: checkNameValidity },
     { input: emailInput, fn: checkEmailValidity },
-    { input } 
-  ] */
+    { input: subjectInput, fn: checkSubjectValidity },
+    { input: messageInput, fn: checkMessageValidity },
+  ].forEach(({ input, fn }) => {
+    input.addEventListener('blur', function () {
+      validate(this, fn);
+    });
+  });
 
   const submissionResult = document.querySelector('#submission-result');
 
@@ -137,7 +127,7 @@ document.addEventListener('astro:page-load', () => {
   }
 
   function checkNameValidity(value) {
-    const { min, max} = constraints.name;
+    const { min, max } = constraints.name;
 
     if (validator.isEmpty(value)) return t('form.errors.name.required');
 
