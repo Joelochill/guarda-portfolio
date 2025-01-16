@@ -1,13 +1,14 @@
 ---
-import { SEO } from 'astro-seo';
+import { SEO, TwitterCardType } from 'astro-seo';
 import '../../node_modules/normalize.css/normalize.css';
 import Dropdown from '../components/Dropdown.astro';
 import Footer from '../components/Footer.astro';
 import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import { defaultSeo } from '../utils/defaultSeo';
+import { Schema } from 'astro-seo-schema'; 
 
-const { title, description, backgroundImage } = Astro.props;
+const { title, description, structuredData, backgroundImage } = Astro.props;
 const lang = Astro.currentLocale;
 
 // Might need a refactor to enhance flexibility - it is so rigid
@@ -30,6 +31,7 @@ const seo = {
     ...defaultSeo.twitter,
     title: `${title} | ${defaultSeo.twitter.title}`, // Page | GUARDA
     description,
+    card: defaultSeo.twitter.card as TwitterCardType, // fix ts screaming
   },
 };
 
@@ -57,6 +59,7 @@ const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
       twitter={seo.twitter}
       extend={seo.extend}
     />
+    <Schema item={structuredData}/>
   </Head>
   <body class:list={[backgroundImage ? 'background-image' : '']}>
     <div class="page-wrapper">

@@ -1,6 +1,6 @@
 ---
 import { getImage } from 'astro:assets';
-import { backgroundUrl } from '../cms/queries';
+import { backgroundUrl, ogImageUrl } from '../cms/queries';
 import Layout from '../layouts/Layout.astro';
 
 const title = 'Home';
@@ -12,8 +12,51 @@ const background = await getImage({
   format: 'webp',
   inferSize: true,
 });
+
+const siteUrl = Astro.site;
+
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      name: 'Joel Rico Rada',
+      url: siteUrl,
+      image: ogImageUrl,
+      sameAs: [
+        'https://instagram.com/joelricorada',
+        'https://www.youtube.com/channel/UClPzJnuXL3HBqT7HWUUM1KQ',
+      ],
+      jobTitle: 'Artista Sonoro',
+      worksFor: {
+        '@type': 'Organization',
+        name: 'GUARDA',
+      },
+    },
+    {
+      '@type': 'MusicGroup',
+      name: 'GUARDA',
+      member: {
+        '@type': 'Person',
+        name: 'Joel Rico Rada',
+      },
+      genre: ['Electrónica', 'Ambient', 'Experimental'],
+      url: siteUrl,
+      sameAs: [
+        'https://joelricorada.bandcamp.com/',
+        `https://open.spotify.com/intl-es/artist/5eBZuse0Ntu8UgrPleYZY8?si
+        =g2qzrCylTFStHjGhGv47hg`,
+      ],
+    },
+  ],
+};
 ---
 
-<Layout title={title} description={description} backgroundImage={background}>
+<Layout
+  title={title}
+  description={description}
+  structuredData={structuredData}
+  backgroundImage={background}
+>
   <main transition:name="main" transition:animate="fade"></main>
 </Layout>
