@@ -10,7 +10,6 @@ import { useTranslations } from '../i18n/utils';
 import accounts from '../utils/accounts.json';
 
 const lang = Astro.currentLocale;
-const t = useTranslations(lang);
 ---
 
 <form id="contact-form" novalidate data-lang={lang}>
@@ -19,7 +18,7 @@ const t = useTranslations(lang);
       type="text"
       name="user_name"
       id="user_name"
-      placeholder={t('form.ui.user_name') + '*'}
+      placeholder={lang === 'es' ? 'Nombre*' : 'Name*'}
     />
     <span class="error"></span>
   </div>
@@ -29,7 +28,7 @@ const t = useTranslations(lang);
       type="email"
       name="user_email"
       id="email"
-      placeholder={t('form.ui.user_email') + '*'}
+      placeholder="Email*"
       autocomplete="on"
     />
     <span class="error"></span>
@@ -40,7 +39,7 @@ const t = useTranslations(lang);
       type="text"
       name="subject"
       id="subject"
-      placeholder={t('form.ui.subject') + '*'}
+      placeholder={lang === 'es' ? 'Asunto*' : 'Subject*'}
     />
     <span class="error"></span>
   </div>
@@ -50,12 +49,12 @@ const t = useTranslations(lang);
       rows="8"
       name="message"
       id="message"
-      placeholder={t('form.ui.message') + '*'}></textarea>
+      placeholder={lang === 'es' ? 'Mensaje*' : 'Message*'}></textarea>
     <span class="error"></span>
   </div>
 
   <div class="form-control">
-    <button type="submit">{t('form.ui.submit')}</button>
+    <button type="submit">{lang === 'es' ? 'Enviar' : 'Send'}</button>
     <span id="submission-result"></span>
   </div>
 </form>

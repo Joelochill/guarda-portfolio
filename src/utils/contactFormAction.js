@@ -1,6 +1,6 @@
 import emailjs from '@emailjs/browser';
 import validator from 'validator';
-import { useTranslations } from '../i18n/utils';
+import accounts from '../utils/accounts.json';
 import constraints from '../utils/validationConstraints.json';
 const emailJsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
 
@@ -18,7 +18,6 @@ document.addEventListener('astro:page-load', () => {
   });
 
   const lang = contactForm.dataset.lang;
-  const t = useTranslations(lang);
 
   const nameInput = document.querySelector('input[name="user_name"]');
   const emailInput = document.querySelector('input[name="user_email"]');
@@ -67,7 +66,10 @@ document.addEventListener('astro:page-load', () => {
 
     if (!navigator.onLine || !internetAvailable) {
       submissionResult.style.color = 'var(--color-error)';
-      submissionResult.textContent = t('form.submissionResults.offline');
+      submissionResult.textContent =
+        lang === 'es'
+          ? 'No estás conectado a internet. Por favor, comprueba tu conexión e inténtalo de nuevo.'
+          : 'You are not connected to the internet. Please, check your connection and try again.';
 
       return;
     }
@@ -75,15 +77,22 @@ document.addEventListener('astro:page-load', () => {
     emailjs.send('contact_service', 'contact_form', sanitizedData).then(
       () => {
         submissionResult.style.color = 'var(--color-success)';
-        submissionResult.textContent = t('form.submissionResults.success');
+        submissionResult.textContent =
+          lang === 'es'
+            ? `Has enviado correctamente un email a ${accounts.email}. Espera mi respuesta!`
+            : `You've succesfully sent an email to ${accounts.email}. Look forward for my response!`;
         this.reset();
       },
       (error) => {
         submissionResult.style.color = 'var(--color-error)';
         submissionResult.textContent =
           error.status === 429
-            ? t('form.submissionResults.spam')
-            : t('form.submissionResults.failure');
+            ? lang === 'es'
+              ? 'Has enviado un email recientemente. Por favor, prueba de nuevo más tarde.'
+              : "You've recently sent an email. Please, try again later."
+            : lang === 'es'
+              ? 'Estamos teniendo problemas enviando tu email. Por favor prueba con la dirección de abajo.'
+              : 'We are experiencing issues sending your email. Please use the address below.';
       },
     );
   });
@@ -129,11 +138,15 @@ document.addEventListener('astro:page-load', () => {
   function checkNameValidity(value) {
     const { min, max } = constraints.name;
 
-    if (validator.isEmpty(value)) return t('form.errors.name.required');
+    if (validator.isEmpty(value))
+      return lang === 'es'
+        ? 'El campo nombre es obligatorio'
+        : 'Name field is required';
 
-    if (!validator.isLength(value, { min, max })) {
-      return t('form.errors.name.outOfRange');
-    }
+    if (!validator.isLength(value, { min, max }))
+      return lang === 'es'
+        ? `El campo nombre debe contener entre ${min} y ${max} caracteres`
+        : `Name field must contain between ${min} and ${max} characters`;
 
     return false;
   }
@@ -141,13 +154,20 @@ document.addEventListener('astro:page-load', () => {
   function checkEmailValidity(value) {
     const { min, max } = constraints.email;
 
-    if (validator.isEmpty(value)) return t('form.errors.email.required');
+    if (validator.isEmpty(value))
+      return lang === 'es'
+        ? 'El campo email es obligatorio'
+        : 'Email field is required';
 
-    if (!validator.isLength(value, { min, max })) {
-      return t('form.errors.email.outOfRange');
-    }
+    if (!validator.isLength(value, { min, max }))
+      return lang === 'es'
+        ? `El campo email debe contener entre ${min} y ${max} caracteres`
+        : `Email field must contain between ${min} and ${max} characters`;
 
-    if (!validator.isEmail(value)) return t('form.errors.email.badFormat');
+    if (!validator.isEmail(value))
+      return lang === 'es'
+        ? 'El campo email debe tener un formato correcto'
+        : 'Email field must have a correct format';
 
     return false;
   }
@@ -155,23 +175,31 @@ document.addEventListener('astro:page-load', () => {
   function checkSubjectValidity(value) {
     const { min, max } = constraints.subject;
 
-    if (validator.isEmpty(value)) return t('form.errors.subject.required');
+    if (validator.isEmpty(value))
+      return lang === 'es'
+        ? 'El campo asunto es obligatorio'
+        : 'Subject field is required';
 
-    if (!validator.isLength(value, { min, max })) {
-      return t('form.errors.subject.outOfRange');
-    }
+    if (!validator.isLength(value, { min, max }))
+      return lang === 'es'
+        ? `El campo asunto debe contener entre ${min} y ${max} caracteres`
+        : `Subject field must contain between ${min} and ${max} characters`;
 
     return false;
   }
 
   function checkMessageValidity(value) {
-    const { min } = constraints.message;
+    const { min, max } = constraints.message;
 
-    if (validator.isEmpty(value)) return t('form.errors.message.required');
+    if (validator.isEmpty(value))
+      return lang === 'es'
+        ? 'El campo mensaje es obligatorio'
+        : 'Message field is required';
 
-    if (!validator.isLength(value, { min })) {
-      return t('form.errors.message.outOfRange');
-    }
+    if (!validator.isLength(value, { min, max }))
+      return lang === 'es'
+        ? `El campo mensaje debe contener entre ${min} y ${max} caracteres`
+        : `Message field must contain between ${min} and ${max} characters`;
 
     return false;
   }
