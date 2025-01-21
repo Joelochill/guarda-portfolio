@@ -2,11 +2,13 @@
 import { getImage } from 'astro:assets';
 import { backgroundUrl, ogImageUrl } from '../cms/queries';
 import Layout from '../layouts/Layout.astro';
+import accounts from '../utils/accounts.json';
 
 const title = 'Home';
 const description =
   'Página oficial de GUARDA, el proyecto musical de Joel Rico Rada. Descubre su música, conciertos y trayectoria.';
 
+const { social } = accounts;
 const background = await getImage({
   src: backgroundUrl,
   format: 'webp',
@@ -23,10 +25,7 @@ const structuredData = {
       name: 'Joel Rico Rada',
       url: siteUrl,
       image: ogImageUrl,
-      sameAs: [
-        'https://instagram.com/joelricorada',
-        'https://www.youtube.com/channel/UClPzJnuXL3HBqT7HWUUM1KQ',
-      ],
+      sameAs: [social.instagram, social.youtube],
       jobTitle: 'Artista Sonoro',
       worksFor: {
         '@type': 'Organization',
@@ -42,11 +41,7 @@ const structuredData = {
       },
       genre: ['Electrónica', 'Ambient', 'Experimental'],
       url: siteUrl,
-      sameAs: [
-        'https://joelricorada.bandcamp.com/',
-        `https://open.spotify.com/intl-es/artist/5eBZuse0Ntu8UgrPleYZY8?si
-        =g2qzrCylTFStHjGhGv47hg`,
-      ],
+      sameAs: [social.bandcamp, social.spotify],
     },
   ],
 };
