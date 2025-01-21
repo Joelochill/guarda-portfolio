@@ -1,14 +1,5 @@
 ---
-/* 
-  This was useful: https://docs.astro.build/en/guides/client-side-scripts/#pass-frontmatter-variables-to-scripts
-
-  Validation remains kind of harcoded ATM!!!!
-  Did this i18n system to avoid duplication & ended up hardcoding the min & max validation values in the translations.json. IF CHANGED, CARE!!!
-*/
-
-import { useTranslations } from '../i18n/utils';
 import accounts from '../utils/accounts.json';
-
 const lang = Astro.currentLocale;
 ---
 
@@ -19,6 +10,7 @@ const lang = Astro.currentLocale;
       name="user_name"
       id="user_name"
       placeholder={lang === 'es' ? 'Nombre*' : 'Name*'}
+      data-name={lang === 'es' ? 'nombre' : 'name'}
     />
     <span class="error"></span>
   </div>
@@ -30,6 +22,7 @@ const lang = Astro.currentLocale;
       id="email"
       placeholder="Email*"
       autocomplete="on"
+      data-name="email"
     />
     <span class="error"></span>
   </div>
@@ -40,6 +33,7 @@ const lang = Astro.currentLocale;
       name="subject"
       id="subject"
       placeholder={lang === 'es' ? 'Asunto*' : 'Subject*'}
+      data-name={lang === 'es' ? 'asunto' : 'name'}
     />
     <span class="error"></span>
   </div>
@@ -49,7 +43,8 @@ const lang = Astro.currentLocale;
       rows="8"
       name="message"
       id="message"
-      placeholder={lang === 'es' ? 'Mensaje*' : 'Message*'}></textarea>
+      placeholder={lang === 'es' ? 'Mensaje*' : 'Message*'}
+      data-name={lang === 'es' ? 'mensaje' : 'message'}></textarea>
     <span class="error"></span>
   </div>
 
@@ -59,7 +54,209 @@ const lang = Astro.currentLocale;
   </div>
 </form>
 
-<script src="../utils/contactFormAction.js"></script>
+<script>
+  import emailjs from '@emailjs/browser';
+import validator from 'validator';
+import accounts from '../utils/accounts.json';
+  const emailJsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
+
+  document.addEventListener('astro:page-load', () => {
+    const contactForm = document.querySelector(
+      '#contact-form'
+    ) as HTMLFormElement;
+    if (!contactForm) return;
+    const lang = contactForm.dataset.lang as 'es' | 'en';
+
+    emailjs.init({
+      publicKey: emailJsKey,
+      blockHeadless: true,
+      limitRate: {
+        id: 'contact_form',
+        throttle: 30000,
+      },
+    });
+
+    const nameValidator = new ValidationHandler(
+      document.querySelector('input[name="user_name"]'),
+      { min: 1, max: 50 },
+      lang
+    );
+
+    const emailValidator = new ValidationHandler(
+      document.querySelector('input[name="user_email"]'),
+      { min: 3, max: 254 },
+      lang
+    );
+
+    const subjectValidator = new ValidationHandler(
+      document.querySelector('input[name="subject"]'),
+      { min: 1, max: 70 },
+      lang
+    );
+
+    const messageValidator = new ValidationHandler(
+      document.querySelector('textarea[name="message"]'),
+      { min: 10, max: 1000 },
+      lang
+    );
+
+    const fieldValidators = [
+      nameValidator,
+      emailValidator,
+      subjectValidator,
+      messageValidator,
+    ];
+
+    fieldValidators.forEach(({ input, check, report, reset }) => {
+      input.addEventListener('blur', function () {
+        const validity = check();
+        if (validity.status) {
+          reset();
+        } else {
+          report(validity.message);
+        }
+      });
+    });
+
+    const submissionResult = document.querySelector(
+      '#submission-result'
+    ) as HTMLElement;
+
+    contactForm.addEventListener('submit', async function (event) {
+      event.preventDefault();
+
+      let formIsValid = true;
+
+      fieldValidators.forEach(({ check, report, reset }) => {
+        const validity = check();
+        if (validity.status) {
+          reset();
+        } else {
+          report(validity.message);
+          formIsValid = false;
+        }
+      });
+
+      if (!formIsValid) return;
+
+      const formData = new FormData(this);
+      const sanitizedData = {
+        user_name: validator.escape(
+          validator.trim(formData.get('user_name'))
+        ) as string,
+        user_email: validator.normalizeEmail(
+          validator.trim(formData.get('user_email'))
+        ) as string,
+        subject: validator.escape(
+          validator.trim(formData.get('subject'))
+        ) as string,
+        message: validator.escape(
+          validator.stripLow(validator.trim(formData.get('message')), {
+            keep_new_lines: true,
+          })
+        ) as string,
+      };
+
+      // Check the availability making a fetch request to your own website
+      let internetAvailable: boolean;
+
+      try {
+        const response = await fetch(window.location.origin, {
+          method: 'HEAD',
+        });
+        internetAvailable = response.ok;
+      } catch {
+        internetAvailable = false;
+      }
+
+      if (!navigator.onLine || !internetAvailable) {
+        submissionResult.style.color = 'var(--color-error)';
+        submissionResult.textContent =
+          lang === 'es'
+            ? 'No estás conectado a internet - Por favor, comprueba tu conexión e inténtalo de nuevo'
+            : 'You are not connected to the internet - Please, check your connection and try again';
+
+        return;
+      }
+
+      emailjs.send('contact_service', 'contact_form', sanitizedData).then(
+        () => {
+          submissionResult.style.color = 'var(--color-success)';
+          submissionResult.textContent =
+            lang === 'es'
+              ? 'Hemos recibido correctamente tu email - Espera nuestra respuesta!'
+              : 'We have successfully received your email - Wait for our response!';
+          this.reset();
+        },
+        (error) => {
+          submissionResult.style.color = 'var(--color-error)';
+          submissionResult.innerHTML =
+            error.status === 429
+              ? lang === 'es'
+                ? 'Has enviado un email recientemente - Por favor, prueba de nuevo más tarde'
+                : "You've recently sent an email - Please, try again later"
+              : lang === 'es'
+                ? `Estamos teniendo problemas enviando tu email - Puedes enviarlo manualmente a <a href="mailto:${accounts.email}">${accounts.email}</a>`
+                : `We are experiencing issues sending your email - You can send it manually to <a href="mailto:${accounts.email}">${accounts.email}</a>`;
+        }
+      );
+    });
+  });
+
+  function ValidationHandler(
+    input: HTMLInputElement | HTMLTextAreaElement,
+    constraints: { min: number; max: number },
+    lang: 'es' | 'en'
+  ) {
+    this.input = input;
+    const fieldName = this.input.dataset.name;
+    this.errorMessages =
+      lang === 'es'
+        ? {
+            required: `El campo ${fieldName} es obligatorio`,
+            length: `El campo ${fieldName} debe contener entre ${constraints.min} y ${constraints.max} caracteres`,
+            format: `El campo ${fieldName} debe tener un formato correcto`,
+          }
+        : {
+            required: `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} field is required`,
+            length: `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} field must contain between ${constraints.min} and ${constraints.max} characters`,
+            format: `${fieldName.charAt(0).toUpperCase() + fieldName.slice(1)} field must have a correct format`,
+          };
+
+    this.check = () => {
+      const value = validator.trim(this.input.value);
+
+      if (validator.isEmpty(value)) {
+        return { status: false, message: this.errorMessages.required };
+      }
+
+      if (
+        !validator.isLength(value, {
+          min: constraints.min,
+          max: constraints.max,
+        })
+      ) {
+        return { status: false, message: this.errorMessages.length };
+      }
+
+      if (this.input.type === 'email' && !validator.isEmail(value)) {
+        return { status: false, message: this.errorMessages.format };
+      }
+
+      return { status: true, message: undefined };
+    };
+
+    this.report = (message: string) => {
+      this.input.classList.add('invalid');
+      this.input.nextElementSibling.textContent = message;
+    };
+
+    this.reset = () => {
+      this.input.classList.remove('invalid');
+      this.input.nextElementSibling.textContent = '';
+    };
+  }
+</script>
 
 <style>
   form {
@@ -98,7 +295,6 @@ const lang = Astro.currentLocale;
 
   .form-control:has(button[type='submit']) {
     grid-area: submit;
-    flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     gap: 1em;
@@ -139,6 +335,14 @@ const lang = Astro.currentLocale;
     color: var(--color-error);
   }
 
+  span a {
+    color: var(--color-accent);
+  }
+
+  span a:hover {
+    text-decoration: underline;
+  }
+
   @media only screen and (width >= 625px) {
     form {
       grid-template-areas:
@@ -150,12 +354,9 @@ const lang = Astro.currentLocale;
     }
   }
 
-  @media only screen and (width >= 699px) {
+  @media only screen and (width >= 799px) {
     .form-control:has(button[type='submit']) {
       flex-direction: row;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1em;
     }
   }
 </style>

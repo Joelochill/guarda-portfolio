@@ -177,3 +177,13 @@ main {
     border-radius: 5px;
   }
 }
+
+/* JS-Injected content needs to be globally styled */
+
+#submission-result a {
+  color: var(--color-accent);
+}
+
+#submission-result a:hover {
+  text-decoration: underline;
+}
