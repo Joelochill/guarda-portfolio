@@ -1,25 +1,11 @@
 ---
+import accounts from '../utils/accounts.json';
 import { Icon } from 'astro-icon/components';
+const socialData = Object.entries(accounts.social).map(([iconName, url]) => ({
+  iconName, url
+}));
 
-const socialData = [
-  {
-    iconName: 'instagram',
-    url: 'https://instagram.com/joelricorada',
-  },
-  {
-    iconName: 'bandcamp',
-    url: 'https://joelricorada.bandcamp.com/',
-  },
-  {
-    iconName: 'youtube',
-    url: 'https://www.youtube.com/channel/UClPzJnuXL3HBqT7HWUUM1KQ',
-  },
-  {
-    iconName: 'spotify',
-    url: `https://open.spotify.com/intl-es/artist/5eBZuse0Ntu8UgrPleYZY8?si
-      =g2qzrCylTFStHjGhGv47hg`,
-  },
-];
+console.log(socialData);
 ---
 
 <ul class="social">

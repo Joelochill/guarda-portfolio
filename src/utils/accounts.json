@@ -1,3 +1,9 @@
 {
-  "email": "info@joelricorada.com"
+  "email": "info@joelricorada.com",
+  "social": {
+    "instagram": "https://instagram.com/joelricorada",
+    "bandcamp": "https://joelricorada.bandcamp.com/",
+    "youtube": "https://www.youtube.com/channel/UClPzJnuXL3HBqT7HWUUM1KQ",
+    "spotify": "https://open.spotify.com/intl-es/artist/5eBZuse0Ntu8UgrPleYZY8?si=g2qzrCylTFStHjGhGv47hg"
+  }
 }
