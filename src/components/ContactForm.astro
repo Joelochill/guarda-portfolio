@@ -169,6 +169,8 @@ import accounts from '../utils/accounts.json';
         internetAvailable = false;
       }
 
+      // Still returns true if the disconnection is recent
+
       if (!navigator.onLine || !internetAvailable) {
         submissionResult.style.color = 'var(--color-error)';
         submissionResult.textContent =
