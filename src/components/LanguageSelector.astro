@@ -1,16 +1,20 @@
 ---
-const currentPage = Astro.url.pathname;
-const currentLocale = Astro.currentLocale;
+import { getRelativeLocaleUrl} from 'astro:i18n';
+
+const { currentLocale } = Astro;
+const { pathname: currentPage } = Astro.url;
+
+const relativePath = currentPage.replace('/en', '');
 ---
 
 <nav>
   <a
-    href={currentLocale === 'es' ? currentPage : currentPage.replace('/en', '')}
+    href={getRelativeLocaleUrl('es', relativePath)}
     class:list={['lang-link', currentLocale === 'es' ? 'selected' : '']}
     >es
   </a>
   <a
-    href={currentLocale === 'en' ? currentPage : `/en${currentPage}`}
+    href={getRelativeLocaleUrl('en', relativePath)}
     class:list={['lang-link', currentLocale === 'en' ? 'selected' : '']}>en</a
   >
 </nav>

@@ -10,8 +10,8 @@ import Header from '../components/Header.astro';
 import { defaultSeo } from '../utils/defaultSeo';
 
 const { title, description, structuredData, backgroundImage } = Astro.props;
-const currentLocale = Astro.currentLocale;
-const pageUrl = Astro.url.href;
+const { currentLocale } = Astro;
+const { href: currentPage, pathname: currentPath } = Astro.url;
 
 // Might need a refactor to enhance flexibility - it is so rigid
 const seo = {
@@ -38,30 +38,24 @@ const seo = {
 };
 
 // set both in one line
-seo.openGraph.basic.url = seo.canonical = pageUrl;
-seo.openGraph.optional.locale = currentLocale === 'es' ? 'es_ES' : 'en_US';
+seo.openGraph.basic.url = seo.canonical = currentPage;
+
+const localeCodes = { es: 'es_ES', en: 'en_US' };
+
+seo.openGraph.optional.locale = localeCodes[currentLocale];
 seo.openGraph.optional.localeAlternate =
-  currentLocale === 'es' ? ['en_US'] : ['es_ES'];
+  currentLocale === 'es' ? [localeCodes.en] : [localeCodes.es];
 
 // manage url's & i18n for structured data here
 if (structuredData) {
-  structuredData.url = pageUrl;
+  structuredData.url = currentPage;
   structuredData.inLanguage = currentLocale;
   structuredData.alternateUrl = getAbsoluteLocaleUrl(
     currentLocale === 'es' ? 'en' : 'es',
-    Astro.url.pathname.replace('/en', '')
+    currentPath.replace('/en', '')
   );
 }
 
-/* console.log(
-  Astro.url.pathname,
-  currentLocale,
-  getAbsoluteLocaleUrl(
-    currentLocale === 'es' ? 'en' : 'es',
-    Astro.url.pathname.replace('/en', '')
-  )
-);
- */
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---
 

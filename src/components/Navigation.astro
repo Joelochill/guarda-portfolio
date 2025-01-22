@@ -2,7 +2,7 @@
 import { getRelativeLocaleUrl } from 'astro:i18n';
 import NavigationLink from './NavigationLink.astro';
 
-const currentLocale = Astro.currentLocale;
+const { currentLocale } = Astro;
 ---
 
 <nav>

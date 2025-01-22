@@ -2,6 +2,7 @@
 import { SEO } from 'astro-seo';
 import Head from '../components/Head.astro';
 import { defaultSeo } from '../utils/defaultSeo';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const seo = {
   title: 'Page Not Found',
@@ -29,8 +30,8 @@ const seoData = { ...defaultSeo, ...seo };
   <body>
     <h1>Page Not Found</h1>
     <nav>
-      <a href="/">Volver a Inicio</a>
-      <a href="/en">Return to Home</a>
+      <a href={getRelativeLocaleUrl('es', '/')}>Volver a Inicio</a>
+      <a href={getRelativeLocaleUrl('en', '/')}>Return to Home</a>
     </nav>
   </body>
 </html>

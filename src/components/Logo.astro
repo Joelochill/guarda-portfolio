@@ -1,7 +1,7 @@
 ---
 import { getRelativeLocaleUrl } from 'astro:i18n';
 
-const currentLocale = Astro.currentLocale;
+const { currentLocale } = Astro;
 ---
 
 <h1><a href={getRelativeLocaleUrl(currentLocale, '/')}>GUARDA</a></h1>

@@ -1,16 +1,15 @@
 ---
-import accounts from '../utils/accounts.json';
-const lang = Astro.currentLocale;
+const { currentLocale } = Astro;
 ---
 
-<form id="contact-form" novalidate data-lang={lang}>
+<form id="contact-form" novalidate data-lang={currentLocale}>
   <div class="form-control">
     <input
       type="text"
       name="user_name"
       id="user_name"
-      placeholder={lang === 'es' ? 'Nombre*' : 'Name*'}
-      data-name={lang === 'es' ? 'nombre' : 'name'}
+      placeholder={currentLocale === 'es' ? 'Nombre*' : 'Name*'}
+      data-name={currentLocale === 'es' ? 'nombre' : 'name'}
     />
     <span class="error"></span>
   </div>
@@ -32,8 +31,8 @@ const lang = Astro.currentLocale;
       type="text"
       name="subject"
       id="subject"
-      placeholder={lang === 'es' ? 'Asunto*' : 'Subject*'}
-      data-name={lang === 'es' ? 'asunto' : 'name'}
+      placeholder={currentLocale === 'es' ? 'Asunto*' : 'Subject*'}
+      data-name={currentLocale === 'es' ? 'asunto' : 'name'}
     />
     <span class="error"></span>
   </div>
@@ -43,21 +42,21 @@ const lang = Astro.currentLocale;
       rows="8"
       name="message"
       id="message"
-      placeholder={lang === 'es' ? 'Mensaje*' : 'Message*'}
-      data-name={lang === 'es' ? 'mensaje' : 'message'}></textarea>
+      placeholder={currentLocale === 'es' ? 'Mensaje*' : 'Message*'}
+      data-name={currentLocale === 'es' ? 'mensaje' : 'message'}></textarea>
     <span class="error"></span>
   </div>
 
   <div class="form-control">
-    <button type="submit">{lang === 'es' ? 'Enviar' : 'Send'}</button>
+    <button type="submit">{currentLocale === 'es' ? 'Enviar' : 'Send'}</button>
     <span id="submission-result"></span>
   </div>
 </form>
 
 <script>
   import emailjs from '@emailjs/browser';
-import validator from 'validator';
-import accounts from '../utils/accounts.json';
+  import validator from 'validator';
+  import accounts from '../utils/accounts.json';
   const emailJsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
 
   document.addEventListener('astro:page-load', () => {
@@ -65,7 +64,7 @@ import accounts from '../utils/accounts.json';
       '#contact-form'
     ) as HTMLFormElement;
     if (!contactForm) return;
-    const lang = contactForm.dataset.lang as 'es' | 'en';
+    const currentLocale = contactForm.dataset.lang as 'es' | 'en';
 
     emailjs.init({
       publicKey: emailJsKey,
@@ -79,25 +78,25 @@ import accounts from '../utils/accounts.json';
     const nameValidator = new ValidationHandler(
       document.querySelector('input[name="user_name"]'),
       { min: 1, max: 50 },
-      lang
+      currentLocale
     );
 
     const emailValidator = new ValidationHandler(
       document.querySelector('input[name="user_email"]'),
       { min: 3, max: 254 },
-      lang
+      currentLocale
     );
 
     const subjectValidator = new ValidationHandler(
       document.querySelector('input[name="subject"]'),
       { min: 1, max: 70 },
-      lang
+      currentLocale
     );
 
     const messageValidator = new ValidationHandler(
       document.querySelector('textarea[name="message"]'),
       { min: 10, max: 1000 },
-      lang
+      currentLocale
     );
 
     const fieldValidators = [
@@ -174,7 +173,7 @@ import accounts from '../utils/accounts.json';
       if (!navigator.onLine || !internetAvailable) {
         submissionResult.style.color = 'var(--color-error)';
         submissionResult.textContent =
-          lang === 'es'
+          currentLocale === 'es'
             ? 'No estás conectado a internet - Por favor, comprueba tu conexión e inténtalo de nuevo'
             : 'You are not connected to the internet - Please, check your connection and try again';
 
@@ -185,7 +184,7 @@ import accounts from '../utils/accounts.json';
         () => {
           submissionResult.style.color = 'var(--color-success)';
           submissionResult.textContent =
-            lang === 'es'
+            currentLocale === 'es'
               ? 'Hemos recibido correctamente tu email - Espera nuestra respuesta!'
               : 'We have successfully received your email - Wait for our response!';
           this.reset();
@@ -194,10 +193,10 @@ import accounts from '../utils/accounts.json';
           submissionResult.style.color = 'var(--color-error)';
           submissionResult.innerHTML =
             error.status === 429
-              ? lang === 'es'
+              ? currentLocale === 'es'
                 ? 'Has enviado un email recientemente - Por favor, prueba de nuevo más tarde'
                 : "You've recently sent an email - Please, try again later"
-              : lang === 'es'
+              : currentLocale === 'es'
                 ? `Estamos teniendo problemas enviando tu email - Puedes enviarlo manualmente a <a href="mailto:${accounts.email}">${accounts.email}</a>`
                 : `We are experiencing issues sending your email - You can send it manually to <a href="mailto:${accounts.email}">${accounts.email}</a>`;
         }
@@ -208,12 +207,12 @@ import accounts from '../utils/accounts.json';
   function ValidationHandler(
     input: HTMLInputElement | HTMLTextAreaElement,
     constraints: { min: number; max: number },
-    lang: 'es' | 'en'
+    currentLocale: 'es' | 'en'
   ) {
     this.input = input;
     const fieldName = this.input.dataset.name;
     this.errorMessages =
-      lang === 'es'
+      currentLocale === 'es'
         ? {
             required: `El campo ${fieldName} es obligatorio`,
             length: `El campo ${fieldName} debe contener entre ${constraints.min} y ${constraints.max} caracteres`,
