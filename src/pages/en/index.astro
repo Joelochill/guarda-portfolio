@@ -16,7 +16,7 @@ const background = await getImage({
   inferSize: true,
 });
 
-const siteUrl = Astro.site;
+const pageUrl = Astro.url.href;
 
 const structuredData = {
   '@context': 'https://schema.org',
@@ -24,7 +24,7 @@ const structuredData = {
     {
       '@type': 'Person',
       name: 'Joel Rico Rada',
-      url: siteUrl,
+      url: pageUrl,
       image: ogImageUrl,
       sameAs: [social.instagram, social.youtube],
       jobTitle: 'Sound Artist',
@@ -41,7 +41,7 @@ const structuredData = {
         name: 'Joel Rico Rada',
       },
       genre: ['Electronic', 'Ambient', 'Experimental'],
-      url: siteUrl,
+      url: pageUrl,
       sameAs: [social.bandcamp, social.spotify],
     },
   ],
