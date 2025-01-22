@@ -47,7 +47,10 @@ seo.openGraph.optional.localeAlternate =
 if (structuredData) {
   structuredData.url = pageUrl;
   structuredData.inLanguage = locale;
-  structuredData.alternateUrl = getAbsoluteLocaleUrl(locale, pageUrl);
+  structuredData.alternateUrl = getAbsoluteLocaleUrl(
+    locale === 'es' ? 'en' : 'es',
+    pageUrl
+  );
 }
 
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
