@@ -1,14 +1,11 @@
 ---
 import { getImage } from 'astro:assets';
-import { backgroundUrl, ogImageUrl } from '../../cms/queries';
+import { backgroundUrl } from '../../cms/queries';
 import Layout from '../../layouts/Layout.astro';
-import accounts from '../../utils/accounts.json';
 
 const title = 'Home';
 const description =
   'Official page of GUARDA, the music project by Joel Rico Rada. Explore his music, concerts, and journey.';
-
-const { social } = accounts;
 
 const background = await getImage({
   src: backgroundUrl,
@@ -16,35 +13,11 @@ const background = await getImage({
   inferSize: true,
 });
 
-const pageUrl = Astro.url.href;
-
 const structuredData = {
   '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Person',
-      name: 'Joel Rico Rada',
-      url: pageUrl,
-      image: ogImageUrl,
-      sameAs: [social.instagram, social.youtube],
-      jobTitle: 'Sound Artist',
-      worksFor: {
-        '@type': 'Organization',
-        name: 'GUARDA',
-      },
-    },
-    {
-      '@type': 'MusicGroup',
-      name: 'GUARDA',
-      member: {
-        '@type': 'Person',
-        name: 'Joel Rico Rada',
-      },
-      genre: ['Electronic', 'Ambient', 'Experimental'],
-      url: pageUrl,
-      sameAs: [social.bandcamp, social.spotify],
-    },
-  ],
+  '@type': 'WebSite',
+  name: 'GUARDA',
+  description: 'GUARDA, music project by Joel Rico Rada',
 };
 ---
 
