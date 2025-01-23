@@ -1,0 +1,71 @@
+---
+// src/components/Seo/AboutSchema.astro
+import { Schema } from 'astro-seo-schema';
+import { ogImageUrl } from '../../cms/queries';
+
+const { currentLocale, site: siteUrl } = Astro;
+const { href: currentUrl } = Astro.url;
+
+const personId = `${siteUrl}/#joel-rico-rada`;
+const guardaId = `${siteUrl}/#guarda`;
+const aboutId = `${siteUrl}/#about`;
+---
+
+<Schema
+  item={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'Person',
+        '@id': personId,
+        name: 'Joel Rico Rada',
+        alternateName: 'GUARDA',
+        description:
+          currentLocale === 'es'
+            ? 'Artista sonoro vasco afincado en Zaragoza. Creador de GUARDA, y miembro de Mejor Sordo y ACITDX.'
+            : 'Basque sound artist based in Zaragoza. Creator of GUARDA, and member of Mejor Sordo, and ACITDX.',
+        url: currentUrl.toString(),
+        image: ogImageUrl,
+        jobTitle: currentLocale === 'es' ? 'Artista Sonoro' : 'Sound Artist',
+        alumniOf: {
+          '@type': 'EducationalOrganization',
+          name:
+            currentLocale === 'es'
+              ? 'Universidad de Zaragoza'
+              : 'University of Zaragoza',
+        },
+        hasCredential: {
+          // Correct property for degree
+          '@type': 'EducationalOccupationalCredential',
+          name:
+            currentLocale === 'es'
+              ? 'Grado en Bellas Artes'
+              : 'Bachelor of Fine Arts',
+        },
+        affiliation: [
+          { '@id': guardaId },
+          {
+            '@type': 'MusicGroup',
+            name: 'Mejor Sordo',
+          },
+          {
+            '@type': 'MusicGroup',
+            name: 'ACIDTX',
+          },
+        ],
+      },
+      {
+        '@type': 'WebPage',
+        '@id': aboutId,
+        url: currentUrl.toString(),
+        name: 'About',
+        description:
+          currentLocale === 'es'
+            ? 'Biografía y trayectoria profesional del artista sonoro Joel Rico Rada y sus proyectos musicales.'
+            : 'Biography and professional career of sound artist Joel Rico Rada and his music projects.',
+        inLanguage: currentLocale,
+        mainEntity: { '@id': personId },
+      },
+    ],
+  }}
+/>

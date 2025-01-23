@@ -1,14 +1,16 @@
 ---
 import { PortableText } from 'astro-portabletext';
 import { aboutContentEs } from '../cms/queries';
+import AboutSchema from '../components/seo/AboutSchema.astro';
 import Layout from '../layouts/Layout.astro';
 
 const title = 'About';
 const description =
-  'Descubre el proyecto GUARDA de Joel Rico Rada, explorando el terror espiritual con field recordings, síntesis modular y spoken word.';
+  'Descubre GUARDA, el proyecto de Joel Rico Rada que fusiona grabaciones de campo, síntesis modular y spoken word para explorar la locura, la muerte y la transcendencia.';
 ---
 
 <Layout title={title} description={description}>
+  <AboutSchema slot="inside-head" />
   <main transition:name="main" transition:animate="fade">
     <PortableText value={aboutContentEs} />
   </main>

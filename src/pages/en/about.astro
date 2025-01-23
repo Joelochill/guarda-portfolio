@@ -1,14 +1,16 @@
 ---
 import { PortableText } from 'astro-portabletext';
 import { aboutContentEn } from '../../cms/queries';
+import AboutSchema from '../../components/seo/AboutSchema.astro';
 import Layout from '../../layouts/Layout.astro';
 
 const title = 'About';
 const description =
-  'Discover GUARDA by Joel Rico Rada, exploring spiritual terror through field recordings, modular synthesis, and spoken word.';
+  "Discover GUARDA - Joel Rico Rada's sound project blending field recordings, modular synthesis, and spoken word to meditate on madness, death, and transcendence.";
 ---
 
 <Layout title={title} description={description}>
+  <AboutSchema slot="inside-head" />
   <main transition:name="main" transition:animate="fade">
     <PortableText value={aboutContentEn} />
   </main>
