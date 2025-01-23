@@ -56,7 +56,7 @@ const { currentLocale } = Astro;
 <script>
   import emailjs from '@emailjs/browser';
   import validator from 'validator';
-  import accounts from '../utils/accounts.json';
+  import * as accounts from '../utils/accounts.json';
   const emailJsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
 
   document.addEventListener('astro:page-load', () => {

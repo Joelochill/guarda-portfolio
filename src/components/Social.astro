@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import accounts from '../utils/accounts.json';
+import * as accounts from '../utils/accounts.json';
 const socialData = Object.entries(accounts.social).map(([iconName, url]) => ({
   iconName,
   url,
