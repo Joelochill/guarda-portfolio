@@ -24,6 +24,10 @@ export default defineConfig({
     ssr: {
       noExternal: ['normalize.css'],
     },
+    server: {
+      // Tunnel url for dev server exposing
+      allowedHosts: ['https://gathered-better-review-write.trycloudflare.com/'],
+    },
   },
   integrations: [
     icon(),
@@ -45,6 +49,6 @@ export default defineConfig({
     locales: ['es', 'en'],
     routing: {
       prefixDefaultLocale: false,
-    }
+    },
   },
 });
