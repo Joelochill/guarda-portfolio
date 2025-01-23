@@ -1,5 +1,6 @@
 ---
 import { Schema } from 'astro-seo-schema';
+import { ogImageUrl } from '../../cms/queries';
 import * as accounts from '../../utils/accounts.json';
 
 const { bandcamp, instagram, spotify, youtube } = accounts.social;
@@ -31,7 +32,7 @@ const { href: currentUrl, pathname: currentPath } = Astro.url;
           currentLocale === 'es'
             ? 'Proyecto experimental de música oscura y ruidosa.'
             : 'Experimental project of dark and noisy music.',
-        image: `${siteUrl}/android-chrome-512x512.png`,
+        image: ogImageUrl,
         url: siteUrl.toString(),
         sameAs: [bandcamp, instagram, spotify, youtube],
       },
