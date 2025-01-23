@@ -5,10 +5,10 @@ import * as accounts from '../../utils/accounts.json';
 
 const { bandcamp, instagram, spotify, youtube } = accounts.social;
 const { currentLocale, site: siteUrl } = Astro;
-const { href: currentUrl, pathname: currentPath } = Astro.url;
+const { href: currentUrl } = Astro.url;
 
-const webpageId = `${siteUrl}/#webpage`;
-const guardaId = `${siteUrl}/#guarda`;
+const websiteId = `${siteUrl}#website`;
+const guardaId = `${siteUrl}#guarda`;
 ---
 
 <Schema
@@ -17,7 +17,7 @@ const guardaId = `${siteUrl}/#guarda`;
     '@graph': [
       {
         '@type': 'WebSite',
-        '@id': webpageId,
+        '@id': websiteId,
         name: 'Joel Rico Rada | GUARDA',
         url: currentUrl,
         description:
