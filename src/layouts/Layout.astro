@@ -47,14 +47,13 @@ seo.openGraph.optional.localeAlternate =
   currentLocale === 'es' ? [localeCodes.en] : [localeCodes.es];
 
 // manage url's & i18n for structured data here
-if (structuredData) {
-  structuredData.url = currentPage;
-  structuredData.inLanguage = currentLocale;
-  structuredData.alternateUrl = getAbsoluteLocaleUrl(
-    currentLocale === 'es' ? 'en' : 'es',
-    currentPath.replace('/en', '')
-  );
-}
+
+/* structuredData.inLanguage = currentLocale;
+structuredData.alternateUrl = getAbsoluteLocaleUrl(
+  currentLocale === 'es' ? 'en' : 'es',
+  currentPath.replace('/en', '')
+);
+ */
 
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---
