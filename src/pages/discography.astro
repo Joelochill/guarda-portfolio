@@ -1,14 +1,16 @@
 ---
 import { projects } from '../cms/queries';
 import Project from '../components/Project.astro';
+import DiscographySchema from '../components/seo/DiscographySchema.astro';
 import Layout from '../layouts/Layout.astro';
 
 const title = 'Discography';
 const description =
-  'Explora la discografía de GUARDA, el proyecto sonoro de Joel Rico Rada, y escucha sus álbumes de música experimental y ambiental.';
+  'Explora la discografía de GUARDA - Proyecto de Joel Rico Rada que fusiona grabaciones de campo, síntesis modular y spoken word para explorar la locura, muerte y transcendencia.'
 ---
 
 <Layout title={title} description={description}>
+  <DiscographySchema />
   <main transition:name="main" transition:animate="fade">
     {
       projects.map(({ coverUrl, title, bandcampLink }, index) => (
