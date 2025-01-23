@@ -1,0 +1,47 @@
+---
+import { Schema } from 'astro-seo-schema';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
+import * as accounts from '../../utils/accounts.json';
+
+const { bandcamp, instagram, spotify } = accounts.social;
+const { currentLocale, site: siteUrl } = Astro;
+const { href: currentUrl, pathname: currentPath } = Astro.url;
+
+const alternateUrl = getAbsoluteLocaleUrl(
+  currentLocale === 'es' ? 'en' : 'es',
+  currentPath.replace('/en', '')
+);
+---
+
+<Schema
+  item={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${siteUrl}/#webpage`,
+        name: 'Joel Rico Rada | GUARDA',
+        url: currentUrl,
+        description:
+          currentLocale === 'es'
+            ? 'Sitio oficial del artista sonoro Joel Rico Rada y su proyecto GUARDA.'
+            : 'Official website of sound artist Joel Rico Rada and his project GUARDA.',
+        inLanguage: currentLocale,
+        alternate: alternateUrl,
+        publisher: { '@id': `${siteUrl}/#guarda` },
+      },
+      {
+        '@type': 'MusicGroup',
+        '@id': `${siteUrl}/#guarda`,
+        name: 'GUARDA',
+        description:
+          currentLocale === 'es'
+            ? 'Proyecto experimental de música oscura y ruidosa.'
+            : 'Experimental project of dark and noisy music.',
+        image: `${siteUrl}/android-chrome-512x512.png`,
+        url: siteUrl.toString(),
+        sameAs: [bandcamp, instagram, spotify],
+      },
+    ],
+  }}
+/>

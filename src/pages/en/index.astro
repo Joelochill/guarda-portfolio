@@ -1,8 +1,8 @@
 ---
 import { getImage } from 'astro:assets';
-import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import { backgroundUrl } from '../../cms/queries';
 import Layout from '../../layouts/Layout.astro';
+import IndexSchema from '../../components/seo/IndexSchema.astro';
 
 const title = 'Home';
 const description =
@@ -13,35 +13,9 @@ const background = await getImage({
   format: 'webp',
   inferSize: true,
 });
-
-const { site: siteUrl, currentLocale } = Astro;
-const { href: pageUrl, pathname: currentPath } = Astro.url;
-
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@type': ['WebSite', 'Organization'],
-  '@id': `${siteUrl}/#website`,
-  url: pageUrl,
-  name: 'Joel Rico Rada | GUARDA',
-  description:
-    'Official website of sound artist Joel Rico Rada and his project GUARDA.',
-  inLanguage: currentLocale,
-  alternate: getAbsoluteLocaleUrl('en', currentPath.replace('/en', '')),
-  publisher: {
-    '@type': 'MusicGroup',
-    '@id': `${siteUrl}/#guarda`,
-    name: 'GUARDA',
-    description: 'Experimental project of dark and noisy music.',
-    image: `${siteUrl}/android-chrome-512x512.png`,
-  },
-};
 ---
 
-<Layout
-  title={title}
-  description={description}
-  structuredData={structuredData}
-  backgroundImage={background}
->
+<Layout title={title} description={description} backgroundImage={background}>
+  <IndexSchema slot="inside-head" />
   <main transition:name="main" transition:animate="fade"></main>
 </Layout>

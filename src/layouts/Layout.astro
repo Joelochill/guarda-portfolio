@@ -1,7 +1,5 @@
 ---
 import { SEO, type TwitterCardType } from 'astro-seo';
-import { Schema } from 'astro-seo-schema';
-import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import '../../node_modules/normalize.css/normalize.css';
 import Dropdown from '../components/Dropdown.astro';
 import Footer from '../components/Footer.astro';
@@ -9,9 +7,9 @@ import Head from '../components/Head.astro';
 import Header from '../components/Header.astro';
 import { defaultSeo } from '../utils/defaultSeo';
 
-const { title, description, structuredData, backgroundImage } = Astro.props;
+const { title, description, backgroundImage } = Astro.props;
 const { currentLocale } = Astro;
-const { href: currentPage, pathname: currentPath } = Astro.url;
+const { href: currentPage} = Astro.url;
 
 // Might need a refactor to enhance flexibility - it is so rigid
 const seo = {
@@ -46,15 +44,6 @@ seo.openGraph.optional.locale = localeCodes[currentLocale];
 seo.openGraph.optional.localeAlternate =
   currentLocale === 'es' ? [localeCodes.en] : [localeCodes.es];
 
-// manage url's & i18n for structured data here
-
-/* structuredData.inLanguage = currentLocale;
-structuredData.alternateUrl = getAbsoluteLocaleUrl(
-  currentLocale === 'es' ? 'en' : 'es',
-  currentPath.replace('/en', '')
-);
- */
-
 const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
 ---
 
@@ -72,7 +61,7 @@ const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
       twitter={seo.twitter}
       extend={seo.extend}
     />
-    <Schema item={structuredData} />
+    <slot name="inside-head" />
   </Head>
   <body class:list={[backgroundImage ? 'background-image' : '']}>
     <div class="page-wrapper">
