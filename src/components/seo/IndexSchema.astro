@@ -22,8 +22,8 @@ const guardaId = `${siteUrl}/#guarda`;
         url: currentUrl,
         description:
           currentLocale === 'es'
-            ? 'Sitio oficial del artista sonoro Joel Rico Rada y su proyecto GUARDA.'
-            : 'Official website of sound artist Joel Rico Rada and his project GUARDA.',
+            ? 'Página web oficial de GUARDA, proyecto musical creado por el artista sonoro Joel Rico Rada. Explora su álbum debut "La Piedra de La Locura", próximos conciertos y piezas experimentales que mezclan ruido, grabaciones de campo y spoken word.'
+            : 'Official online platform for GUARDA, a music project by sound artist Joel Rico Rada. Explore the debut album "The Stone of Madness", upcoming live performances, and experimental pieces blending noise, field recordings, and spoken word.',
         inLanguage: currentLocale,
         publisher: { '@id': guardaId },
       },
@@ -33,10 +33,20 @@ const guardaId = `${siteUrl}/#guarda`;
         name: 'GUARDA',
         description:
           currentLocale === 'es'
-            ? 'Proyecto experimental de música oscura y ruidosa.'
-            : 'Experimental project of dark and noisy music.',
-        image: ogImageUrl,
+            ? 'Proyecto sonoro que combina síntesis modular, grabaciones de campo y spoken word. Creado por Joel Rico Rada, explora temas como la ansiedad, la identidad y la pérdida de la fe a través de texturas sonoras oscuras.'
+            : 'Sound project blending modular synthesis, field recordings, and spoken word. Created by Joel Rico Rada, it explores themes of anxiety, identity, and loss of faith through dark sonic textures.',
+        image: {
+          '@type': 'ImageObject',
+          url: ogImageUrl,
+          width: '1200',
+          height: '630',
+          caption: 'Joel Rico Rada | GUARDA',
+        },
         url: siteUrl.toString(),
+        genre:
+          currentLocale === 'es'
+            ? ['Música experimental', 'Noise', 'Arte sonoro', 'Ambient']
+            : ['Experimental Music', 'Noise', 'Sound Art', 'Ambient'],
         sameAs: [bandcamp, instagram, spotify, youtube],
       },
     ],

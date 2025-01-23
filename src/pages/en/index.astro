@@ -1,12 +1,12 @@
 ---
 import { getImage } from 'astro:assets';
 import { backgroundUrl } from '../../cms/queries';
-import Layout from '../../layouts/Layout.astro';
 import IndexSchema from '../../components/seo/IndexSchema.astro';
+import Layout from '../../layouts/Layout.astro';
 
 const title = 'Home';
 const description =
-  'Official page of GUARDA, the music project by Joel Rico Rada. Explore his music, concerts, and journey.';
+  'Official website of GUARDA - Experimental music project by sound artist Joel Rico Rada. Discover albums, live shows, and sound art works.';
 
 const background = await getImage({
   src: backgroundUrl,
