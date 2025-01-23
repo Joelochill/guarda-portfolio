@@ -1,0 +1,51 @@
+---
+import { projects } from '../../cms/queries';
+import { Schema } from 'astro-seo-schema';
+
+const { currentLocale, site: siteUrl } = Astro;
+const { href: currentUrl } = Astro.url;
+
+const discographyId = `${siteUrl}#discography`;
+const guardaId = `${siteUrl}#guarda`;
+---
+
+<Schema
+  item={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'ItemList',
+        name: currentLocale === 'es' ? 'Discografía' : 'Discography',
+        description:
+          currentLocale === 'es'
+            ? 'Álbumes del proyecto GUARDA, explorando la locura, muerte y transcendencia a través de grabaciones de campo y síntesis modular.'
+            : 'Albums from GUARDA, examining madness, death, and transcendence through field recordings and modular synthesis.',
+        itemListElement: projects.map(
+          ({ title, coverUrl, releaseDate, bandcampLink }, index) => ({
+            '@type': 'ListItem',
+            position: index + 1,
+            item: {
+              '@type': 'MusicAlbum',
+              name: title,
+              image: coverUrl,
+              datePublished: releaseDate,
+              url: bandcampLink,
+              byArtist: { '@id': guardaId },
+            },
+          })
+        ),
+      },
+      {
+        '@type': 'WebPage',
+        '@id': discographyId,
+        url: currentUrl,
+        name: currentLocale === 'es' ? 'Discografía' : 'Discography',
+        description:
+          currentLocale === 'es'
+            ? 'Álbumes y lanzamientos de GUARDA, el proyecto de música experimental de Joel Rico Rada.'
+            : 'Albums and releases from GUARDA, the experimental music project by Joel Rico Rada.',
+        mainEntity: { '@id': guardaId },
+      },
+    ],
+  }}
+/>
