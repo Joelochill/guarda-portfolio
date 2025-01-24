@@ -9,6 +9,8 @@ const { href: currentUrl } = Astro.url;
 
 const websiteId = `${siteUrl}#website`;
 const guardaId = `${siteUrl}#guarda`;
+const mejorSordoId = `${siteUrl}#mejor-sordo`;
+const acidtxId = `${siteUrl}#acidtx`
 ---
 
 <Schema
@@ -48,6 +50,24 @@ const guardaId = `${siteUrl}#guarda`;
             ? ['Música experimental', 'Noise', 'Arte sonoro', 'Ambient']
             : ['Experimental Music', 'Noise', 'Sound Art', 'Ambient'],
         sameAs: [bandcamp, instagram, spotify, youtube],
+      },
+      {
+        '@type': 'MusicGroup',
+        '@id': mejorSordoId,
+        name: 'Mejor Sordo',
+        description:
+          currentLocale === 'es'
+            ? 'Proyecto colaborativo de música experimental'
+            : 'Collaborative experimental music project',
+      },
+      {
+        '@type': 'MusicGroup',
+        '@id': acidtxId,
+        name: 'ACITDX',
+        description:
+          currentLocale === 'es'
+            ? 'Proyecto paralelo de arte sonoro'
+            : 'Parallel sound art project',
       },
     ],
   }}
