@@ -8,6 +8,8 @@ const { href: currentUrl } = Astro.url;
 
 const personId = `${siteUrl}#joel-rico-rada`;
 const guardaId = `${siteUrl}#guarda`;
+const mejorSordoId = `${siteUrl}#mejor-sordo`;
+const acidtxId = `${siteUrl}#acidtx`;
 const aboutId = `${siteUrl}#about`;
 ---
 
@@ -46,10 +48,12 @@ const aboutId = `${siteUrl}#about`;
           { '@id': guardaId },
           {
             '@type': 'MusicGroup',
+            '@id': mejorSordoId,
             name: 'Mejor Sordo',
           },
           {
             '@type': 'MusicGroup',
+            '@id': acidtxId,
             name: 'ACIDTX',
           },
         ],
