@@ -1,14 +1,16 @@
 ---
 import { liveContentEn } from '../../cms/queries';
 import EventList from '../../components/EventList.astro';
+import LiveSchema from '../../components/seo/LiveSchema.astro';
 import Layout from '../../layouts/Layout.astro';
 
 const title = 'Live';
 const description =
-  'Check out the concert list of GUARDA, the project by Joel Rico Rada. Discover upcoming dates and relive past performances.';
+  "Experience GUARDA's live performances - Experimental music project by Joel Rico Rada. Past shows and upcoming concert dates.";
 ---
 
 <Layout title={title} description={description}>
+  <LiveSchema slot="inside-head" />
   <main transition:name="main" transition:animate="fade">
     {
       liveContentEn.map(({ year, events }) => (

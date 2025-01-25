@@ -2,13 +2,15 @@
 import { liveContentEs } from '../cms/queries';
 import EventList from '../components/EventList.astro';
 import Layout from '../layouts/Layout.astro';
+import LiveSchema from '../components/seo/LiveSchema.astro';
 
 const title = 'Live';
 const description =
-  'Consulta la lista de conciertos de GUARDA, el proyecto de Joel Rico Rada. Descubre próximas fechas y revive sus actuaciones pasadas.';
+  'Explora las actuaciones en directo de GUARDA - Proyecto de música experimental de Joel Rico Rada. Fechas pasadas y próximos conciertos.';
 ---
 
 <Layout title={title} description={description}>
+  <LiveSchema slot="inside-head" />
   <main transition:name="main" transition:animate="fade">
     {
       liveContentEs.map(({ year, events }) => (

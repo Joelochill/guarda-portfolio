@@ -22,7 +22,7 @@ export const projects = rawProjects.map(({ cover, ...rest }) => ({
 
 // Live's queries & formatting
 
-const eventsEs = await sanityClient.fetch(
+export const eventsEs = await sanityClient.fetch(
   `*[_type == "event"] | order(date desc) { 
     date,
     "city": city[_key == "es"][0].value, 
@@ -32,7 +32,7 @@ const eventsEs = await sanityClient.fetch(
   }`,
 );
 
-const eventsEn = await sanityClient.fetch(
+export const eventsEn = await sanityClient.fetch(
   `*[_type == "event"] | order(date desc) { 
     date, 
     "city": city[_key == "en"][0].value,

@@ -1,0 +1,72 @@
+---
+import { Schema } from 'astro-seo-schema';
+import { eventsEn, eventsEs } from '../../cms/queries';
+
+const { currentLocale, site: siteUrl } = Astro;
+const { href: currentUrl } = Astro.url;
+
+const liveId = `${siteUrl}#live`;
+
+// Project detection from title (fallback to GUARDA)
+const detectProjectId = (title: string) => {
+  const normalizedTitle = title.toLowerCase();
+  if (/mejor sordo/.test(normalizedTitle)) return '#mejor-sordo';
+  if (/acitdx/.test(normalizedTitle)) return '#acitdx';
+  return '#guarda';
+};
+
+const events = currentLocale === 'es' ? eventsEs : eventsEn;
+
+const eventSchemas = events.map(({ title, date, city, country, link }) => {
+  const projectId = `${siteUrl}${detectProjectId(title)}`;
+
+  return {
+    '@type': 'Event',
+    name: title,
+    startDate: date,
+    location: {
+      '@type': 'Place',
+      name: `${city}, ${country}`,
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: city,
+        addressCountry: country,
+      },
+    },
+    performer: {
+      '@type': 'MusicGroup',
+      '@id': projectId,
+    },
+    ...(link && {
+      subjectOf: {
+        '@type': 'MediaObject',
+        contentUrl: link,
+      },
+    }),
+  };
+});
+---
+
+<Schema
+  item={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebPage',
+        '@id': liveId,
+        url: currentUrl,
+        name: 'Live',
+        description:
+          currentLocale === 'es'
+            ? 'Historial de actuaciones en directo de Joel Rico Rada y sus proyectos musicales'
+            : 'Live performance history of Joel Rico Rada and his music projects',
+        inLanguage: currentLocale,
+        mainEntity: {
+          '@type': 'ItemList',
+          itemListElement: eventSchemas,
+        },
+      },
+      ...eventSchemas,
+    ],
+  }}
+/>
