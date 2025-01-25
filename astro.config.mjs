@@ -25,8 +25,8 @@ export default defineConfig({
       noExternal: ['normalize.css'],
     },
     server: {
-      // Tunnel url for dev server exposing
-      allowedHosts: ['https://gathered-better-review-write.trycloudflare.com/'],
+      // Set to true for dev server exposing
+      // allowedHosts:,
     },
   },
   integrations: [
