@@ -43,7 +43,7 @@ jobs:
           PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.PUBLIC_GOOGLE_ANALYTICS_ID }}
           NODE_ENV: production  # Enables production optimizations
 
-      # Deploy the /dist folder to Hostinger via FTP
+      # 5. DEPLOY VIA FTP (with safety checks)
       - name: Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -53,3 +53,10 @@ jobs:
           port: 21
           local-dir: dist/
           server-dir: /public_html/
+          dangerous-clean-slate: false  # Prevents accidental deletions
+          exclude: |  # Never deploy these
+            **/.git*
+            **/.github*
+            **/*.md
+            **/.env*
+            **/test*
