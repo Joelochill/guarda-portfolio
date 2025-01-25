@@ -18,8 +18,6 @@ jobs:
       # 1. CHECKOUT CODE (with full history)
       - name: Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0 # Needed for proper git operations
 
       # 2. SETUP NODE.JS (with caching)
       - name: Setup Node.js
@@ -60,8 +58,3 @@ jobs:
             **/*.md
             **/.env*
             **/test*
-
-      # 6. POST-DEPLOY CLEANUP
-      - name: Record deployment time
-        if: always() # Runs even if previous steps fail
-        run: date >> deploy-timestamps.log
