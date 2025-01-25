@@ -1,0 +1,40 @@
+---
+import { Schema } from 'astro-seo-schema';
+
+const { currentLocale, site: siteUrl } = Astro;
+const { href: currentUrl } = Astro.url;
+
+const personId = `${siteUrl}#joel-rico-rada`;
+const contactPageId = `${siteUrl}#contact-page`;
+---
+
+<Schema
+  item={{
+    '@context': 'https://schema.org',
+    '@graph': [
+      // Contact Page Schema
+      {
+        '@type': 'ContactPage',
+        '@id': contactPageId,
+        url: currentUrl,
+        name: 'Contact',
+        description:
+          currentLocale === 'es'
+            ? 'Contacta con Joel Rico Rada'
+            : 'Get in touch with Joel Rico Rada',
+        inLanguage: currentLocale,
+        mainEntity: { '@id': personId },
+      },
+      {
+        '@id': personId, // Will crawlers merge??
+        '@type': 'Person',
+        contactPoint: {
+          '@type': 'ContactPoint',
+          name: 'Contact',
+          email: 'info@joelricorada.com',
+          availableLanguage: ['es', 'en'],
+        },
+      },
+    ],
+  }}
+/>

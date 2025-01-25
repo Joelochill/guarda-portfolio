@@ -2,6 +2,7 @@
 import ContactForm from '../../components/ContactForm.astro';
 import Layout from '../../layouts/Layout.astro';
 import * as accounts from '../../utils/accounts.json';
+import ContactSchema from '../../components/seo/ContactSchema.astro';
 
 const title = 'Contact';
 const description =
@@ -9,6 +10,7 @@ const description =
 ---
 
 <Layout title={title} description={description}>
+  <ContactSchema slot="inside-head" />
   <main transition:name="main" transition:animate="fade">
     <ContactForm />
     <p>

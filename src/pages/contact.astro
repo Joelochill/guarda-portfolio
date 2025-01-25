@@ -2,12 +2,14 @@
 import ContactForm from '../components/ContactForm.astro';
 import Layout from '../layouts/Layout.astro';
 import * as accounts from '../utils/accounts.json';
+import ContactSchema from '../components/seo/ContactSchema.astro';
 
 const title = 'Contact';
 const description =
   'Contacta con Joel Rico Rada, creador de GUARDA - Envía propuestas de colaboración, solicitudes de prensa o preguntas al artista directamente.';
 ---
 
+<ContactSchema slot="inside-head" />
 <Layout title={title} description={description}>
   <main transition:name="main" transition:animate="fade">
     <ContactForm />
