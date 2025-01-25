@@ -4,8 +4,10 @@ on:
   push:
     branches:
       - main
-  repository_dispatch:
-    types: [sanity-update]
+
+concurrency:  # Prevents multiple simultaneous deployments
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build-and-deploy:
@@ -15,15 +17,6 @@ jobs:
       # Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v4
-      
-      # Verify Sanity payload (security check)
-      - name: Verify Sanity Request
-        if: github.event_name == 'repository_dispatch'
-        run: |
-          if [ "${{ github.event.client_payload.projectId }}" != "${{ vars.SANITY_PROJECT_ID }}" ]; then
-            echo "❌ Invalid Sanity project ID"
-            exit 1
-          fi
 
       # Install Node.js
       - name: Setup Node.js
