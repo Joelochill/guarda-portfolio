@@ -31,7 +31,8 @@ jobs:
       # 3. INSTALL DEPENDENCIES
       - name: Install dependencies
         run: npm ci --prefer-offline  # Faster installs using cache
-
+      
+      # 4. BUILD PROJECT
       - name: Build Astro site
         run: npm run build
         env:
@@ -40,6 +41,7 @@ jobs:
           SANITY_DATASET_NAME: ${{ vars.SANITY_DATASET_NAME }}
           PUBLIC_EMAILJS_KEY: ${{ vars.PUBLIC_EMAILJS_KEY }}
           PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.PUBLIC_GOOGLE_ANALYTICS_ID }}
+          NODE_ENV: production  # Enables production optimizations
 
       # Deploy the /dist folder to Hostinger via FTP
       - name: Deploy to Hostinger
