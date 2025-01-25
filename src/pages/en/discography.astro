@@ -10,7 +10,7 @@ const description =
 ---
 
 <Layout title={title} description={description}>
-  <DiscographySchema />
+  <DiscographySchema slot="inside-head" />
   <main transition:name="main" transition:animate="fade">
     {
       projects.map(({ coverUrl, title, bandcampLink }, index) => (
