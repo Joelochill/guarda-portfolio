@@ -5,6 +5,7 @@ on:
     branches:
       - main
   repository_dispatch:
+    types: ['website-deploy: sanity-update']
   workflow_dispatch: # Optional manual trigger
 
 concurrency: # Prevents multiple simultaneous deployments
