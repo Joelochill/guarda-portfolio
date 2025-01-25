@@ -5,16 +5,17 @@ on:
     branches:
       - main
 
-concurrency:  # Prevents multiple simultaneous deployments
+concurrency: # Prevents multiple simultaneous deployments
   group: deploy-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 10 # Failsafe against hung deployments
 
     steps:
-      # Checkout the repository
+      # 1. CHECKOUT CODE (with full history)
       - name: Checkout code
         uses: actions/checkout@v4
 
