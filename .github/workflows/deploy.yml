@@ -1,8 +1,5 @@
 name: Deploy Astro Frontend to Hostinger
 
-env:
-  TZ: Europe/Madrid # Timezone for logs
-
 on:
   push:
     branches:
@@ -25,11 +22,6 @@ jobs:
       deployments: write
 
     steps:
-      - name: Debug timezone
-        run: |
-          date
-          echo "Timezone: $TZ"
-
       # 1. CHECKOUT CODE (with full history)
       - name: Checkout code
         uses: actions/checkout@v4
