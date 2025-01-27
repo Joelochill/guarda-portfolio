@@ -52,7 +52,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21,
-          protocol: ftps,
+          protocol: ftps
           local-dir: dist/
           server-dir: /public_html/
           dangerous-clean-slate: false # Prevents accidental deletions
