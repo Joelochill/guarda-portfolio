@@ -1,5 +1,8 @@
 name: Deploy Astro Frontend to Hostinger
 
+env:
+  TZ: Europe/Madrid # Timezone for logs
+
 on:
   push:
     branches:
@@ -17,6 +20,10 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 10 # Failsafe against hung deployments
 
+    permissions:
+      contents: read
+      deployments: write
+    
     steps:
       # 1. CHECKOUT CODE (with full history)
       - name: Checkout code
@@ -31,7 +38,8 @@ jobs:
 
       # 3. INSTALL DEPENDENCIES
       - name: Install dependencies
-        run: |
+        run:
+          | # Install with lockfile verification, checking for critical dependencies
           npm ci --prefer-offline
           npm audit --audit-level=critical
 
@@ -46,7 +54,7 @@ jobs:
           PUBLIC_GOOGLE_ANALYTICS_ID: ${{ vars.PUBLIC_GOOGLE_ANALYTICS_ID }}
           NODE_ENV: production # Enables production optimizations
 
-      # 5. DEPLOY VIA FTP (with safety checks)
+      # 5. DEPLOY VIA FTPS
       - name: Deploy to Hostinger
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
@@ -64,3 +72,8 @@ jobs:
             **/*.md
             **/.env*
             **/test*
+      
+      # 6. POST-DEPLOY CLEANUP
+      - name: Cleanup build artifacts
+        run: rm -rf dist/
+        if: always()
