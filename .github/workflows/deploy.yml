@@ -31,7 +31,9 @@ jobs:
 
       # 3. INSTALL DEPENDENCIES
       - name: Install dependencies
-        run: npm ci --prefer-offline # Faster installs using cache
+        run: |
+          npm ci --prefer-offline
+          npm audit --audit-level=critical
 
       # 4. BUILD PROJECT
       - name: Build Astro site
