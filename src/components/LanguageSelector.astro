@@ -2,9 +2,9 @@
 import { getRelativeLocaleUrl} from 'astro:i18n';
 
 const { currentLocale } = Astro;
-const { pathname: currentPage } = Astro.url;
+const { pathname: currentPath } = Astro.url;
 
-const relativePath = currentPage.replace('/en', '');
+const relativePath = currentPath.replace('/en', '');
 ---
 
 <nav>

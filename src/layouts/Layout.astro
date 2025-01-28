@@ -9,13 +9,18 @@ import { defaultSeo } from '../utils/defaultSeo';
 
 const { title, description, backgroundImage } = Astro.props;
 const { currentLocale } = Astro;
-const { href: currentPage} = Astro.url;
+const { href: currentUrl } = Astro.url;
 
 // Might need a refactor to enhance flexibility - it is so rigid
 const seo = {
   ...defaultSeo,
   title,
   description,
+  languageAlternates: [
+    { href: currentUrl, hrefLang: 'es' },
+    { href: `${currentUrl}/en/`, hrefLang: 'en' },
+    { href: currentUrl, hrefLang: 'x-default' },
+  ],
   openGraph: {
     ...defaultSeo.openGraph,
     basic: {
@@ -36,7 +41,7 @@ const seo = {
 };
 
 // set both in one line
-seo.openGraph.basic.url = seo.canonical = currentPage;
+seo.openGraph.basic.url = seo.canonical = currentUrl;
 
 const localeCodes = { es: 'es_ES', en: 'en_US' };
 
