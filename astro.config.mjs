@@ -36,7 +36,15 @@ export default defineConfig({
       dataset: `${SANITY_DATASET_NAME}`,
       useCdn: false,
     }),
-    sitemap(),
+    sitemap({
+      i18n: {
+        defaultLocale: 'es',
+        locales: {
+          es: 'es',
+          en: 'en',
+        },
+      },
+    }),
     robotsTxt({
       host: true,
     }),
