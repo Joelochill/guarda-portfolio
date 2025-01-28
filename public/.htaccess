@@ -1,7 +1,7 @@
 # Enable Rewrite Engine
 RewriteEngine On
 
-# Remove www & force HTTPS 
+# Redirect www to non-www + HTTPS
 RewriteCond %{HTTP_HOST} ^www\.joelricorada\.com [NC]
 RewriteRule ^(.*)$ https://joelricorada.com/$1 [L,R=301]
 
