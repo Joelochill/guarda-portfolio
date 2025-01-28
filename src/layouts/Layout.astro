@@ -1,5 +1,6 @@
 ---
 import { SEO, type TwitterCardType } from 'astro-seo';
+import { getAbsoluteLocaleUrl } from 'astro:i18n';
 import '../../node_modules/normalize.css/normalize.css';
 import Dropdown from '../components/Dropdown.astro';
 import Footer from '../components/Footer.astro';
@@ -9,7 +10,9 @@ import { defaultSeo } from '../utils/defaultSeo';
 
 const { title, description, backgroundImage } = Astro.props;
 const { currentLocale } = Astro;
-const { href: currentUrl } = Astro.url;
+const { href: currentUrl, pathname: currentPath } = Astro.url;
+
+const relativePath = currentPath.replace('/en', '');
 
 // Might need a refactor to enhance flexibility - it is so rigid
 const seo = {
@@ -17,9 +20,9 @@ const seo = {
   title,
   description,
   languageAlternates: [
-    { href: currentUrl, hrefLang: 'es' },
-    { href: `${currentUrl}en/`, hrefLang: 'en' },
-    { href: currentUrl, hrefLang: 'x-default' },
+    { href: getAbsoluteLocaleUrl('es', relativePath), hrefLang: 'es' },
+    { href: getAbsoluteLocaleUrl('en', relativePath), hrefLang: 'en' },
+    { href: getAbsoluteLocaleUrl('es', relativePath), hrefLang: 'x-default' },
   ],
   openGraph: {
     ...defaultSeo.openGraph,
