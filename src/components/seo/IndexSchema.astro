@@ -18,7 +18,8 @@ const guardaId = `${siteUrl}#guarda`;
       {
         '@type': 'WebSite',
         '@id': websiteId,
-        name: 'Joel Rico Rada | GUARDA',
+        name: 'GUARDA',
+        alternateName: 'Joel Rico Rada',
         url: currentUrl,
         description:
           currentLocale === 'es'
@@ -43,10 +44,16 @@ const guardaId = `${siteUrl}#guarda`;
           caption: 'Joel Rico Rada | GUARDA',
         },
         url: siteUrl.toString(),
-        genre:
-          currentLocale === 'es'
-            ? ['Música experimental', 'Noise', 'Arte sonoro', 'Ambient']
-            : ['Experimental Music', 'Noise', 'Sound Art', 'Ambient'],
+        genre: [
+          'Dark Ambient',
+          'Ritual Ambient',
+          'Noise',
+          'Spanish Experimental',
+          'Spectra',
+          'Dron Spiritual',
+          'Spoken Word',
+          'Ambient',
+        ],
         sameAs: [bandcamp, instagram, spotify, youtube],
       },
     ],
