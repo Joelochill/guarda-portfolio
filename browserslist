@@ -1,8 +1,6 @@
 # Browsers we support
 
-defaults
-not OperaMini all
+> 0.25%
+not ie 11
+not op_mini all
 not UCAndroid > 0
-not QQAndroid > 0
-not kaios 2.5
-not kaios 3.0-3.1
