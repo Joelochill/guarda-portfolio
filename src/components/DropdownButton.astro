@@ -54,6 +54,11 @@ import { Icon } from 'astro-icon/components';
       ) {
         dropdown.classList.replace('fade-in', 'fade-out');
         dropdown.classList.toggle('expanded');
+
+        if (isIndex) {
+          header.classList.add('transparent');
+        }
+
         main.classList.replace('fade-out', 'fade-in');
         document.body.style.overflowY = 'auto';
         dropdownBtn.classList.replace('rotated-180', 'rotated-180-reverse');
@@ -85,8 +90,12 @@ import { Icon } from 'astro-icon/components';
         'animationend',
         () => {
           dropdown.classList.toggle('expanded');
-          dropdown.classList.replace('fade-out', 'fade-in') ||
+
+          if (dropdown.classList.contains('fade-out')) {
+            dropdown.classList.replace('fade-out', 'fade-in');
+          } else {
             dropdown.classList.add('fade-in');
+          }
 
           if (isIndex) {
             header.classList.remove('transparent');
@@ -94,21 +103,23 @@ import { Icon } from 'astro-icon/components';
         },
         { once: true }
       );
-      main.classList.replace('fade-in', 'fade-out') ||
+
+      if (main.classList.contains('fade-in')) {
+        main.classList.replace('fade-in', 'fade-out');
+      } else {
         main.classList.add('fade-out');
+      }
+
       document.body.style.overflowY = 'hidden';
     });
 
     // Rotate the chevron
 
     dropdownBtn.addEventListener('click', () => {
-      if (!dropdownBtn.classList.contains('rotated-180')) {
-        dropdownBtn.classList.replace('rotated-180-reverse', 'rotated-180') ||
-          dropdownBtn.classList.add('rotated-180');
-        return;
-      }
+      const isRotated = dropdownBtn.classList.contains('rotated-180');
 
-      dropdownBtn.classList.replace('rotated-180', 'rotated-180-reverse');
+      dropdownBtn.classList.toggle('rotated-180', !isRotated);
+      dropdownBtn.classList.toggle('rotated-180-reverse', isRotated);
     });
   });
 </script>
