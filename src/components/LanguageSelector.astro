@@ -1,5 +1,5 @@
 ---
-import { getRelativeLocaleUrl} from 'astro:i18n';
+import { getRelativeLocaleUrl } from 'astro:i18n';
 
 const { currentLocale } = Astro;
 const { pathname: currentPath } = Astro.url;
@@ -10,12 +10,12 @@ const relativePath = currentPath.replace('/en', '');
 <nav>
   <a
     href={getRelativeLocaleUrl('es', relativePath)}
-    class:list={['lang-link', currentLocale === 'es' ? 'selected' : '']}
+    class:list={['lang-link', currentLocale === 'es' && 'selected']}
     >es
   </a>
   <a
     href={getRelativeLocaleUrl('en', relativePath)}
-    class:list={['lang-link', currentLocale === 'en' ? 'selected' : '']}>en</a
+    class:list={['lang-link', currentLocale === 'en' && 'selected']}>en</a
   >
 </nav>
 

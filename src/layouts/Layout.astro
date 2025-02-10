@@ -71,7 +71,7 @@ const background = backgroundImage ? `url(${backgroundImage.src})` : 'none';
     />
     <slot name="inside-head" />
   </Head>
-  <body class:list={[backgroundImage ? 'background-image' : '']}>
+  <body class:list={[backgroundImage && 'background-image']}>
     <div class="page-wrapper">
       <Header transparent={Boolean(backgroundImage)} />
       <slot />

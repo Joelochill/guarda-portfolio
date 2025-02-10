@@ -3,7 +3,7 @@ const { href } = Astro.props;
 const currentPath = Astro.url.pathname;
 ---
 
-<a href={href} class:list={[href === currentPath ? 'active' : '']}>
+<a href={href} class:list={[href === currentPath && 'active']}>
   <slot />
 </a>
 

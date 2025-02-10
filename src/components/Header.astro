@@ -7,7 +7,7 @@ import Navigation from './Navigation.astro';
 const { transparent } = Astro.props;
 ---
 
-<header class:list={[transparent ? 'transparent' : '']}>
+<header class:list={[transparent && 'transparent']}>
   <Logo />
   <div class="hidden">
     <Navigation />
