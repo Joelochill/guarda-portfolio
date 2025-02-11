@@ -166,13 +166,7 @@ main {
   }
 }
 
-@supports selector(::-webkit-scrollbar) {
-  /* Reset standard properties for WebKit browsers */
-  * {
-    scrollbar-width: unset;
-    scrollbar-color: unset;
-  }
-  
+@supports selector(::-webkit-scrollbar) {  
   ::-webkit-scrollbar {
     background: transparent;
     width: 0.3em;
