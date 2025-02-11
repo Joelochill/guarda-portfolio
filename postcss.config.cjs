@@ -1,9 +1,16 @@
 /* eslint-disable -- Only CommonJS file */
-const postCssPresetEnv = require('postcss-preset-env');
+const postcssPresetEnv = require('postcss-preset-env');
+const postcssHasPseudo = require('css-has-pseudo');
 
 module.exports = {
   plugins: [
-    postCssPresetEnv({
+    postcssPresetEnv({
+      features: {
+        'media-query-ranges': true,
+      },
+      preserve: true,
+    }),
+    postcssHasPseudo({
       preserve: true,
     }),
   ],

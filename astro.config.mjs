@@ -25,8 +25,7 @@ export default defineConfig({
       noExternal: ['normalize.css'],
     },
     server: {
-      // Set to true for dev server exposing
-      // allowedHosts:,
+      allowedHosts: [],
     },
   },
   integrations: [

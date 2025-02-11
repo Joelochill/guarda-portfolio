@@ -159,7 +159,7 @@ main {
   scroll-behavior: smooth;
 }
 
-@supports (scrollbar-color: auto) {
+@supports (scrollbar-width: thin) {
   * {
     scrollbar-width: thin;
     scrollbar-color: var(--color-text) transparent;
@@ -167,6 +167,12 @@ main {
 }
 
 @supports selector(::-webkit-scrollbar) {
+  /* Reset standard properties for WebKit browsers */
+  * {
+    scrollbar-width: unset;
+    scrollbar-color: unset;
+  }
+  
   ::-webkit-scrollbar {
     background: transparent;
     width: 0.3em;
