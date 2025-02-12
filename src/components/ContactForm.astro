@@ -3,7 +3,7 @@ const { currentLocale } = Astro;
 ---
 
 <form id="contact-form" novalidate data-lang={currentLocale}>
-  <div class="form-control">
+  <div id="name-wrapper" class="form-control">
     <input
       type="text"
       name="user_name"
@@ -14,7 +14,7 @@ const { currentLocale } = Astro;
     <span class="error"></span>
   </div>
 
-  <div class="form-control">
+  <div id="email-wrapper" class="form-control">
     <input
       type="email"
       name="user_email"
@@ -26,7 +26,7 @@ const { currentLocale } = Astro;
     <span class="error"></span>
   </div>
 
-  <div class="form-control">
+  <div id="subject-wrapper" class="form-control">
     <input
       type="text"
       name="subject"
@@ -37,7 +37,7 @@ const { currentLocale } = Astro;
     <span class="error"></span>
   </div>
 
-  <div class="form-control">
+  <div id="message-wrapper" class="form-control">
     <textarea
       rows="8"
       name="message"
@@ -47,7 +47,7 @@ const { currentLocale } = Astro;
     <span class="error"></span>
   </div>
 
-  <div class="form-control">
+  <div id="submit-wrapper" class="form-control">
     <button type="submit">{currentLocale === 'es' ? 'Enviar' : 'Send'}</button>
     <span id="submission-result"></span>
   </div>
@@ -55,8 +55,8 @@ const { currentLocale } = Astro;
 
 <script>
   import emailjs from '@emailjs/browser';
-  import validator from 'validator';
-  import * as accounts from '../utils/accounts.json';
+import validator from 'validator';
+import * as accounts from '../utils/accounts.json';
   const emailJsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
 
   document.addEventListener('astro:page-load', () => {
@@ -278,23 +278,23 @@ const { currentLocale } = Astro;
     flex-direction: column;
   }
 
-  .form-control:has(input[name='user_name']) {
+  #name-wrapper {
     grid-area: name;
   }
 
-  .form-control:has(input[name='user_email']) {
+  #email-wrapper {
     grid-area: email;
   }
 
-  .form-control:has(input[name='subject']) {
+  #subject-wrapper {
     grid-area: subject;
   }
 
-  .form-control:has(textarea[name='message']) {
+  #message-wrapper {
     grid-area: message;
   }
 
-  .form-control:has(button[type='submit']) {
+  #submit-wrapper {
     grid-area: submit;
     align-items: flex-start;
     justify-content: space-between;
