@@ -8,9 +8,9 @@ const { img, alt, title, link, loading } = Astro.props;
   <Image
     src={img}
     alt={alt}
-    widths={[480, 720]}
+    widths={[240, 320, 480, 720, 960, 1200]}
     inferSize
-    sizes={'(max-width: 496px) 480px, 720px'}
+    sizes={'(min-width: 1480px) 404px, (min-width: 1100px) 26.11vw, (min-width: 640px) calc(47.95vw - 60px), (min-width: 500px) calc(48.33vw - 30px), calc(98.89vw - 37px)'}
     loading={loading}
   />
   <p>{title}</p>
