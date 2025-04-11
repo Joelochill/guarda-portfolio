@@ -32,7 +32,7 @@
     "astro-seo": "^0.8.4",
     "astro-seo-schema": "^5.0.0",
     "normalize.css": "^8.0.1",
-    "sanity": "^3.80.1",
+    "sanity": "^3.82.0",
     "schema-dts": "^1.1.2",
     "validator": "^13.12.0"
   },
