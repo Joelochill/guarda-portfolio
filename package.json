@@ -18,14 +18,14 @@
     "format": "npm run prettier:fix && npm run lint:fix && npm run stylelint:fix"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.3.0",
+    "@astrojs/sitemap": "^3.3.1",
     "@emailjs/browser": "^4.4.1",
     "@fontsource-variable/eb-garamond": "^5.1.1",
     "@fontsource/sorts-mill-goudy": "^5.1.0",
     "@sanity/astro": "^3.2.0",
     "@sanity/client": "^6.28.4",
     "@sanity/image-url": "^1.0.2",
-    "astro": "^5.5.5",
+    "astro": "^5.7.8",
     "astro-icon": "^1.1.2",
     "astro-portabletext": "^0.11.0",
     "astro-robots-txt": "^1.0.0",
