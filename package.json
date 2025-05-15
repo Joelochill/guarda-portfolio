@@ -23,7 +23,7 @@
     "@fontsource-variable/eb-garamond": "^5.1.1",
     "@fontsource/sorts-mill-goudy": "^5.1.0",
     "@sanity/astro": "^3.2.0",
-    "@sanity/client": "^6.29.1",
+    "@sanity/client": "^7.2.1",
     "@sanity/image-url": "^1.0.2",
     "astro": "^5.7.13",
     "astro-icon": "^1.1.2",
