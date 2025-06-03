@@ -65,10 +65,6 @@ export const defaultSeo = {
         sizes: '16x16',
         href: '/favicon-16x16.png',
       },
-      {
-        rel: 'manifest',
-        href: '/site.webmanifest',
-      },
       { rel: 'sitemap', href: '/sitemap-index.xml' },
       {
         rel: 'preload',
