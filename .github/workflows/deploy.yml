@@ -24,7 +24,7 @@ jobs:
     steps:
       # 1. CHECKOUT CODE (with full history)
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       # 2. SETUP NODE.JS (with caching)
       - name: Setup Node.js
