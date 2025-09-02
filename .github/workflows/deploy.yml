@@ -69,6 +69,7 @@ jobs:
             **/*.md
             **/.env*
             **/test*
+          dry-run: ${{ github.ref != 'refs/heads/main' }}
 
       # 6. POST-DEPLOY CLEANUP
       - name: Cleanup build artifacts
