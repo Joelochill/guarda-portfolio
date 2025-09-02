@@ -30,7 +30,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: '22.x'
           cache: 'npm' # Caches node_modules
 
       # 3. INSTALL DEPENDENCIES
@@ -53,7 +53,7 @@ jobs:
 
       # 5. DEPLOY VIA FTPS
       - name: Deploy to Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USERNAME }}
@@ -69,6 +69,7 @@ jobs:
             **/*.md
             **/.env*
             **/test*
+          dry-run: ${{ github.ref != 'refs/heads/main' }}
 
       # 6. POST-DEPLOY CLEANUP
       - name: Cleanup build artifacts
