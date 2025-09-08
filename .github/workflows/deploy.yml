@@ -28,7 +28,7 @@ jobs:
 
       # 2. SETUP NODE.JS (with caching)
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
           node-version: '22.x'
           cache: 'npm' # Caches node_modules
