@@ -29,7 +29,7 @@
     "astro-icon": "^1.1.2",
     "astro-portabletext": "^0.11.0",
     "astro-robots-txt": "^1.0.0",
-    "astro-seo": "^0.8.4",
+    "astro-seo": "^1.1.0",
     "astro-seo-schema": "^5.0.0",
     "normalize.css": "^8.0.1",
     "sanity": "^4.2.0",
